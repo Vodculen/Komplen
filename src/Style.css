@@ -1,0 +1,42 @@
+/* Thinking of writing it all in light mode cause I'm not a crazy person */
+
+* {
+	margin: 0;
+	padding: 0;
+
+	--text: normal 16px Arial;
+
+	--splash: bold 72px Arial;
+	--splash-text: bold 32px Arial;
+
+	-webkit-user-select: none;		/* I know its deprecated but I only want some pieces of text to be selectable. It may change later! */
+}
+
+
+/* This is just all for the Welcome page */
+.splashScreen {
+	height: 100vh;
+	align-content: center;
+	text-align: center;
+}
+
+.splash {
+	font: var(--splash);
+	margin-bottom: 8px;
+}
+
+.splashText {
+	font: var(--splash-text);
+	margin-bottom: 20px;
+}
+
+
+/* I don't know if this will be used for all buttons but I hope it will */
+.button {
+	padding: 8px 12px;
+	font: var(--text);
+}
+
+.button:hover {
+	cursor: pointer;
+}
