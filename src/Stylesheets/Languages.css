@@ -1,0 +1,37 @@
+.languagesPage {
+	height: 100vh;
+	padding: 0 2%;
+	text-align: center;
+
+}
+
+.languageProfiles {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.languageProfile {
+	padding: 20px;
+	height: 400px;
+	width: 300px;
+	border: 2px solid darkgray;
+	border-radius: 12px;
+	margin: 20px;
+	text-decoration: none;
+	color: black;
+}
+
+.languageProfile:hover {
+	background-color: lightgrey;
+}
+
+.name { 
+	margin: 20px 0px 12px 0px; 
+	font: var(--section-text);
+}
+
+.bio { 
+	text-align: justify;
+	font: var(--text);
+}

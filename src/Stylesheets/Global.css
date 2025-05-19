@@ -1,0 +1,42 @@
+/* Thinking of writing it all in light mode cause I'm not a crazy person */
+
+* {
+	margin: 0;
+	padding: 0;
+
+	--text: normal 16px Arial;
+	--title-text: normal 60px Arial;
+	--section-text: normal 32px Arial;
+
+	--splash: bold 72px Arial;
+	--splash-text: bold 32px Arial;
+
+	-webkit-user-select: none;		/* I know its deprecated but I only want some pieces of text to be selectable. It may change later! */
+	cursor: default;
+}
+
+
+.button {
+	padding: 8px 12px;
+	font: var(--text);
+	border: 2px solid darkgray;
+	border-radius: 12px;
+	background-color: transparent;
+}
+
+.button:hover {
+	background-color: lightgray;
+}
+
+.title {
+	font: var(--title-text);
+	text-align: center;
+	margin-bottom: 12px;
+}
+
+.divider {
+	border-top: 2px solid black;
+	margin-bottom: 40px;
+}
+
+
