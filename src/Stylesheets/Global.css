@@ -39,4 +39,85 @@
 	margin-bottom: 40px;
 }
 
+/* This took me an hour to conver table to flexbox and make everything work! */
+.menu {
+	border-bottom: 2px solid darkgrey;
 
+
+}
+
+.menu ul {
+	list-style: none;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.menu li {
+	position: relative;
+	padding: 10px 20px;
+	align-content: center;
+}
+
+.menu .link {
+	text-decoration: none;
+	display: grid;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	font: var(--text);
+	color: black;
+}
+
+
+.menu button {
+	display: grid;
+	background: transparent;
+	width: fit-content;
+	border: solid 2px darkgrey;
+	border-radius: 12px;
+	align-items: center;
+	justify-content: center;
+	padding: 4px;
+}
+
+.menu button:hover {
+	background-color: lightgrey;
+}
+
+.menu button svg {
+	fill: black;
+}
+
+
+
+
+.menu .link:after {
+	background: none repeat scroll 0 0 transparent;
+	bottom: 0;
+	content: "";
+	display: block;
+	height: 2px;
+	left: 50%;
+	position: absolute;
+	background: black;
+	transition: width 0.3s ease, left 0.3s ease;
+	width: 0;
+}
+
+.menu .link:hover:after{
+	width: 100%;
+	left: 0;
+}
+
+.menu .active:hover:after {
+	width: 100%;
+	left: 0;
+}
+
+.menu .active .link {
+	color: darkgrey;
+}
+
+.menu .active .link:after {
+	background: darkgrey;
+}

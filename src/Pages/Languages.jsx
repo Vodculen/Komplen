@@ -9,7 +9,7 @@ export default function Languages() {
 			<h1 className="title">Programming Languages</h1>
 			<div className="divider" ></div>
 			<div className="languageProfiles">
-				<LanguageProfile link={"/"} image={""} alternate={"C Logo"} name={"C"} bio={"[Language's bio]"} />
+				<LanguageProfile link={"/c/homepage"} image={""} alternate={"C Logo"} name={"C"} bio={"[Language's bio]"} />
 				<LanguageProfile link={"/"} image={""} alternate={"C++ Logo"} name={"C++"} bio={"[Language's bio]"} />
 				<LanguageProfile link={"/"} image={""} alternate={"C# Logo"} name={"C#"} bio={"[Language's bio]"} />
 

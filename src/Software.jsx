@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // Pages
 import Welcome from "./Pages/Welcome";
 import Languages from "./Pages/Languages";
+import CHomepage from "./Pages/C/Homepage";
 
 // The Stylesheet
 import "./Stylesheets/Global.css";
@@ -13,11 +14,17 @@ import "./Stylesheets/Global.css";
 export default function Software() {
 	return(
 		// I don't know if I'm going to keep it Router or change it to BrowserRouter.
-		<Router>
-			<Routes>
-				<Route index element={ <Welcome /> } />
-				<Route path="/languages" element={ <Languages /> } />
-			</Routes>
-		</Router>
+		<div id="software">
+			<Router>
+				<Routes>
+					<Route index element={ <Welcome /> } />
+					<Route path="/languages" element={ <Languages /> } />
+
+					{/* Routes to C Pages */}
+					<Route path="/c/homepage" element={ <CHomepage /> } />
+
+				</Routes>
+			</Router>
+		</div>
 	);
 }
