@@ -1,4 +1,3 @@
-import React from "react";
 import LanguageProfile from "../Components/LanguageProfile";
 import "./../Stylesheets/Languages.css";
 

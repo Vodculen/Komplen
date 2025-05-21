@@ -1,16 +1,15 @@
-import React from "react";
-import List from "./List";
+import LinkedList from "./LinkedList";
 
 
-export default function Menu({ link, image, alternate, name, bio }) {
+export default function Menu() {
 	return(
 		<nav className="menu">
 			<ul>
-				<List list={[
-					{ tab: "Lessons", link: "", active: "active" }, 
-					{ tab: "Practice", link: "", active: "" },
-					{ tab: "Compiler", link: "", active: "" },
-					{ tab: "Languages", link: "", active: "" }
+				<LinkedList list={[
+					{ tab: "Lessons", link: "", active: "active", id: "0" }, 
+					{ tab: "Practice", link: "", active: "", id: "1" },
+					{ tab: "Compiler", link: "", active: "", id: "2" },
+					{ tab: "Languages", link: "", active: "", id: "3" }
 				]} />
 
 				<li><button className="themeButton">
