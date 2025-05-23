@@ -1,28 +1,21 @@
-// Experimental!!
-
 import { load } from '@tauri-apps/plugin-store';
 
-const theme = await load('theme.json', { autoSave: false });
+const store = await load('store.json', { autoSave: false });
 
-async function Theme() {
-	const setTheme = await theme.get('theme');
-	
-	if (setTheme?.value == "darkmode") {
-		document.getElementById("software").classList = "darkmode";
-	} else if (setTheme?.value == "lightmode") {
-		document.getElementById("software").classList = "";
-	}
+export async function ToggleDarkmode() {
+	const body = document.body;
+	const isDark = !body.classList.contains('darkmode');
+
+	body.classList.toggle('darkmode', isDark);
+
+	await store.set('darkmode', isDark);
+	await store.save();
 }
 
-export async function toggleDarkmode() {
-	await theme.set("theme", { value: "darkmode" });
-
-	const setTheme = await theme.get("theme");
-
-	console.log(setTheme?.value);
-
-	Theme();
-
-
-	await theme.save();
+export async function InitDarkmode() {
+	const saved = await store.get('darkmode');
+	
+	if (saved === true) {
+		document.body.classList.add('darkmode');
+	}
 }

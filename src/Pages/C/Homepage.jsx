@@ -5,8 +5,6 @@ import Section from "../../Components/Section";
 import List from "../../Components/List";
 import Program from "../../Components/Program";
 
-import "./../../Stylesheets/SplashScreen.css"
-
 
 export default function CHomepage() {
 	return(
@@ -63,7 +61,8 @@ function CExample() {
 function CExampleProgram() {
 	return(
 		<>
-			<code>#include &lt;stdlib.h&gt;</code><br /><br />
+			<code>#include &lt;stdlib.h&gt;</code><br />
+			<br />
 			<code>int main() &#123;</code><br />
 			<code>    printf("Hello world");</code><br />
 			<br />

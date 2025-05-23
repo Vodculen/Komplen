@@ -15,7 +15,7 @@
 	padding: 20px;
 	height: 400px;
 	width: 300px;
-	border: 2px solid darkgray;
+	border: 2px solid var(--outlineColor);
 	border-radius: 12px;
 	margin: 20px;
 	text-decoration: none;
@@ -23,15 +23,17 @@
 }
 
 .languageProfile:hover {
-	background-color: lightgrey;
+	background-color: var(--foregroundColor);
 }
 
 .name { 
 	margin: 20px 0px 12px 0px; 
 	font: var(--section-text);
+	color: var(--normalText);
 }
 
 .bio { 
 	text-align: justify;
 	font: var(--text);
+	color: var(--normalText);
 }

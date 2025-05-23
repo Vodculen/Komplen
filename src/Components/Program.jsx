@@ -1,17 +1,21 @@
+import "../Stylesheets/Program.css"
+
+
 export default function Program({ name, language, program }) {
 	return (
 		<div className="programBlock">
-			<ul className="programPanel">
-				<li><p className="filename item">{name}</p></li>
-				<li><p className="lang item">{language}</p></li>
-				<li><button className="run">Run</button></li>
-				<li><button>Copy</button></li>
-			</ul>
-
+			<div className="programHeader">
+				<div className="programInfo">
+					<p className="programLanguage">{language}</p>
+					<p className="programName">{name}</p>
+				</div>
+				<div className="buttonGroup">
+					<button className="copyButton">Copy</button>
+					{/* <button className="runButton">Run</button> We need to make backend compiler but I dont want to now Hah */}
+				</div>
+			</div>
 			<div className="program">
-				<pre>
-					{program}
-				</pre>
+				<pre>{program}</pre>
 			</div>
 		</div>
 	);

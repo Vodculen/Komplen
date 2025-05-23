@@ -3,7 +3,7 @@
 * {
 	margin: 0;
 
-	--text: normal 16px Arial;
+	--text: normal 18px Arial;
 	--chapters-text: normal 24px Arial;
 	--title-text: normal 60px Arial;
 	--section-text: normal 32px Arial;
@@ -13,40 +13,66 @@
 
 	-webkit-user-select: none;		/* I know its deprecated but I only want some pieces of text to be selectable. It may change later! */
 	cursor: default;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
 }
+
+body {
+	--backgroundColor: #F9F9FB;
+	--foregroundColor: #E6E6EB;
+	--outlineColor: #DADAE2;
+	--lightText: #333333;
+	--normalText: #000000;
+	
+	background-color: var(--backgroundColor);
+}
+
+.darkmode {
+	--backgroundColor: #050507;
+	--foregroundColor: #0C0C10;
+	--outlineColor: #15151A;
+	--lightText: #AAAAAA;
+	--normalText: #FFFFFF;
+}
+
 
 
 .button {
-	padding: 8px 12px;
+	padding: 8px 16px;
 	font: var(--text);
-	border: 2px solid darkgray;
+	border: 2px solid var(--outlineColor);
 	border-radius: 12px;
-	background-color: white;
+	background-color: var(--backgroundColor);
 }
 
 .button:hover {
-	background-color: lightgray;
+	background-color: var(--foregroundColor);
 }
 
 .title {
+	color: var(--normalText);
 	font: var(--title-text);
 	text-align: center;
 	margin-bottom: 12px;
 }
 
 .section {
+	color: var(--normalText);
 	font: var(--section-text);
 	margin-bottom: 12px;
 }
 
 .text {
+	color: var(--normalText);
 	font: var(--text);
 	margin-bottom: 12px;
-	line-height: 1.3%;
+	line-height: 1.5;
 }
 
 .divider {
-	border-top: 2px solid black;
+	border-top: 2px solid var(--outlineColor);
 	margin-bottom: 28px;
 }
 
@@ -56,60 +82,14 @@
 
 .list li {
 	padding-bottom: 8px;
-}
+	color: var(--normalText);
 
-.programBlock {
-	background-color: lightgrey;
-	padding: 20px;
-	border: 2px solid darkgrey;
-	border-radius: 12px;
-}
-
-.programPanel {
-	list-style: none;
-	display: flex;
-	padding: 0;
-}
-
-.programPanel li {
-	position: relative;
-	padding: 0px 16px 20px 16px;
-	align-content: center;
-}
-
-.programPanel .item {
-	text-decoration: none;
-	display: grid;
-	position: relative;
-	align-items: center;
-	justify-content: center;
-	font: var(--text);
-	color: black;
-}
-
-.programPanel button {
-	display: grid;
-	background: transparent;
-	width: fit-content;
-	border: solid 2px darkgrey;
-	border-radius: 12px;
-	align-items: center;
-	justify-content: center;
-	padding: 4px;
-}
-
-.programPanel button:hover {
-	background-color: white;
-}
-
-.run {
-	flex: 0 0 300px;
 }
 
 
 /* This took me an hour to conver table to flexbox and make everything work! */
 .menu {
-	border-bottom: 2px solid darkgrey;
+	border-bottom: 2px solid var(--outlineColor);
 }
 
 .menu ul {
@@ -131,14 +111,15 @@
 	align-items: center;
 	justify-content: center;
 	font: var(--text);
-	color: black;
+	color: var(--normalText);
+
 }
 
 .menu button {
 	display: grid;
 	background: transparent;
 	width: fit-content;
-	border: solid 2px darkgrey;
+	border: solid 2px var(--outlineColor);
 	border-radius: 12px;
 	align-items: center;
 	justify-content: center;
@@ -146,13 +127,17 @@
 }
 
 .menu button:hover {
-	background-color: lightgrey;
+	background-color: var(--foregroundColor);
 }
 
-.menu button svg {
-	fill: black;
+.languages svg,
+.themeSwitcher svg {
+	fill: var(--normalText);
 }
 
+.themeSwitcher svg:last-child { display: none; }
+.darkmode .themeSwitcher svg:first-child { display: none; }
+.darkmode .themeSwitcher svg:last-child { display: block; }
 
 .page {
 	display: flex;
@@ -162,16 +147,22 @@
 .chapters {
 	width: 300px;
 	height: 100%;
-	border-right: 2px solid darkgrey;
-	background-color: lightgrey;
+	border-right: 2px solid var(--outlineColor);
+	background-color: var(--foregroundColor);
 	overflow-y: auto;
 	flex-shrink: 0; /* prevent shrinking */
+	color: var(--normalText);
 }
 
 .content {
 	flex: 1;
 	padding: 0 2%;
 	overflow-y: auto;
+
+	will-change: scroll-position;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
 }
 
 .chapters ul {
@@ -192,7 +183,7 @@
 
 .chapters .link {
 	text-decoration: none;
-	color: black;
+	color: var(--normalText);
 }
 
 
@@ -224,9 +215,9 @@
 }
 
 .active .link {
-	color: darkgrey;
+	color: var(--lightText);
 }
 
 .active .link::after {
-	background: darkgrey;
+	background: var(--lightText);
 }
