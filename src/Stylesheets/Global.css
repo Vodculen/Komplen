@@ -1,0 +1,153 @@
+* {
+	margin: 0;
+	padding: 0;
+
+	--text: normal 18px Arial;
+	--chapters-text: normal 24px Arial;
+	--title-text: normal 60px Arial;
+	--section-text: normal 32px Arial;
+
+	--splash: bold 72px Arial;
+	--splash-text: bold 32px Arial;
+
+	-webkit-user-select: none;		/* I know its deprecated but I only want some pieces of text to be selectable. It may change later! */
+	cursor: default;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+
+	color: var(--normalText);
+
+}
+
+body {
+	--backgroundColor: #F9F9FB;
+	--foregroundColor: #E6E6EB;
+	--outlineColor: #DADAE2;
+	--lightText: #555555;
+	--normalText: #000000;
+	
+	background-color: var(--backgroundColor);
+}
+
+.darkmode {
+	--backgroundColor: #050507;
+	--foregroundColor: #0C0C10;
+	--outlineColor: #15151A;
+	--lightText: #AAAAAA;
+	--normalText: #FFFFFF;
+}
+
+/* The font for the code */
+@font-face {
+	font-family: JetBrains;
+	src: url(../Assets/JetBrainsMonoNerdFontMono-Regular.ttf);
+}
+
+/* How we made the scrollbar fancy */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--outlineColor); }
+
+
+/* Its for the top text of the chapter thats centered */
+.title {
+	font: var(--title-text);
+	text-align: center;
+	margin-bottom: 12px;
+}
+
+/* It comes after the divider of the last section to mark the new section */
+.section {
+	font: var(--section-text);
+	margin-bottom: 12px;
+}
+
+/* The text that discribes how to program, duh */
+.text {
+	font: var(--text);
+	margin-bottom: 12px;
+	line-height: 1.5;
+}
+
+/* When we want to show code outside a code block to help discribe it */
+.code {
+	padding: 4px 8px !important;
+	border-radius: 12px;
+	background-color: var(--foregroundColor);
+	line-height: 0;
+	font: normal 16px JetBrains;
+}
+
+/* The line that seperates sections */
+.divider {
+	border-top: 2px solid var(--outlineColor);
+	margin-bottom: 28px;
+}
+
+/* A thing you click on, can litteraly be used anywhere */
+.button {
+	padding: 8px 16px;
+	font: var(--text);
+	border: 2px solid var(--outlineColor);
+	border-radius: 12px;
+	background-color: var(--backgroundColor);
+}
+
+.button:hover { background-color: var(--foregroundColor); }
+
+/* How we stylize lists when we want to bulletpoint facts */
+.list {
+	margin-bottom: 4px;
+	margin-left: 50px;
+}
+
+.list li {
+	font: var(--text);
+	padding-bottom: 8px;
+}
+
+
+/* The page that the text is displayed on as well as the sidebar */
+.page {
+	display: flex;
+	height: calc(100vh - 62px);
+}
+
+.content {
+	flex: 1;
+	padding: 0 2%;
+	overflow-y: auto;
+}
+
+
+/* This should always be at the bottom of the page */
+/* This is only for the sidebar and menu links currently */
+.menu .link::after,
+.chapters .link::after {
+	background: none repeat scroll 0 0 transparent;
+	bottom: 0;
+	content: "";
+	display: block;
+	height: 2px;
+	left: 50%;
+	position: absolute;
+	background: var(--normalText);
+	transition: width 0.3s ease, left 0.3s ease;
+	width: 0;
+}
+
+.menu .link:hover::after,
+.chapters .link:hover::after {
+	width: 100%;
+	left: 0;
+}
+
+.active:hover::after {
+	width: 100%;
+	left: 0;
+}
+
+.active .link { color: var(--lightText); }
+.active .link::after { background: var(--lightText); }

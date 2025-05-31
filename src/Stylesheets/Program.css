@@ -1,0 +1,98 @@
+* {
+	--programLanguage: bold 18px Arial;
+	--programName: italic 18px Arial;
+}
+
+.programBlock {
+	background-color: var(--foregroundColor);
+	padding: 20px;
+	border-radius: 12px;
+	border: 2px solid var(--outlineColor);
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.programHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.programInfo {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+}
+
+.programLanguage {
+	font: var(--programLanguage);
+	color: var(--normalText);
+}
+
+.programName {
+	font: var(--programName);
+	color: var(--lightText);
+}
+
+.buttonGroup {
+	display: flex;
+	gap: 10px;
+}
+
+.buttonGroup button {
+	padding: 8px 16px;
+	border: 2px solid var(--outlineColor);
+	background-color: var(--backgroundColor);
+	border-radius: 10px;
+	font: var(--text);
+	color: var(--normalText);
+}
+
+.buttonGroup button:hover {
+	background-color: var(--foregroundColor);
+}
+
+.program {
+	border: 2px solid var(--outlineColor);
+	padding: 12px 20px;
+	border-radius: 12px;
+	background-color: var(--backgroundColor);
+	color: var(--normalText);
+	tab-size: 4;
+}
+
+.program code { 
+	line-height: 1.5;
+	font: normal 16px JetBrains;
+	vertical-align: middle;
+	text-wrap-style: auto;
+}
+
+.program pre {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+
+.programOutput {
+	border: 2px solid var(--outlineColor);
+	padding: 12px 20px;
+	border-radius: 12px;
+	background-color: var(--backgroundColor);
+	color: var(--normalText);
+	margin-top: 20px;
+	white-space: pre-wrap;
+	font: normal 16px JetBrains;
+} 
+
+.varibles { color:  #e06c75; }
+.keywords { color: #c678dd; }
+.numbers { color: #d19a66; }
+.classes { color: #e5c07b; }
+.methods { color: #61afef; }
+.strings { color: #98c379; }
+.operators { color: #56b6c2; }
+.comments { color: #7f848e; }

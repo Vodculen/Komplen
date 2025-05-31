@@ -1,0 +1,59 @@
+[
+  {
+    "title": "C Basics",
+    "tabs": [
+      { "tab": "C Homepage", "link": "/c/homepage", "active": "", "id": "c0" },
+      { "tab": "C Getting Started", "link": "*", "active": "", "id": "c1" },
+      { "tab": "C Outputs", "link": "*", "active": "", "id": "c2" },
+      { "tab": "C Comments", "link": "*", "active": "", "id": "c3" },
+      { "tab": "C Datatypes", "link": "*", "active": "", "id": "c4" },
+      { "tab": "C Operations", "link": "*", "active": "", "id": "c5" },
+      { "tab": "C If ... Else", "link": "*", "active": "", "id": "c6" },
+      { "tab": "C Switch", "link": "*", "active": "", "id": "c7" },
+      { "tab": "C While Loop", "link": "*", "active": "", "id": "c8" },
+      { "tab": "C For Loop", "link": "*", "active": "", "id": "c9" },
+      { "tab": "C Break/Continue", "link": "*", "active": "", "id": "c10" },
+      { "tab": "C Pointers", "link": "*", "active": "", "id": "c11" },
+      { "tab": "C Macros", "link": "*", "active": "", "id": "c12" }
+    ],
+    "id": "s0"
+  },
+  {
+    "title": "C Functions",
+    "tabs": [
+      { "tab": "C Functions", "link": "*", "active": "", "id": "c13" },
+      { "tab": "C Builtin Functions", "link": "*", "active": "", "id": "c14" },
+      { "tab": "C Void Functions", "link": "*", "active": "", "id": "c15" },
+      { "tab": "C Return Functions", "link": "*", "active": "", "id": "c16" }
+    ],
+    "id": "s1"
+  },
+  {
+    "title": "C Memory",
+    "tabs": [
+      { "tab": "C Allocate", "link": "*", "active": "", "id": "c17" },
+      { "tab": "C Reallocate", "link": "*", "active": "", "id": "c18" },
+      { "tab": "C Deallocate", "link": "*", "active": "", "id": "c19" }
+    ],
+    "id": "s2"
+  },
+  {
+    "title": "C Data Structures",
+    "tabs": [
+      { "tab": "C Arrays", "link": "*", "active": "", "id": "c20" },
+      { "tab": "C Structs", "link": "/c/structs", "active": "", "id": "c21" },
+      { "tab": "C Unions", "link": "*", "active": "", "id": "c22" },
+      { "tab": "C Enums", "link": "*", "active": "", "id": "c23" }
+    ],
+    "id": "s3"
+  },
+  {
+    "title": "C Files",
+    "tabs": [
+      { "tab": "C Create Files", "link": "*", "active": "", "id": "c24" },
+      { "tab": "C Write Files", "link": "*", "active": "", "id": "c25" },
+      { "tab": "C Read Files", "link": "*", "active": "", "id": "c26" }
+    ],
+    "id": "s4"
+  }
+]

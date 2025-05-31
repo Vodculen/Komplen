@@ -1,0 +1,30 @@
+.chapters {
+	width: 300px;
+	height: 100%;
+	border-right: 2px solid var(--outlineColor);
+	background-color: var(--foregroundColor);
+	overflow-y: auto;
+	flex-shrink: 0;
+	color: var(--normalText);
+}
+
+.chapters ul {
+	padding-left: 20px;
+	list-style: none;
+	display: block;
+}
+
+.chapters li {
+	margin: 8px 20px;
+	position: relative;
+	width: fit-content;
+}
+
+.chapters .chaptersSection {
+	font: var(--chapters-text);
+}
+
+.chapters .link {
+	text-decoration: none;
+	color: var(--normalText);
+}

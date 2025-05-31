@@ -1,0 +1,17 @@
+.splashScreen {
+	height: 100vh;
+	align-content: center;
+	text-align: center;
+}
+
+.splash {
+	font: var(--splash);
+	margin-bottom: 8px;
+	color: var(--normalText);
+}
+
+.splashText {
+	font: var(--splash-text);
+	margin-bottom: 20px;
+	color: var(--normalText);
+}

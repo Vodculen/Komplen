@@ -1,0 +1,43 @@
+.languagesPage {
+	height: 100vh;
+	padding: 0 2%;
+	text-align: center;
+
+}
+
+.languageProfiles {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.languageProfile {
+	padding: 20px;
+	height: 400px;
+	width: 300px;
+	border: 2px solid var(--outlineColor);
+	border-radius: 12px;
+	margin: 20px;
+	text-decoration: none;
+}
+
+.languageProfile:hover {
+	background-color: var(--foregroundColor);
+}
+
+.languageProfile img {
+	height: 175px;
+	border-radius: 12px;
+}
+
+.name { 
+	margin: 20px 0px 12px 0px; 
+	font: var(--section-text);
+	color: var(--normalText);
+}
+
+.bio { 
+	text-align: justify;
+	font: var(--text);
+	color: var(--normalText);
+}
