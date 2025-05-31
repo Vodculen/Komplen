@@ -11,6 +11,7 @@ import Unavaible from "./Pages/Unavaible";
 
 // C Pages
 import CHomepage from "./Pages/C/Homepage";
+import CArrays from "./Pages/C/Arrays";
 import CStructs from "./Pages/C/Structs";
 
 // The Stylesheet
@@ -40,6 +41,7 @@ export default function Software() {
 					<Route element={<Layout />}>
 						{/* Routes to C Pages */}
 						<Route path="/c/homepage" element={ <CHomepage /> } />
+						<Route path="/c/arrays" element={ <CArrays /> } />
 						<Route path="/c/structs" element={ <CStructs /> } />
 					</Route>
 				</Routes>

@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import Chapters from "./Chapters";
 
 // Different List Payloads
-import CSidebar from "../Sidebars/CSidebar.json";
+import CSidebar from "../../JSON/C/Sidebar.json";
 
 
 const flattenTabs = (list) => {

@@ -40,7 +40,7 @@
   {
     "title": "C Data Structures",
     "tabs": [
-      { "tab": "C Arrays", "link": "*", "active": "", "id": "c20" },
+      { "tab": "C Arrays", "link": "/c/arrays", "active": "", "id": "c20" },
       { "tab": "C Structs", "link": "/c/structs", "active": "", "id": "c21" },
       { "tab": "C Unions", "link": "*", "active": "", "id": "c22" },
       { "tab": "C Enums", "link": "*", "active": "", "id": "c23" }

@@ -11,12 +11,21 @@ const languageConfigs = {
 };
 
 export default function SyntaxHighlight({ input = "", language = "c" }) {
+	// This puts together the list of strings in the json file
+	const normalizedInput = Array.isArray(input) ? input.join("\n") : input;
+
 	const tokens = useMemo(() => {
 		const config = languageConfigs[language];
-		if (!config) return [{ value: input, type: null }]; // fallback
-		const lexer = new Lexer(input, config);
+
+		if (!config) {
+			// fallback
+			return [{ value: normalizedInput, type: null }];
+		} 
+
+		const lexer = new Lexer(normalizedInput, config);
+
 		return lexer.lex();
-	}, [input]);
+	}, [normalizedInput]);
 
 	return (
 		<pre>
