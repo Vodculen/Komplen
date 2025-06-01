@@ -19,7 +19,7 @@ export async function ToggleDarkmode() {
 
 
 // This is what loads in the theme on the startup
-export async function InitDarkmode() {
+export async function LoadTheme() {
 	const saved = await store.get('darkmode');
 	
 	if (saved === true) {

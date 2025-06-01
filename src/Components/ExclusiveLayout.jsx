@@ -1,7 +1,11 @@
 import { Outlet } from "react-router-dom";
 
 
-// Since we don't care about the sidebar and menu we just return the links page
+/**
+ * 
+ * @returns Just the page nothing else as we don't care for the Sidebar nor thr Menu
+ * 
+ */
 export default function ExclusiveLayout() {
 	return <Outlet />;
 }

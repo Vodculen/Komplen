@@ -1,7 +1,0 @@
-{
-	"creatingStructProgram": [
-		"...",
-		"char myNumbers[] = {12, 54, 23, 76, 43, 75, 0};",
-		"..."
-	]
-}

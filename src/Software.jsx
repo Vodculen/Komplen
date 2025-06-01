@@ -1,28 +1,37 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect } from 'react';
+import { LoadTheme } from "./Window/ToggleDarkmode";
 import Layout from "./Components/Layout";
 import ExclusiveLayout from "./Components/ExclusiveLayout";
-import { InitDarkmode } from "./Window/ToggleDarkmode";
+
 
 // Pages
 import Welcome from "./Pages/Welcome";
 import Languages from "./Pages/Languages";
 import Unavaible from "./Pages/Unavaible";
 
+
 // C Pages
 import CHomepage from "./Pages/C/Homepage";
-import CArrays from "./Pages/C/Arrays";
-import CStructs from "./Pages/C/Structs";
+
+
+// Java Pages
+import JavaHomepage from "./Pages/Java/Homepage";
+
 
 // The Stylesheet
 import "./Stylesheets/Global.css";
 
 
-// Originally App but I like Software better, if you don't like it too bad!
+/**
+ * 
+ * @returns The Routes that depending on the link path displays the page contents at that link path
+ * 
+ */
 export default function Software() {
-	// This is for initalizing Darkmode on startup so it's actually darkmode 
+	// This is for loading the theme in the store.json
 	useEffect(() => {
-		InitDarkmode();
+		LoadTheme();
 	}, []);
 
 	return(
@@ -33,7 +42,6 @@ export default function Software() {
 					<Route element={<ExclusiveLayout />}>
 						<Route index element={<Welcome />} />
 						<Route path="/languages" element={<Languages />} />
-						{/* We need to add a WIP page I tried but to no avail */}
 						<Route path="*" element={<Unavaible />} />
 					</Route>
 
@@ -41,8 +49,9 @@ export default function Software() {
 					<Route element={<Layout />}>
 						{/* Routes to C Pages */}
 						<Route path="/c/homepage" element={ <CHomepage /> } />
-						<Route path="/c/arrays" element={ <CArrays /> } />
-						<Route path="/c/structs" element={ <CStructs /> } />
+
+						{/* Routes to Java Pages */}
+						<Route path="/java/homepage" element={ <JavaHomepage /> } />
 					</Route>
 				</Routes>
 			</BrowserRouter>

@@ -21,20 +21,42 @@ export default class Lexer {
 		if (typeof this.config.lexNumber !== "function") {
 			throw new Error("Language config must include a `lexNumber(lexer)` function");
 		}
-	}
+	}	
 
+	/**
+	 * 
+	 * @param {offset} offset How far ahead you want to peek from the current place @default 1
+	 * 
+	 * @returns The character at the offset's value ahead
+	 * 
+	 */
 	peek(offset = 1) {
 		return this.input[this.index + offset];
 	}
 
+	/**
+	 * 
+	 * @returns The logic & style for an Identifier
+	 * 
+	 */
 	lexIdentifier() {
 		return this.config.lexIdentifier(this);
 	}
 
+	/**
+	 * 
+	 * @returns The logic & style for a Number
+	 * 
+	 */
 	lexNumber() {
 		return this.config.lexNumber(this);
 	}
 
+	/**
+	 * 
+	 * @returns The logic & style for diffrent Tokens
+	 * 
+	 */
 	lex() {
 		return this.config.lex(this);
 	}

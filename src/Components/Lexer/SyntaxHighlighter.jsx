@@ -1,28 +1,37 @@
 import { useMemo } from "react";
 import Lexer from "./Lexer";
 
+
 // Language's Config Files
 import * as CConfig from "./Languages/C";
 import * as CppConfig from "./Languages/Cpp";
+
 
 const languageConfigs = {
 	c: CConfig,
 	cpp: CppConfig,
 };
 
+
+/**
+ * 
+ * @param {input} input The program's contents @default ""
+ * @param {language} language The language's highlighting style @default "c"
+ * 
+ * @returns Fully highlighted text of the program block
+ * 
+ */
 export default function SyntaxHighlight({ input = "", language = "c" }) {
 	// This puts together the list of strings in the json file
 	const normalizedInput = Array.isArray(input) ? input.join("\n") : input;
 
 	const tokens = useMemo(() => {
 		const config = languageConfigs[language];
+		const lexer = new Lexer(normalizedInput, config);
 
 		if (!config) {
-			// fallback
 			return [{ value: normalizedInput, type: null }];
 		} 
-
-		const lexer = new Lexer(normalizedInput, config);
 
 		return lexer.lex();
 	}, [normalizedInput]);

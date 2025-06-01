@@ -1,22 +1,28 @@
 import LanguageProfile from "../Components/Page/LanguageProfile";
+import Title from "../Components/Page/Title";
 import "./../Stylesheets/Languages.css";
 
-// This is staying this way as I don't want to make a list for this
+
+/**
+ * 
+ * @returns The Language page contents
+ * 
+ */
 export default function Languages() {
-	// This is so logos who look bad in the diffrent modes look good again
+	// This is to make icons that blend it with the backgrounds on diffrent themes visible
 	const isDarkMode = document.body.classList.contains('darkmode');
 
 	return(
 		<div className="languagesPage">
-			<h1 className="title">Programming Languages</h1>
-			<div className="divider" ></div>
+			<Title title={"Programming Languages"} />
 			
+			{/* This is so the flexbox looks good at least */}
 			<div className="languageProfiles">
 				<LanguageProfile link={"/c/homepage"} image={"src/Assets/Languages/C.svg"} alternate={"C Logo"} name={"C"} bio={"[Language's bio]"} />
 				<LanguageProfile link={"*"} image={"src/Assets/Languages/C++.svg"} alternate={"C++ Logo"} name={"C++"} bio={"[Language's bio]"} />
 				<LanguageProfile link={"*"} image={"src/Assets/Languages/CSharp.svg"} alternate={"C# Logo"} name={"C#"} bio={"[Language's bio]"} />
 
-				<LanguageProfile link={"*"} image={"src/Assets/Languages/Java.svg"} alternate={"Java Logo"} name={"Java"} bio={"[Language's bio]"} />
+				<LanguageProfile link={"/java/homepage"} image={"src/Assets/Languages/Java.svg"} alternate={"Java Logo"} name={"Java"} bio={"[Language's bio]"} />
 				<LanguageProfile link={"*"} image={"src/Assets/Languages/JS.svg"} alternate={"JavaScript Logo"} name={"JavaScript"} bio={"[Language's bio]"} />
 				<LanguageProfile link={"*"} image={"src/Assets/Languages/TS.svg"} alternate={"TypeScript Logo"} name={"TypeScript"} bio={"[Language's bio]"} />
 

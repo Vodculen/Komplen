@@ -7,7 +7,11 @@ import "./../Stylesheets/Menu.css";
 import "./../Stylesheets/Chapters.css";
 
 
-// This is where we do care for the menu and sidebar so we render it with the content
+/**
+ * 
+ * @returns The page as well as the Menu and Sidebar
+ * 
+ */
 export default function Layout() {
 	return (
 		<>

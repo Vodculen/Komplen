@@ -1,5 +1,12 @@
 import { useEffect } from "react";
 
+
+/**
+ * 
+ * @param {*} scrollContainerRef The sidebar of that we want to remember where the user was when switching to another page with the same sidebar 
+ * @returns The position on the sidebar the user was at, If we couldn't get the positon we return null
+ * 
+ */
 export default function RememberPosition({ scrollContainerRef }) {
 	useEffect(() => {
 		const scrollContainer = scrollContainerRef.current;

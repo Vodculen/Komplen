@@ -7,9 +7,9 @@ export default function Menu() {
 		<nav className="menu">
 			<ul>
 				<LinkedList list={[
-					{ tab: "Lessons", link: "", active: "active", id: "0" }, 
-					{ tab: "Practice", link: "", active: "", id: "1" },
-					{ tab: "Compiler", link: "", active: "", id: "2" },
+					{ tab: "Lessons", link: "*", active: "active", id: "0" }, 
+					{ tab: "Practice", link: "*", active: "", id: "1" },
+					{ tab: "Compiler", link: "*", active: "", id: "2" },
 					{ tab: "Languages", link: "/languages", active: "", id: "3" }
 				]} />
 

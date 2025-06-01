@@ -10,7 +10,8 @@
 	--splash: bold 72px Arial;
 	--splash-text: bold 32px Arial;
 
-	-webkit-user-select: none;		/* I know its deprecated but I only want some pieces of text to be selectable. It may change later! */
+	/* I know its deprecated but I only want some pieces of text to be selectable. It may change later! */
+	-webkit-user-select: none;		
 	cursor: default;
 
 	-webkit-font-smoothing: antialiased;
@@ -39,7 +40,7 @@ body {
 	--normalText: #FFFFFF;
 }
 
-/* The font for the code */
+/* The font for the program blocks and text */
 @font-face {
 	font-family: JetBrains;
 	src: url(../Assets/JetBrainsMonoNerdFontMono-Regular.ttf);

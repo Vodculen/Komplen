@@ -4,8 +4,11 @@ import React, { useMemo } from 'react';
 
 /**
  * 
- * @param {list} param0 The list of links that you can pass through names, links, id [Neccessary!], and if its active 
- * @returns The list with all the parameters given 
+ * @param {list} list The list of links that you can pass through names, links, id [Neccessary!], and if its active.
+ * 
+ * @see List()
+ * @returns The list with all the parameters given.
+ * 
  */
 function LinkedList({ list }) {
 	// Gets the current location
