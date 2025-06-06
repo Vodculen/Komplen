@@ -2,15 +2,20 @@ export const operators = new Set(["=", "!", "<", ">", "+", "-", "/", "*", "^", "
 export const blank = new Set(["(", ")", "{", "}", ";", ".", ",", "[", "]"]);
 
 export const keywords = [
-	"auto", "break", "case", "char", "const", "continue", "default",
-	"do", "double", "else", "enum", "extern", "float", "for", "goto",
-	"if", "int", "long", "register", "return", "short", "signed",
-	"sizeof", "static", "struct", "switch", "typedef", "union", "void",
-	"unsigned", "volatile", "while"
+	"abstract", "continue", "for", "new", "switch",
+	"assert", "default", "goto", "package", "synchronized",
+	"boolean", "do", "if", "private", "this",
+	"break", "double", "implements", "protected", "throw",
+	"byte", "else", "import", "public", "throws",
+	"case", "enum", "instanceof", "return", "transient",
+	"catch", "extends", "int", "short", "try",
+	"char", "final", "interface", "static", "void",
+	"class", "finally", "long", "strictfp", "volatile",
+	"const", "float", "native", "super", "while"
 ];
 
 export const TokenType = {
-	Variable: "varibles",
+	Variable: "keywords",
 	Keyword: "keywords",
 	Number: "numbers",
 	Class: "classes",
@@ -57,19 +62,9 @@ export function lex(lexer) {
 			continue;
 		}
 
-		if (char === "<") {
-			readUntil(lexer, ">", { tokenType: lexer.config.TokenType.String });
-			continue;
-		}
-
 		if (lexer.config.operators.has(char)) {
 			lexer.tokens.push({ value: char, type: lexer.config.TokenType.Operator });
 			helpers.consume(lexer);
-			continue;
-		}
-
-		if (char === "#") {
-			readUntil(lexer, " ", { tokenType: lexer.config.TokenType.Keyword });
 			continue;
 		}
 
@@ -108,8 +103,8 @@ export function lexIdentifier(lexer) {
 	let type = config.TokenType.Variable;
 
 	if (config.keywords.includes(identifier)) {
-		type = config.TokenType.Keyword;
-	} else if (helpers.back(lexer, -2)?.value === "struct" || helpers.back(lexer, -2)?.value === "}") {
+		type = config.TokenType.Variable;
+	} else if (helpers.back(lexer, -2)?.value === "class" || helpers.back(lexer, -2)?.value === "}") {
 		type = config.TokenType.Class;
 		lexer.knownStructs.add(identifier);
 	} else if (lexer.knownStructs.has(identifier)) {
@@ -149,7 +144,7 @@ export function readUntil(lexer, terminator, options = {}) {
 	while (!helpers.eof(lexer)) {
 		const char = helpers.current(lexer);
 
-		if (handleEscapes && char === "\\" && peek(lexer)) {
+		if (handleEscapes && char === "\\" && helpers.peek(lexer)) {
 			if (buffer && splitTokens) {
 				lexer.tokens.push({ value: buffer, type: tokenType });
 				buffer = "";
@@ -164,14 +159,14 @@ export function readUntil(lexer, terminator, options = {}) {
 				lexer.tokens.push({ value: buffer, type: tokenType });
 				buffer = "";
 			}
-			lexer.tokens.push({ value: "%" + peek(lexer), type: Constants.TokenType.Number });
+			lexer.tokens.push({ value: "%" + helpers.peek(lexer), type: Constants.TokenType.Number });
 			helpers.consume(lexer, 2);
 			continue;
 		}
 
 		if (char === terminator) {
 			if (includeTerminator) buffer += char;
-			helpers.consume(lexer);
+			helpers. consume(lexer);
 			break;
 		}
 

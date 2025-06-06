@@ -2,53 +2,6 @@ import * as Constants from "./Languages/C";
 
 // TODO: I not doing this someone else will do this!
 
-export function readUntil(lexer, terminator, options = {}) {
-	const {
-		includeTerminator = true,
-		handleEscapes = false,
-		handleFormatSpec = false,
-		tokenType = Constants.TokenType.String,
-		splitTokens = false
-	} = options;
-
-	let buffer = "";
-	while (!eof(lexer)) {
-		const char = current(lexer);
-
-		if (handleEscapes && char === "\\" && peek(lexer)) {
-			if (buffer && splitTokens) {
-				lexer.tokens.push({ value: buffer, type: tokenType });
-				buffer = "";
-			}
-			lexer.tokens.push({ value: "\\" + peek(lexer), type: Constants.TokenType.Operator });
-			consume(lexer, 2);
-			continue;
-		}
-
-		if (handleFormatSpec && char === "%" && /[a-zA-Z]/.test(peek(lexer))) {
-			if (buffer && splitTokens) {
-				lexer.tokens.push({ value: buffer, type: tokenType });
-				buffer = "";
-			}
-			lexer.tokens.push({ value: "%" + peek(lexer), type: Constants.TokenType.Number });
-			consume(lexer, 2);
-			continue;
-		}
-
-		if (char === terminator) {
-			if (includeTerminator) buffer += char;
-			consume(lexer);
-			break;
-		}
-
-		buffer += char;
-		consume(lexer);
-	}
-
-	if (buffer) {
-		lexer.tokens.push({ value: buffer, type: tokenType });
-	}
-}
 
 export function current(lexer) {
 	return lexer.input[lexer.index];
