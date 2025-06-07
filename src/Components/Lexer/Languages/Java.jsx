@@ -14,8 +14,12 @@ export const keywords = [
 	"const", "float", "native", "super", "while"
 ];
 
+export const classes = [
+	"System", "String"
+]
+
 export const TokenType = {
-	Variable: "keywords",
+	Variable: "varibles",
 	Keyword: "keywords",
 	Number: "numbers",
 	Class: "classes",
@@ -103,8 +107,10 @@ export function lexIdentifier(lexer) {
 	let type = config.TokenType.Variable;
 
 	if (config.keywords.includes(identifier)) {
-		type = config.TokenType.Variable;
-	} else if (helpers.back(lexer, -2)?.value === "class" || helpers.back(lexer, -2)?.value === "}") {
+		type = config.TokenType.Keyword;
+	} else if (config.classes.includes(identifier)) {
+		type = config.TokenType.Class;
+	} else if (helpers.back(lexer, -2)?.value === "class") {
 		type = config.TokenType.Class;
 		lexer.knownStructs.add(identifier);
 	} else if (lexer.knownStructs.has(identifier)) {

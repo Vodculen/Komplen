@@ -57,7 +57,7 @@
 
 .program {
 	border: 2px solid var(--outlineColor);
-	padding: 12px 20px;
+	padding: 12px 24px;
 	border-radius: 12px;
 	background-color: var(--backgroundColor);
 	color: var(--normalText);
@@ -79,7 +79,7 @@
 
 .programOutput {
 	border: 2px solid var(--outlineColor);
-	padding: 12px 20px;
+	padding: 12px;
 	border-radius: 12px;
 	background-color: var(--backgroundColor);
 	color: var(--normalText);

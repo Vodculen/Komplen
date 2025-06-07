@@ -89,7 +89,7 @@ function Section1() {
  * 
  * ```
  * 
- * Now if your looking at this confused out of your mind don't worry we'll go over it in the next chapter.
+ * Now if your looking at this confused out of your mind, don't worry we'll go over it in the next chapter.
  * 
  */
 
@@ -98,6 +98,7 @@ function Section2() {
 		<>
 			<p className="text">If your woundering what Java looks like before you begin learning it. Well heres a snippit!</p>
 			<Program language="Java" name="Main.java" program={ <SyntaxHighlight input={ HomepagePrograms.trialProgram } language="java" /> } output="Hello world!" displayButton={ true } />
+			<p className="text">Now if your looking at this confused out of your mind, don't worry we'll go over it in the next chapter.</p>
 		</>
 	);
 }
