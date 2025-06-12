@@ -11,7 +11,7 @@ import * as JavaConfig from "./Languages/Java";
 const languageConfigs = {
 	c: CConfig,
 	cpp: CppConfig,
-	java: JavaConfig
+	java: JavaConfig,
 };
 
 

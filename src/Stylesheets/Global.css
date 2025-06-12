@@ -72,6 +72,13 @@ body {
 	line-height: 1.5;
 }
 
+.image {
+	border-radius: 12px;
+	border: 2px solid var(--outlineColor);
+	width: 40%;
+	margin-bottom: 12px;
+}
+
 /* When we want to show code outside a code block to help discribe it */
 .code {
 	padding: 4px 8px !important;
@@ -107,6 +114,16 @@ body {
 .list li {
 	font: var(--text);
 	padding-bottom: 8px;
+}
+
+/* How the Terminal is styled for the software */
+.terminal {
+	font: normal 16px JetBrains;
+	border: 2px solid var(--outlineColor);
+	border-radius: 12px;
+	background-color: var(--foregroundColor);
+	padding: 20px;
+	margin-bottom: 12px;
 }
 
 

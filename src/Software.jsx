@@ -17,6 +17,7 @@ import CHomepage from "./Pages/C/Homepage";
 
 // Java Pages
 import JavaHomepage from "./Pages/Java/Homepage";
+import JavaGettingStarted from "./Pages/Java/GettingStarted";
 
 
 // The Stylesheet
@@ -52,6 +53,7 @@ export default function Software() {
 
 						{/* Routes to Java Pages */}
 						<Route path="/java/homepage" element={ <JavaHomepage /> } />
+						<Route path="/java/gettingStarted" element={ <JavaGettingStarted /> } />
 					</Route>
 				</Routes>
 			</BrowserRouter>
