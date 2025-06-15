@@ -1,6 +1,5 @@
 import Title from "@components/Page/Title";
 import Section from "@components/Page/Section";
-import List from "@components/Helpers/List";
 import Program from "@components/Program/Program";
 import SyntaxHighlight from "@components/Lexer/SyntaxHighlighter";
 
@@ -146,8 +145,6 @@ function Section1() {
  * 
  * Lastly, not using the <stdio.h> library:
  * ''' main.c , C
- * 	#include <stdio.h>
- * 
  * 	int main()
  * 	{
  * 		print("Hello world!");
@@ -163,9 +160,18 @@ function Section2() {
 		<>
 			<p className="text">Using the <code className="code"><span className="methods">printf</span>()</code> function is pretty easy and simple to use.</p>
 			<p className="text">But there're some wrong ways to use <code className="code"><span className="methods">printf</span>()</code>.</p>
-			<p className="text">First is forgetting the <code className="code strings">""</code>:</p>
-			<Program name="main.c" language="C" program={<SyntaxHighlight input={COutputPrograms.noQuotesPrintf} language="c" />} output={"Please put \"Hello world!\" in \"\" : This is an unoffical GCC error for educational purposes"} clipboard={COutputPrograms.noQuotesPrintf} />
+			<p className="text">First, is forgetting the <code className="code strings">""</code>:</p>
+			<Program name="main.c" language="C" program={<SyntaxHighlight input={COutputPrograms.noQuotesPrintf} language="c" />} output={"Please put \'Hello world!\' in \"\" : This is an unoffical GCC error for educational purposes"} clipboard={COutputPrograms.noQuotesPrintf} />
+			<p className="text">This will give you an error as C thinks your printing undefined varibles wrong.</p>
 
+			<p className="text">Second, using <code className="code"><span className="methods">print</span>()</code> instead of <code className="code"><span className="methods">printf</span>()</code>:</p>
+			<Program name="main.c" language="C" program={<SyntaxHighlight input={COutputPrograms.misspeltPrintf} language="c" />} output={"implicit declaration of function \‘print\’; did you mean \‘printf\’?"} clipboard={COutputPrograms.misspeltPrintf} />
+			<p className="text">This will again give you an error as that is not a function in the <code className="code strings">&lt;stdio.h&gt;</code> library.</p>
+			
+			<p className="text">Lastly, not using the <code className="code strings">&lt;stdio.h&gt;</code> library:</p>
+			<Program name="main.c" language="C" program={<SyntaxHighlight input={COutputPrograms.forgotStdio} language="c" />} output={"include \‘<stdio.h>\’ or provide a declaration of \‘printf\’"} clipboard={COutputPrograms.forgotStdio} />
+			<p className="text">This will again give you an error as the function is declared no where else other than the <code className="code strings">&lt;stdio.h&gt;</code> library.</p>
+			<p className="text">Note you can create a function like <code className="code"><span className="methods">printf</span>()</code> but it isn't the same as the <code className="code"><span className="methods">printf</span>()</code> in the <code className="code strings">&lt;stdio.h&gt;</code> library.</p>
 		</>
 	);
 }

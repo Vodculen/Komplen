@@ -52,5 +52,23 @@
 		"",
 		"    return 0;",
 		"}"
+	],
+	"misspeltPrintf": [
+		"#include <stdio.h>",
+		"",
+		"int main()",
+		"{",
+		"    print(\"Hello world!\");",
+		"",
+		"    return 0;",
+		"}"
+	],
+	"forgotStdio": [
+		"int main()",
+		"{",
+		"    printf(\"Hello world!\");",
+		"",
+		"    return 0;",
+		"}"
 	]
 }
