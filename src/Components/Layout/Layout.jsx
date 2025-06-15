@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "./Page/Sidebar";
-import Menu from "./Page/Menu";
+import Sidebar from "./Sidebar";
+import Menu from "./Menu";
 
 
-import "./../Stylesheets/Menu.css";
-import "./../Stylesheets/Chapters.css";
+import "@stylesheets/Menu.css";
+import "@stylesheets/Chapters.css";
 
 
 /**

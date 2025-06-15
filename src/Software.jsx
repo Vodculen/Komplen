@@ -1,23 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect } from 'react';
-import { LoadTheme } from "./Window/ToggleDarkmode";
-import Layout from "./Components/Layout";
-import ExclusiveLayout from "./Components/ExclusiveLayout";
+import { LoadTheme } from "@window/ToggleDarkmode";
+import Layout from "@components/Layout/Layout";
+import ExclusiveLayout from "@components/Layout/ExclusiveLayout";
 
 
 // Pages
-import Welcome from "./Pages/Welcome";
-import Languages from "./Pages/Languages";
-import Unavaible from "./Pages/Unavaible";
+import Welcome from "@pages/General/Welcome";
+import Languages from "@pages/General/Languages";
+import Unavaible from "@pages/General/Unavaible";
 
 
 // C Pages
-import CHomepage from "./Pages/C/Homepage";
-
-
-// Java Pages
-import JavaHomepage from "./Pages/Java/Homepage";
-import JavaGettingStarted from "./Pages/Java/GettingStarted";
+import CHomepage from "@pages/C/Homepage";
+import CGettingStarted from "@pages/C/GettingStarted";
+import COutput from "@pages/C/COutput";
 
 
 // The Stylesheet
@@ -50,10 +47,8 @@ export default function Software() {
 					<Route element={<Layout />}>
 						{/* Routes to C Pages */}
 						<Route path="/c/homepage" element={ <CHomepage /> } />
-
-						{/* Routes to Java Pages */}
-						<Route path="/java/homepage" element={ <JavaHomepage /> } />
-						<Route path="/java/gettingStarted" element={ <JavaGettingStarted /> } />
+						<Route path="/c/getting_started" element={ <CGettingStarted /> } />
+						<Route path="/c/output" element={ <COutput /> } />
 					</Route>
 				</Routes>
 			</BrowserRouter>

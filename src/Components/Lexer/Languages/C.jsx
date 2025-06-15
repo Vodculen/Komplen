@@ -1,3 +1,5 @@
+import { consume } from "../Helpers";
+
 export const operators = new Set(["=", "!", "<", ">", "+", "-", "/", "*", "^", "|", "&"]);
 export const blank = new Set(["(", ")", "{", "}", ";", ".", ",", "[", "]"]);
 
@@ -8,6 +10,10 @@ export const keywords = [
 	"sizeof", "static", "struct", "switch", "typedef", "union", "void",
 	"unsigned", "volatile", "while"
 ];
+
+export const escape = [
+	"<|n|>"
+]
 
 export const TokenType = {
 	Variable: "varibles",

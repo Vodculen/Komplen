@@ -5,10 +5,10 @@ import Program from "@components/Program/Program";
 import SyntaxHighlight from "@components/Lexer/SyntaxHighlighter";
 
 
-export default function CHomepage() {
+export default function CGettingStarted() {
 	return(
 		<>
-			<Title title={"C Homepage"} />
+			<Title title={"C Getting Started"} />
 		</>
 	);
 }

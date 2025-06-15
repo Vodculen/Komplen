@@ -1,6 +1,6 @@
-import LanguageProfile from "../Components/Page/LanguageProfile";
-import Title from "../Components/Page/Title";
-import "./../Stylesheets/Languages.css";
+import LanguageProfile from "@components/Page/LanguageProfile";
+import Title from "@components/Page/Title";
+import "@stylesheets/Languages.css";
 
 
 /**

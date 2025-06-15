@@ -10,8 +10,9 @@
     "opener:default",
     "core:window:default",
     "core:window:allow-set-fullscreen",
+    "core:window:allow-close",
     "store:default",
-    "shell:default",
-    "store:default"
+    "clipboard-manager:default",
+    "clipboard-manager:allow-write-text"
   ]
 }

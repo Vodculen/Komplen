@@ -1,0 +1,46 @@
+{
+	"normalPrintf": [
+		"#include <stdio.h>",
+		"",
+		"int main()",
+		"{",
+		"    printf(\"Hello world!\");",
+		"",
+		"    return 0;",
+		"}"
+	],
+	"errorPrintf": [
+		"#include <stdio.h>",
+		"",
+		"int main()",
+		"{",
+		"    printf(\"This program is failing\");",
+		"",
+		"    return 1;",
+		"}"
+	],
+	"multiplePrintfs": [
+		"#include <stdio.h>",
+		"",
+		"int main()",
+		"{",
+		"    printf(\"Hello world! \");",
+		"    printf(\"This is C. \");",
+ 		"    printf(\"Goodbye computer!\");",
+		"",
+		"    return 0;",
+		"}"
+	],
+	"newLinePrintfs": [
+		"#include <stdio.h>",
+		"",
+		"int main()",
+		"{",
+		"    printf(\"Hello world! \");",
+		"    printf(\"This is C <|n|> \");",
+ 		"    printf(\"Goodbye computer!\");",
+		"",
+		"    return 0;",
+		"}"
+	]
+}

@@ -1,5 +1,5 @@
-import LinkedList from "../LinkedList";
-import Spacer from "./Spacer";
+import LinkedList from "@components/Helpers/LinkedList";
+import Spacer from "@components/Page/Spacer";
 
 
 /**

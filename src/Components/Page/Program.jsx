@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-import "../../Stylesheets/Program.css"
+import "@stylesheets/Program.css"
 
 
 /**

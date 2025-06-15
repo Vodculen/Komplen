@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import ChapterSection from "./ChapterSection";
-import RememberPosition from "../RememberScrollPosition";
-import Spacer from "./Spacer";
+import ChapterSection from "@components/Layout/ChapterSection";
+import RememberPosition from "@components/Helpers/RememberScrollPosition";
+import Spacer from "@components/Page/Spacer";
 
 
 /**

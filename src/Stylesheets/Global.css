@@ -10,12 +10,12 @@
 	--splash: bold 72px Arial;
 	--splash-text: bold 32px Arial;
 
-	/* I know its deprecated but I only want some pieces of text to be selectable. It may change later! */
+	user-select: none;
 	-webkit-user-select: none;		
-	cursor: default;
 
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	-webkit-user-drag: none;
 	text-rendering: optimizeLegibility;
 
 	color: var(--normalText);
@@ -81,11 +81,7 @@ body {
 
 /* When we want to show code outside a code block to help discribe it */
 .code {
-	padding: 4px 8px !important;
-	border-radius: 12px;
-	background-color: var(--foregroundColor);
-	line-height: 0;
-	font: normal 16px JetBrains;
+	font: normal 18px JetBrains;
 }
 
 /* The line that seperates sections */

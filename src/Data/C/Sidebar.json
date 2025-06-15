@@ -1,0 +1,11 @@
+[
+  {
+    "title": "C Basics",
+    "tabs": [
+      { "tab": "C Homepage", "link": "/c/homepage", "active": "", "id": "chapter0" },
+      { "tab": "C Getting Started", "link": "/c/getting_started", "active": "", "id": "chapter1" },
+      { "tab": "C Output", "link": "/c/output", "active": "", "id": "chapter2" }
+    ],
+    "id": "section0"
+  }
+]

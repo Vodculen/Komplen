@@ -1,11 +1,23 @@
-	import { defineConfig } from "vite";
-	import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "path";
 
-	const host = process.env.TAURI_DEV_HOST;
+const host = process.env.TAURI_DEV_HOST;
 
-	// https://vitejs.dev/config/
-	export default defineConfig(async () => ({
+// https://vitejs.dev/config/
+export default defineConfig(async () => ({
 	plugins: [react()],
+	resolve: {
+		alias: {
+			"@components": path.resolve(__dirname, "src/Components"),
+			"@pages": path.resolve(__dirname, "src/Pages"),
+			"@assets": path.resolve(__dirname, "src/Assets"),
+			"@stylesheets": path.resolve(__dirname, "src/Stylesheets"),
+			"@data": path.resolve(__dirname, "src/Data"),
+			"@window": path.resolve(__dirname, "src/Window"),
+		},
+	},
+
 
 	// Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
 	//

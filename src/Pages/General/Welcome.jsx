@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import "./../Stylesheets/SplashScreen.css"
+import "@stylesheets/SplashScreen.css"
 
 /**
  * 

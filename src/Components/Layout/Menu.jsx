@@ -1,5 +1,5 @@
-import LinkedList from "../LinkedList";
-import { ToggleDarkmode } from "../../Window/ToggleDarkmode";
+import LinkedList from "@components/Helpers/LinkedList";
+import { ToggleDarkmode } from "@window/ToggleDarkmode";
 
 
 export default function Menu() {
