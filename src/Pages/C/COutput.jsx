@@ -13,6 +13,7 @@ export default function COutput() {
 			<Title title="C Output" />
 			<Section title="The Printf Function" content={Section0()} />
 			<Section title="The Uses of Printf" content={Section1()} />
+			<Section title="The Mistakes of Using Printf" content={Section2()} />
 		</>
 	);
 }
@@ -157,3 +158,14 @@ function Section1() {
  * This will again give you an error as the function is declared no where else other than the <stdio.h> library.
  * Note you can create a function like printf but it isn't the same as the printf in the <stdio.h> library.
  */
+function Section2() {
+	return(
+		<>
+			<p className="text">Using the <code className="code"><span className="methods">printf</span>()</code> function is pretty easy and simple to use.</p>
+			<p className="text">But there're some wrong ways to use <code className="code"><span className="methods">printf</span>()</code>.</p>
+			<p className="text">First is forgetting the <code className="code strings">""</code>:</p>
+			<Program name="main.c" language="C" program={<SyntaxHighlight input={COutputPrograms.noQuotesPrintf} language="c" />} output={"Please put \"Hello world!\" in \"\" : This is an unoffical GCC error for educational purposes"} clipboard={COutputPrograms.noQuotesPrintf} />
+
+		</>
+	);
+}

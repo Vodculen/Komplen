@@ -43,7 +43,7 @@ body {
 /* The font for the program blocks and text */
 @font-face {
 	font-family: JetBrains;
-	src: url(../Assets/JetBrainsMonoNerdFontMono-Regular.ttf);
+	src: url(@assets/Fonts/JetBrainsMonoNerdFontMono-Regular.ttf);
 }
 
 /* How we made the scrollbar fancy */

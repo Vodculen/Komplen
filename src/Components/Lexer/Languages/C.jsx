@@ -143,24 +143,19 @@ export function lexNumber(lexer) {
 
 export function readUntil(lexer, terminator, options = {}) {
 	const { helpers } = lexer;
-	const {
-		includeTerminator = true,
-		handleEscapes = false,
-		handleFormatSpec = false,
-		tokenType = Constants.TokenType.String,
-		splitTokens = false
-	} = options;
+	const { includeTerminator = true, handleEscapes = false, handleFormatSpec = false, tokenType = null, splitTokens = false } = options;
 
 	let buffer = "";
 	while (!helpers.eof(lexer)) {
 		const char = helpers.current(lexer);
 
-		if (handleEscapes && char === "\\" && peek(lexer)) {
+		if (handleEscapes && char === "\\" && helpers.peek(lexer)) {
 			if (buffer && splitTokens) {
 				lexer.tokens.push({ value: buffer, type: tokenType });
 				buffer = "";
 			}
-			lexer.tokens.push({ value: "\\" + helpers.peek(lexer), type: Constants.TokenType.Operator });
+
+			lexer.tokens.push({ value: "\\" + helpers.peek(lexer), type: lexer.config.TokenType.Operator });
 			helpers.consume(lexer, 2);
 			continue;
 		}
@@ -170,7 +165,7 @@ export function readUntil(lexer, terminator, options = {}) {
 				lexer.tokens.push({ value: buffer, type: tokenType });
 				buffer = "";
 			}
-			lexer.tokens.push({ value: "%" + peek(lexer), type: Constants.TokenType.Number });
+			lexer.tokens.push({ value: "%" + helpers.peek(lexer), type: lexer.config.TokenType.Number });
 			helpers.consume(lexer, 2);
 			continue;
 		}

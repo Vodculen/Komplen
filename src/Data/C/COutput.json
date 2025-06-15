@@ -36,9 +36,19 @@
 		"",
 		"int main()",
 		"{",
-		"    printf(\"Hello world! \");",
-		"    printf(\"This is C <|n|> \");",
+		"    printf(\"Hello world!\\n\");",
+		"    printf(\"This is C\\n\");",
  		"    printf(\"Goodbye computer!\");",
+		"",
+		"    return 0;",
+		"}"
+	],
+	"noQuotesPrintf": [
+		"#include <stdio.h>",
+		"",
+		"int main()",
+		"{",
+		"    printf(Hello world!);",
 		"",
 		"    return 0;",
 		"}"
