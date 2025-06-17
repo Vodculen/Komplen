@@ -10,7 +10,7 @@ const ShowRun = ({ display, onClick, isRunning }) => {
 	);
 };
 
-export const Header = React.memo(({ language, name, onCopy, onRun, isRunning, showRun }) => {
+export const Header = React.memo(({ language, name, onCopy, onRun, isRunning, showRun = true }) => {
 	return (
 		<div className="programHeader">
 			<div className="programInfo">

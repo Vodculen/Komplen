@@ -31,18 +31,6 @@
 		"    return 0;",
 		"}"
 	],
-	"newLinePrintfs": [
-		"#include <stdio.h>",
-		"",
-		"int main()",
-		"{",
-		"    printf(\"Hello world!\\n\");",
-		"    printf(\"This is C\\n\");",
- 		"    printf(\"Goodbye computer!\");",
-		"",
-		"    return 0;",
-		"}"
-	],
 	"noQuotesPrintf": [
 		"#include <stdio.h>",
 		"",
@@ -59,14 +47,6 @@
 		"int main()",
 		"{",
 		"    print(\"Hello world!\");",
-		"",
-		"    return 0;",
-		"}"
-	],
-	"forgotStdio": [
-		"int main()",
-		"{",
-		"    printf(\"Hello world!\");",
 		"",
 		"    return 0;",
 		"}"

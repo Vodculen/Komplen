@@ -103,9 +103,6 @@ function Section1() {
 			<Program name="main.c" language="C" program={<SyntaxHighlight input={COutputPrograms.errorPrintf} language="c" />} output={"This program is failing"} clipboard={COutputPrograms.errorPrintf} />
 			<p className="text">You can also use <code className="code"><span className="methods">printf</span>()</code> as many times as you want, the only limit is your computer.</p>
 			<Program name="main.c" language="C" program={<SyntaxHighlight input={COutputPrograms.multiplePrintfs} language="c" />} output={"Hello world! This is C. Goodbye computer!"} clipboard={COutputPrograms.multiplePrintfs} />
-			<p className="text">Note all of your text is only on one line, which isn't really useful sometimes. </p>
-			<p className="text">If you want it on multiple lines you can use <code className="code operators">\n</code> when you want the text after it on a new line.</p>
-			<Program name="main.c" language="C" program={<SyntaxHighlight input={COutputPrograms.newLinePrintfs} language="c" />} output={"Hello world! \nThis is C. \nGoodbye computer!"} clipboard={COutputPrograms.newLinePrintfs} />
 		</>
 	);
 }
@@ -167,11 +164,6 @@ function Section2() {
 			<p className="text">Second, using <code className="code"><span className="methods">print</span>()</code> instead of <code className="code"><span className="methods">printf</span>()</code>:</p>
 			<Program name="main.c" language="C" program={<SyntaxHighlight input={COutputPrograms.misspeltPrintf} language="c" />} output={"implicit declaration of function \‘print\’; did you mean \‘printf\’?"} clipboard={COutputPrograms.misspeltPrintf} />
 			<p className="text">This will again give you an error as that is not a function in the <code className="code strings">&lt;stdio.h&gt;</code> library.</p>
-			
-			<p className="text">Lastly, not using the <code className="code strings">&lt;stdio.h&gt;</code> library:</p>
-			<Program name="main.c" language="C" program={<SyntaxHighlight input={COutputPrograms.forgotStdio} language="c" />} output={"include \‘<stdio.h>\’ or provide a declaration of \‘printf\’"} clipboard={COutputPrograms.forgotStdio} />
-			<p className="text">This will again give you an error as the function is declared no where else other than the <code className="code strings">&lt;stdio.h&gt;</code> library.</p>
-			<p className="text">Note you can create a function like <code className="code"><span className="methods">printf</span>()</code> but it isn't the same as the <code className="code"><span className="methods">printf</span>()</code> in the <code className="code strings">&lt;stdio.h&gt;</code> library.</p>
 		</>
 	);
 }

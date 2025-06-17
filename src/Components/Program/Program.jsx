@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback } from "react";
 import { writeText } from "@tauri-apps/plugin-clipboard-manager";
 import { Display } from "./Display";
 import { Output } from "./Output";
@@ -6,7 +6,7 @@ import { Header } from "./Header";
 
 import "../../Stylesheets/Program.css";
 
-export default function Program({ name, language, program, output = null, displayButton = true, clipboard }) {
+export default function Program({ name, language, program, output = null, displayRun = true, clipboard }) {
 	const [showOutput, setShowOutput] = useState(false);
 	const [isRunning, setIsRunning] = useState(false);
 	const isCooldown = useRef(false);
@@ -25,15 +25,15 @@ export default function Program({ name, language, program, output = null, displa
 		}, 500);
 	}, []);
 
-	const handleCopyClick = useCallback(() => {
+	const handleCopyClick = useCallback(async () => {
 		if (clipboard) {
-			writeText(clipboard);
+			await writeText(clipboard.join('\n'));
 		}
 	}, [clipboard]);
 
 	return (
 		<div className="programBlock">
-			<Header language={language} name={name} onCopy={handleCopyClick} onRun={handleRunClick} isRunning={isRunning} showRun={displayButton}/>
+			<Header language={language} name={name} onCopy={handleCopyClick} onRun={handleRunClick} isRunning={isRunning} showRun={displayRun}/>
 			<Display program={program} />
 			{showOutput && output && <Output output={output} />}
 		</div>

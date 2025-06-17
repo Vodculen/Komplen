@@ -14,7 +14,8 @@ import Unavaible from "@pages/General/Unavaible";
 // C Pages
 import CHomepage from "@pages/C/Homepage";
 import CGettingStarted from "@pages/C/GettingStarted";
-import COutput from "@pages/C/COutput";
+import COutput from "@pages/C/Output";
+import CEscapeCharacters from "@pages/C/EscapeCharacters";
 
 
 // The Stylesheet
@@ -22,12 +23,10 @@ import "./Stylesheets/Global.css";
 
 
 /**
- * 
  * @returns The Routes that depending on the link path displays the page contents at that link path
- * 
  */
 export default function Software() {
-	// This is for loading the theme in the store.json
+	// This is for loading the theme in the store.json (Why can't we access the json file lets make our own then)
 	useEffect(() => {
 		LoadTheme();
 	}, []);
@@ -49,6 +48,7 @@ export default function Software() {
 						<Route path="/c/homepage" element={ <CHomepage /> } />
 						<Route path="/c/getting_started" element={ <CGettingStarted /> } />
 						<Route path="/c/output" element={ <COutput /> } />
+						<Route path="/c/escape_characters" element={ <CEscapeCharacters /> } />
 					</Route>
 				</Routes>
 			</BrowserRouter>
