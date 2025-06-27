@@ -5,7 +5,8 @@
       { "tab": "C Homepage", "link": "/c/homepage", "active": "", "id": "chapter0" },
       { "tab": "C Getting Started", "link": "/c/getting_started", "active": "", "id": "chapter1" },
       { "tab": "C Output", "link": "/c/output", "active": "", "id": "chapter2" },
-      { "tab": "C Escape Characters", "link": "/c/escape_characters", "active": "", "id": "chapter3" }
+      { "tab": "C Escape Characters", "link": "/c/escape_characters", "active": "", "id": "chapter3" },
+      { "tab": "C Comments", "link": "/c/comments", "active": "", "id": "chapter4" }
     ],
     "id": "section0"
   }

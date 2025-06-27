@@ -1,6 +1,7 @@
 * {
 	--programLanguage: bold 18px Arial;
 	--programName: italic 18px Arial;
+	--programButton: bold 18px Arial;
 }
 
 .programBlock {
@@ -42,18 +43,32 @@
 	gap: 10px;
 }
 
-.buttonGroup button {
+.buttonGroup .running, .buttonGroup .stopping, .buttonGroup .copying {
 	padding: 8px 16px;
-	border: 2px solid var(--outlineColor);
 	background-color: var(--backgroundColor);
 	border-radius: 10px;
-	font: var(--text);
-	color: var(--normalText);
 }
 
-.buttonGroup button:hover {
-	background-color: var(--foregroundColor);
+.buttonGroup .copying {
+	border: 2px solid var(--outlineColor);
+	color: var(--text);
+	font: var(--programButton);
 }
+.buttonGroup .copying:hover { background-color: var(--foregroundColor); }
+
+.buttonGroup .running { 
+	border: 2px solid var(--successOutline); 
+	color: var(--successText);
+	font: var(--programButton);
+}
+.buttonGroup .running:hover { background-color: var(--successBackground); }
+
+.buttonGroup .stopping { 
+	border: 2px solid var(--errorOutline); 
+	color: var(--errorText);
+	font: var(--programButton);
+}
+.buttonGroup .stopping:hover { background-color: var(--errorBackground); }
 
 .program {
 	border: 2px solid var(--outlineColor);

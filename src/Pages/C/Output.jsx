@@ -4,6 +4,7 @@ import Program from "@components/Program/Program";
 import SyntaxHighlight from "@components/Lexer/SyntaxHighlighter";
 
 import * as COutputPrograms from "@data/C/COutput.json";
+import Boxes from "@components/Page/Boxes";
 
 
 export default function COutput() {
@@ -98,7 +99,8 @@ function Section0() {
 function Section1() {
 	return(
 		<>
-			<p className="text">Fun fact <code className="code"><span className="methods">printf</span>()</code> stands for print formatted.</p>
+			<Boxes title="Fun Fact" content={<p className="text whiten"><code className="code whiten">printf()</code> stands for print formatted.</p>} mode="info" />
+			
 			<p className="text">By using <code className="code"><span className="methods">printf</span>()</code> you can not only print out instructions but also help debug code and give errors.</p>
 			<Program name="main.c" language="C" program={<SyntaxHighlight input={COutputPrograms.errorPrintf} language="c" />} output={"This program is failing"} clipboard={COutputPrograms.errorPrintf} />
 			<p className="text">You can also use <code className="code"><span className="methods">printf</span>()</code> as many times as you want, the only limit is your computer.</p>
@@ -157,13 +159,28 @@ function Section2() {
 		<>
 			<p className="text">Using the <code className="code"><span className="methods">printf</span>()</code> function is pretty easy and simple to use.</p>
 			<p className="text">But there're some wrong ways to use <code className="code"><span className="methods">printf</span>()</code>.</p>
-			<p className="text">First, is forgetting the <code className="code strings">""</code>:</p>
-			<Program name="main.c" language="C" program={<SyntaxHighlight input={COutputPrograms.noQuotesPrintf} language="c" />} output={"Please put \'Hello world!\' in \"\" : This is an unoffical GCC error for educational purposes"} clipboard={COutputPrograms.noQuotesPrintf} />
-			<p className="text">This will give you an error as C thinks your printing undefined varibles wrong.</p>
+			<Boxes title={"Error"} content={Error0()} mode="error" />
+			<Boxes title={"Error"} content={Error1()} mode="error" />
+		</>
+	);
+}
 
-			<p className="text">Second, using <code className="code"><span className="methods">print</span>()</code> instead of <code className="code"><span className="methods">printf</span>()</code>:</p>
+function Error0() {
+	return(
+		<>
+			<p className="text whiten">Forgetting the <code className="code whiten">""</code>:</p>
+			<Program name="main.c" language="C" program={<SyntaxHighlight input={COutputPrograms.noQuotesPrintf} language="c" />} output={"Please put \'Hello world!\' in \"\" : This is an unoffical GCC error for educational purposes"} clipboard={COutputPrograms.noQuotesPrintf} />
+			<p className="text whiten">This will give you an error as C thinks your printing undefined varibles wrong.</p>
+		</>
+	);
+}
+
+function Error1() {
+	return(
+		<>
+			<p className="text whiten">Using <code className="code whiten">print()</code> instead of <code className="code whiten">printf</code>:</p>
 			<Program name="main.c" language="C" program={<SyntaxHighlight input={COutputPrograms.misspeltPrintf} language="c" />} output={"implicit declaration of function \‘print\’; did you mean \‘printf\’?"} clipboard={COutputPrograms.misspeltPrintf} />
-			<p className="text">This will again give you an error as that is not a function in the <code className="code strings">&lt;stdio.h&gt;</code> library.</p>
+			<p className="text whiten">This will again give you an error as that is not a function in the <code className="code whiten">&lt;stdio.h&gt;</code> library.</p>
 		</>
 	);
 }

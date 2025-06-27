@@ -16,6 +16,7 @@ import CHomepage from "@pages/C/Homepage";
 import CGettingStarted from "@pages/C/GettingStarted";
 import COutput from "@pages/C/Output";
 import CEscapeCharacters from "@pages/C/EscapeCharacters";
+import CComments from "./Pages/C/Comments";
 
 
 // The Stylesheet
@@ -49,6 +50,7 @@ export default function Software() {
 						<Route path="/c/getting_started" element={ <CGettingStarted /> } />
 						<Route path="/c/output" element={ <COutput /> } />
 						<Route path="/c/escape_characters" element={ <CEscapeCharacters /> } />
+						<Route path="/c/comments" element={ <CComments /> } />
 					</Route>
 				</Routes>
 			</BrowserRouter>

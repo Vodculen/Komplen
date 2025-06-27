@@ -1,0 +1,13 @@
+{
+	"singleLinedComments": [
+		"#include <stdio.h>",
+		"",
+		"int main()",
+		"{",
+		"    // This prints out hello world to the screen\n",
+		"    printf(\"Hello world\");",
+		"",
+		"    return 0;",
+		"}"
+	]
+}

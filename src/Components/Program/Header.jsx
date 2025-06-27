@@ -4,7 +4,7 @@ const ShowRun = ({ display, onClick, isRunning }) => {
 	if (!display) return null;
 
 	return (
-		<button className="runButton" onClick={onClick}>
+		<button className={isRunning ? "stopping" : "running"} onClick={onClick}>
 			{isRunning ? "Stop" : "Run"}
 		</button>
 	);
@@ -18,7 +18,7 @@ export const Header = React.memo(({ language, name, onCopy, onRun, isRunning, sh
 				<p className="programName">{name}</p>
 			</div>
 			<div className="buttonGroup">
-				<button className="copyButton" onClick={onCopy}>Copy</button>
+				<button className="copying" onClick={onCopy}>Copy</button>
 				<ShowRun display={showRun} onClick={onRun} isRunning={isRunning} />
 			</div>
 		</div>

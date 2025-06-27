@@ -3,6 +3,7 @@
 	padding: 0;
 
 	--text: normal 18px Arial;
+	--boldText: bold 18px Arial;
 	--chapters-text: normal 24px Arial;
 	--title-text: normal 60px Arial;
 	--section-text: normal 32px Arial;
@@ -23,21 +24,64 @@
 }
 
 body {
-	--backgroundColor: #F9F9FB;
-	--foregroundColor: #E6E6EB;
-	--outlineColor: #DADAE2;
-	--lightText: #555555;
-	--normalText: #000000;
+	--backgroundColor: hsl(240, 30%, 100%);
+	--foregroundColor: hsl(240, 30%, 95%);
+	--outlineColor: hsl(240, 30%, 90%);
+
+	--brandBackground: hsl(260, 50%, 60%);
+	--brandOutline: hsl(260, 50%, 45%);
+	--brandText: hsl(260, 70%, 30%);
+
+	--successBackground: hsl(140, 50%, 60%);
+	--successOutline: hsl(140, 50%, 45%);
+	--successText: hsl(140, 70%, 30%);
+
+	--warningBackground: ;
+	--warningOutline: ;
+	--warningText: ;
+	
+	--errorBackground: hsl(0, 50%, 60%);
+	--errorOutline: hsl(0, 50%, 45%);
+	--errorText: hsl(0, 70%, 30%);
+
+	--infoBackground: hsl(220, 50%, 60%);
+	--infoOutline: hsl(220, 50%, 45%);
+	--infoText: hsl(220, 70%, 30%);
+
+
+	--lightText: hsl(0, 0%, 30%);
+	--normalText: hsl(0, 0%, 0%);
 	
 	background-color: var(--backgroundColor);
 }
 
 .darkmode {
-	--backgroundColor: #050507;
-	--foregroundColor: #0C0C10;
-	--outlineColor: #15151A;
-	--lightText: #AAAAAA;
-	--normalText: #FFFFFF;
+	--backgroundColor: hsl(240, 30%, 0%);
+	--foregroundColor: hsl(240, 30%, 5%);
+	--outlineColor: hsl(240, 30%, 10%);
+
+	--successText: hsl(140, 50%, 60%);
+	--successOutline: hsl(140, 50%, 45%);
+	--successBackground: hsl(140, 50%, 25%);
+
+	--brandText: hsl(260, 50%, 60%);
+	--brandOutline: hsl(260, 50%, 45%);
+	--brandBackground: hsl(260, 50%, 25%);
+
+	--warningBackground: ;
+	--warningOutline: ;
+	--warningText: ;
+
+	--errorText: hsl(0, 50%, 60%);
+	--errorOutline: hsl(0, 50%, 45%);
+	--errorBackground: hsl(0, 50%, 25%);
+
+	--infoText: hsl(220, 50%, 60%);
+	--infoOutline: hsl(220, 50%, 45%);
+	--infoBackground: hsl(220, 50%, 25%);
+
+	--lightText: hsl(0, 0%, 80%);
+	--normalText: hsl(0, 0%, 100%);
 }
 
 /* The font for the program blocks and text */
@@ -51,6 +95,9 @@ body {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--outlineColor); }
 
+.whiten {
+	color: white;
+}
 
 /* Its for the top text of the chapter thats centered */
 .title {
@@ -93,8 +140,9 @@ body {
 /* A thing you click on, can litteraly be used anywhere */
 .button {
 	padding: 8px 16px;
-	font: var(--text);
+	font: var(--boldText);
 	border: 2px solid var(--outlineColor);
+	color: var(--normalText);
 	border-radius: 12px;
 	background-color: var(--backgroundColor);
 }
@@ -109,7 +157,7 @@ body {
 
 .list li {
 	font: var(--text);
-	padding-bottom: 8px;
+	padding-bottom: px;
 }
 
 /* How the Terminal is styled for the software */
@@ -120,6 +168,36 @@ body {
 	background-color: var(--foregroundColor);
 	padding: 20px;
 	margin-bottom: 12px;
+}
+
+.table {
+	border-spacing: 0;
+	text-align: left;
+	width: 100%;
+	border: 2px solid var(--outlineColor);
+	padding: 20px;
+	border-radius: 12px;
+	background-color: var(--foregroundColor);
+} 
+
+.table th {
+	padding: 4px;
+	background-color: var(--foregroundColor);
+	border-bottom: 2px solid var(--outlineColor);
+}
+
+.table td {
+	padding: 4px;
+	background-color: var(--backgroundColor);
+	border-bottom: 2px solid var(--outlineColor);
+}
+
+.table td:last-child {
+	border-right: 2px solid var(--outlineColor);
+}
+
+.table td:first-child {
+	border-left: 2px solid var(--outlineColor);
 }
 
 
