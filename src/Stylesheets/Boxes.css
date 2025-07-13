@@ -1,4 +1,4 @@
-.info-box {
+.info {
 	padding: 20px;
 	border: 2px solid var(--infoOutline);
 	border-radius: 12px;
@@ -6,7 +6,7 @@
 	margin-bottom: 12px;
 }
 
-.warn-box {
+.warn {
 	padding: 20px;
 	border: 2px solid var(--warnningOutline);
 	border-radius: 12px;
@@ -14,7 +14,7 @@
 	margin-bottom: 12px;
 }
 
-.error-box {
+.error {
 	padding: 20px;
 	border: 2px solid var(--errorOutline);
 	border-radius: 12px;
@@ -22,7 +22,7 @@
 	margin-bottom: 12px;
 }
 
-.success-box {
+.success {
 	padding: 20px;
 	border: 2px solid var(--successOutline);
 	border-radius: 12px;
@@ -35,7 +35,11 @@
 	margin-bottom: 12px;
 }
 
-.info-box .box-title { color: var(--infoText); }
-.warn-box .box-title { color: var(--warnningText); }
-.error-box .box-title { color: var(--errorText); }
-.success-box .box-title { color: var(--successText); }
+.whiten {
+	color: white;
+}
+
+.info .box-title { color: var(--infoText); }
+.warn .box-title { color: var(--warnningText); }
+.error .box-title { color: var(--errorText); }
+.success .box-title { color: var(--successText); }

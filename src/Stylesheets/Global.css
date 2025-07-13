@@ -112,7 +112,7 @@ body {
 	margin-bottom: 12px;
 }
 
-/* The text that discribes how to program, duh */
+/* The text that describes how to program, duh */
 .text {
 	font: var(--text);
 	margin-bottom: 12px;
@@ -126,18 +126,18 @@ body {
 	margin-bottom: 12px;
 }
 
-/* When we want to show code outside a code block to help discribe it */
+/* When we want to show code outside a code block to help describe it */
 .code {
 	font: normal 18px JetBrains;
 }
 
-/* The line that seperates sections */
+/* The line that separates sections */
 .divider {
 	border-top: 2px solid var(--outlineColor);
 	margin-bottom: 28px;
 }
 
-/* A thing you click on, can litteraly be used anywhere */
+/* A thing you click on, can literally be used anywhere */
 .button {
 	padding: 8px 16px;
 	font: var(--boldText);
@@ -149,7 +149,7 @@ body {
 
 .button:hover { background-color: var(--foregroundColor); }
 
-/* How we stylize lists when we want to bulletpoint facts */
+/* How we stylize lists when we want to bullet-point facts */
 .list {
 	margin-bottom: 4px;
 	margin-left: 50px;

@@ -39,14 +39,12 @@ export default function SyntaxHighlight({ input = "", language = "c" }) {
 	}, [normalizedInput]);
 
 	return (
-		<pre>
-			<code>
-				{tokens.map((token, idx) => (
-					<span key={idx} className={token.type || ""}>
-						{token.value}
-					</span>
-				))}
-			</code>
-		</pre>
+		<>
+			{tokens.map((token, idx) => (
+				<span key={idx} className={token.type || ""}>
+				{token.value}
+				</span>
+			))}
+		</>
 	);
 }

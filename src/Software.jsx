@@ -15,7 +15,7 @@ import Unavaible from "@pages/General/Unavaible";
 import CHomepage from "@pages/C/Homepage";
 import CGettingStarted from "@pages/C/GettingStarted";
 import COutput from "@pages/C/Output";
-import CEscapeCharacters from "@pages/C/EscapeCharacters";
+import CEscapeSequences from "@pages/C/EscapeSequences";
 import CComments from "./Pages/C/Comments";
 
 
@@ -49,7 +49,7 @@ export default function Software() {
 						<Route path="/c/homepage" element={ <CHomepage /> } />
 						<Route path="/c/getting_started" element={ <CGettingStarted /> } />
 						<Route path="/c/output" element={ <COutput /> } />
-						<Route path="/c/escape_characters" element={ <CEscapeCharacters /> } />
+						<Route path="/c/escape_sequences" element={ <CEscapeSequences /> } />
 						<Route path="/c/comments" element={ <CComments /> } />
 					</Route>
 				</Routes>

@@ -36,7 +36,15 @@ export function lex(lexer) {
 		// Line comment
 		if (char === "/" && lexer.peek() === "/") {
 			readUntil(lexer, "\n", {
-				includeTerminator: false,
+				includeTerminator: true,
+				tokenType: lexer.config.TokenType.Comment,
+			});
+			continue;
+		}
+
+		if (char === "/" && lexer.peek() === "*") {
+			readUntil(lexer, "*/", {
+				includeTerminator: true,
 				tokenType: lexer.config.TokenType.Comment,
 			});
 			continue;
@@ -44,7 +52,7 @@ export function lex(lexer) {
 
 		// String or char literal
 		if (char === '"' || char === "'") {
-			helpers.consume(lexer); // opening quote
+			helpers.consume(lexer);
 			lexer.tokens.push({ value: char, type: lexer.config.TokenType.String });
 			readUntil(lexer, char, {
 				handleEscapes: true,
@@ -171,7 +179,10 @@ export function readUntil(lexer, terminator, options = {}) {
 		}
 
 		if (char === terminator) {
-			if (includeTerminator) buffer += char;
+			if (includeTerminator) {
+				buffer += char;
+			}
+
 			helpers.consume(lexer);
 			break;
 		}

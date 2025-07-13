@@ -6,7 +6,7 @@ import { Header } from "./Header";
 
 import "../../Stylesheets/Program.css";
 
-export default function Program({ name, language, program, output = null, displayRun = true, clipboard }) {
+export default function Program({ name, language, program, output = null, displayRun = true }) {
 	const [showOutput, setShowOutput] = useState(false);
 	const [isRunning, setIsRunning] = useState(false);
 	const isCooldown = useRef(false);
@@ -26,15 +26,15 @@ export default function Program({ name, language, program, output = null, displa
 	}, []);
 
 	const handleCopyClick = useCallback(async () => {
-		if (clipboard) {
-			await writeText(clipboard.join('\n'));
+		if (program) {
+			await writeText(program.join('\n'));
 		}
-	}, [clipboard]);
+	}, [program]);
 
 	return (
 		<div className="programBlock">
 			<Header language={language} name={name} onCopy={handleCopyClick} onRun={handleRunClick} isRunning={isRunning} showRun={displayRun}/>
-			<Display program={program} />
+			<Display program={program} language={language.toLowerCase()} />
 			{showOutput && output && <Output output={output} />}
 		</div>
 	);
