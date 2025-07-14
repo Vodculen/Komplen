@@ -1,8 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect } from 'react';
 import { LoadTheme } from "@window/ToggleDarkmode";
-import Layout from "@components/Layout/Layout";
-import ExclusiveLayout from "@components/Layout/ExclusiveLayout";
+import { DefaultLayout, ExclusiveLayout } from "@components/Layout/Layouts";
 
 
 // Pages
@@ -44,7 +43,7 @@ export default function Software() {
 					</Route>
 
 					{/* This is for all the normal pages that have both the Sidebar and Menu */}
-					<Route element={<Layout />}>
+					<Route element={<DefaultLayout />}>
 						{/* Routes to C Pages */}
 						<Route path="/c/homepage" element={ <CHomepage /> } />
 						<Route path="/c/getting_started" element={ <CGettingStarted /> } />

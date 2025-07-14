@@ -1,7 +1,6 @@
 import { useRef } from "react";
-import ChapterSection from "@components/Layout/ChapterSection";
-import RememberPosition from "@components/Helpers/RememberScrollPosition";
 import Spacer from "@components/Page/Spacer";
+import LinkedList from "@components/Helpers/LinkedList";
 
 
 /**
@@ -30,9 +29,26 @@ export default function Chapters({ list, activeTabIndex }) {
 
 	return (
 		<div className="chapters" ref={chaptersRef}>
-			<RememberPosition scrollContainerRef={chaptersRef} />
 			<Spacer amount={32} />
 			{listItems}
 		</div>
+	);
+}
+
+/**
+ * 
+ * @param {list} list The list of links that go under the section.
+ * @param {sectionName} sectionName The name for the section.
+ *  
+ * @returns The title and all the links under the title
+ * 
+ */
+function ChapterSection({ list, sectionName }) {
+	return (
+		<ul>
+			<h2 className="chaptersSection">{ sectionName }</h2>
+			<LinkedList list={list} />
+			<Spacer amount={32} />
+		</ul>
 	);
 }

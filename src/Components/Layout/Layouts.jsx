@@ -12,7 +12,7 @@ import "@stylesheets/Chapters.css";
  * @returns The page as well as the Menu and Sidebar
  * 
  */
-export default function Layout() {
+export function DefaultLayout() {
 	return (
 		<>
 			<Menu />
@@ -25,4 +25,13 @@ export default function Layout() {
 			</div>
 		</>
 	);
+}
+
+/**
+ * 
+ * @returns Just the page nothing else as we don't care for the Sidebar nor thr Menu
+ * 
+ */
+export function ExclusiveLayout() {
+	return <Outlet />;
 }

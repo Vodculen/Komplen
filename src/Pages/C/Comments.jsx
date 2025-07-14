@@ -1,9 +1,6 @@
 import Title from "@components/Page/Title";
 import Section from "@components/Page/Section";
-import List from "@components/Helpers/List";
-import Program from "@components/Program/Program";
-import SyntaxHighlight from "@components/Lexer/SyntaxHighlighter";
-
+import Program from "@components/Page/Program";
 
 import * as CCommentsPrograms from "@data/C/Comments.json";
 
@@ -19,24 +16,7 @@ export default function CComments() {
 	);
 }
 
-/**
- * # Single Lined Comments
- * 
- * When wanting to document some code or just have the compiler over look it you can use the single lined comments.
- * To create a single lined comment you put // then for the rest of the line it is ignored by the compiler
- * 
- * '''
- * #include <stdio.h>
- * 
- * int main()
- * {
- * 		// This prints out hello world to the screen
- * 		printf("Hello world");
- * 
- * 		return 0;
- * }
- * '''
- */
+
 function Section0() {
 	return(
 		<>
@@ -47,24 +27,7 @@ function Section0() {
 	);
 }
 
-/**
- * # Multi-Lined Comments
- * 
- * When wanting to write comments that don't really fit on one line or documenting a large piece of code.
- * To use multi-lined comments start by putting /* and your compiler will ignore anything you write until you have to put *\.
- *
- * #include <stdio.h>
- * 
- * /* This function prints out "Hello world!" 
- *    It then returns 0 to appease the compiler *\
- * int main()
- * {
- * 		printf("Hello world");
- * 
- * 		return 0;
- * }
- * '''
-  */
+
 function Section1() {
 	return(
 		<>
