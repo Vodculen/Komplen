@@ -9,12 +9,12 @@ export default defineConfig(async () => ({
 	plugins: [react()],
 	resolve: {
 		alias: {
-			"@components": path.resolve(__dirname, "src/Components"),
-			"@pages": path.resolve(__dirname, "src/Pages"),
-			"@assets": path.resolve(__dirname, "src/Assets"),
-			"@stylesheets": path.resolve(__dirname, "src/Stylesheets"),
-			"@data": path.resolve(__dirname, "src/Data"),
-			"@window": path.resolve(__dirname, "src/Window"),
+			"@components": path.resolve(__dirname, "src/components"),
+			"@pages": path.resolve(__dirname, "src/pages"),
+			"@assets": path.resolve(__dirname, "src/assets"),
+			"@stylesheets": path.resolve(__dirname, "src/stylesheets"),
+			"@data": path.resolve(__dirname, "src/data"),
+			"@window": path.resolve(__dirname, "src/window"),
 		},
 	},
 

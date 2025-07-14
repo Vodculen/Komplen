@@ -1,25 +1,21 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect } from 'react';
 import { LoadTheme } from "@window/ToggleDarkmode";
-import { DefaultLayout, ExclusiveLayout } from "@components/Layout/Layouts";
+import { DefaultLayout, ExclusiveLayout } from "@components/layout/Layouts";
 
 
 // Pages
-import Welcome from "@pages/General/Welcome";
-import Languages from "@pages/General/Languages";
-import Unavaible from "@pages/General/Unavaible";
+import Welcome from "@pages/Welcome";
+import Languages from "@pages/Languages";
+import Unavaible from "@pages/Unavaible";
 
 
 // C Pages
-import CHomepage from "@pages/C/Homepage";
-import CGettingStarted from "@pages/C/GettingStarted";
-import COutput from "@pages/C/Output";
-import CEscapeSequences from "@pages/C/EscapeSequences";
-import CComments from "./Pages/C/Comments";
 
 
 // The Stylesheet
-import "./Stylesheets/Global.css";
+import "@stylesheets/Global.css";
+import Page from "@components/page/Page";
 
 
 /**
@@ -45,11 +41,7 @@ export default function Software() {
 					{/* This is for all the normal pages that have both the Sidebar and Menu */}
 					<Route element={<DefaultLayout />}>
 						{/* Routes to C Pages */}
-						<Route path="/c/homepage" element={ <CHomepage /> } />
-						<Route path="/c/getting_started" element={ <CGettingStarted /> } />
-						<Route path="/c/output" element={ <COutput /> } />
-						<Route path="/c/escape_sequences" element={ <CEscapeSequences /> } />
-						<Route path="/c/comments" element={ <CComments /> } />
+						<Route path="/c/homepage" element={ <Page data={"./data/c/Output.json"} /> } />
 					</Route>
 				</Routes>
 			</BrowserRouter>

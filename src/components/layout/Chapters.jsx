@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import Spacer from "@components/Page/Spacer";
-import LinkedList from "@components/Helpers/LinkedList";
+import Spacer from "@components/page/Spacer";
+import LinkedList from "@components/libraries/LinkedList";
 
 
 /**

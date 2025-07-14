@@ -1,4 +1,4 @@
-import * as Constants from "./Languages/C";
+import * as Constants from "./languages/C";
 
 // TODO: I not doing this someone else will do this!
 

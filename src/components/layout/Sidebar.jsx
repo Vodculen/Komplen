@@ -3,8 +3,8 @@ import Chapters from "./Chapters";
 
 
 // Different List Payloads
-import CSidebar from "@data/C/Sidebar.json";
-import JavaSidebar from "@data/Java/Sidebar.json";
+import CSidebar from "@data/c/Sidebar.json";
+import JavaSidebar from "@data/java/Sidebar.json";
 
 
 /**

@@ -3,9 +3,9 @@ import Lexer from "./Lexer";
 
 
 // Language's Config Files
-import * as CConfig from "./Languages/C";
-import * as CppConfig from "./Languages/Cpp";
-import * as JavaConfig from "./Languages/Java";
+import * as CConfig from "./languages/C";
+import * as CppConfig from "./languages/Cpp";
+import * as JavaConfig from "./languages/Java";
 
 
 const languageConfigs = {

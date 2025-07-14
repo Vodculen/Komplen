@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import { writeText } from "@tauri-apps/plugin-clipboard-manager";
-import SyntaxHighlight from "../Lexer/SyntaxHighlighter";
+import SyntaxHighlight from "../lexer/SyntaxHighlighter";
 
 import "../../Stylesheets/Program.css";
 

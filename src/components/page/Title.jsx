@@ -1,7 +1,7 @@
 /**
  * 
  * @param {*} title The text you want the title of the page to be 
- * @returns The title that you inputed as well as a divider
+ * @returns The title that you inputted as well as a divider
  */
 export default function Title({ title }) {
 	return (

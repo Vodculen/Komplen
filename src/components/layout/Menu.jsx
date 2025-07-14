@@ -1,4 +1,4 @@
-import LinkedList from "@components/Helpers/LinkedList";
+import LinkedList from "@components/libraries/LinkedList";
 import { ToggleDarkmode } from "@window/ToggleDarkmode";
 
 
