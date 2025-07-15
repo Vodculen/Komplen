@@ -1,13 +1,13 @@
-import React from "react";
 import Title from "@components/page/Title";
-import output from "@data/c/Output";
-import Section from "./Section";
-import Program from "./Program";
-import Code from "./Code";
-import List from "../libraries/List";
-import Table from "../libraries/Table";
+import { useLoaderData } from "react-router-dom";
+import Section from "@components/page/Section";
+import Program from "@components/page/Program";
+import Code from "@components/page/Code";
+import List from "@components/libraries/List";
+import Table from "@components/libraries/Table";
 
-export default function Page() {
+export default function Page({ lang, page }) {
+	const output = useLoaderData();
 
 	return (
 		<>
