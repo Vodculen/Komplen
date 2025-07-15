@@ -9,7 +9,7 @@ import JavaSidebar from "@data/java/Sidebar.json";
 
 /**
  * 
- * @param {*} list The list of the diffrent links. In this use case, json files.
+ * @param {*} list The list of the different links. In this use case, json files.
  * @returns Another list of links but in a program readable format.
  * 
  */
