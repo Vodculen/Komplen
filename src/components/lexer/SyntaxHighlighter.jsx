@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import Lexer from "./Lexer";
 
-
 // Language's Config Files
 import * as CConfig from "./languages/C";
 import * as CppConfig from "./languages/Cpp";
@@ -41,7 +40,7 @@ export default function SyntaxHighlight({ input = "", language = "c" }) {
 	return (
 		<>
 			{tokens.map((token, idx) => (
-				<span key={idx} className={token.type || ""}>
+				<span key={idx} className={(token.type || "") + " code"}>
 				{token.value}
 				</span>
 			))}

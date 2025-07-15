@@ -11,10 +11,6 @@ export const keywords = [
 	"unsigned", "volatile", "while"
 ];
 
-export const escape = [
-	"<|n|>"
-]
-
 export const TokenType = {
 	Variable: "varibles",
 	Keyword: "keywords",
@@ -42,11 +38,9 @@ export function lex(lexer) {
 			continue;
 		}
 
-		if (char === "/" && lexer.peek() === "*") {
-			readUntil(lexer, "*/", {
-				includeTerminator: true,
-				tokenType: lexer.config.TokenType.Comment,
-			});
+		if (char === "\\" && helpers.peek(lexer)) {
+			lexer.tokens.push({ value: "\\" + helpers.peek(lexer), type: lexer.config.TokenType.Operator });
+			helpers.consume(lexer, 2);
 			continue;
 		}
 
@@ -156,17 +150,6 @@ export function readUntil(lexer, terminator, options = {}) {
 	let buffer = "";
 	while (!helpers.eof(lexer)) {
 		const char = helpers.current(lexer);
-
-		if (handleEscapes && char === "\\" && helpers.peek(lexer)) {
-			if (buffer && splitTokens) {
-				lexer.tokens.push({ value: buffer, type: tokenType });
-				buffer = "";
-			}
-
-			lexer.tokens.push({ value: "\\" + helpers.peek(lexer), type: lexer.config.TokenType.Operator });
-			helpers.consume(lexer, 2);
-			continue;
-		}
 
 		if (handleFormatSpec && char === "%" && /[a-zA-Z]/.test(helpers.peek(lexer))) {
 			if (buffer && splitTokens) {

@@ -2,9 +2,9 @@ import { useState, useRef, useCallback } from "react";
 import { writeText } from "@tauri-apps/plugin-clipboard-manager";
 import SyntaxHighlight from "../lexer/SyntaxHighlighter";
 
-import "../../Stylesheets/Program.css";
+import "@stylesheets/Program.css";
 
-export default function Program({ name, language, program, output = null, displayRun = true }) {
+export default function Program({ program: { language, name, program, output, displayRun }}) {
 	const [showOutput, setShowOutput] = useState(false);
 	const [isRunning, setIsRunning] = useState(false);
 	const isCooldown = useRef(false);

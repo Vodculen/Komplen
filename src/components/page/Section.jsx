@@ -14,7 +14,7 @@ export default function Section({ title, content }) {
 		<>
 			<h1 className="section">{title}</h1>
 			{content}
-			<Spacer amount={36} />
+			<Spacer amount={44} />
 			<div className="divider"></div>
 		</>
 	);
