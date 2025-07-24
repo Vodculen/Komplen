@@ -28,7 +28,7 @@ function TableRows({ row, header }) {
 
 	const rows = row.map((item, index) => {
 		if (!item) {
-			return <td key={Math.random()}>—</td>;
+			return <td key={crypto.randomUUID()}>—</td>;
 		}
 
 		// Header row: render <th>

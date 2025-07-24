@@ -8,7 +8,7 @@ export const keywords = [
 	"do", "double", "else", "enum", "extern", "float", "for", "goto",
 	"if", "int", "long", "register", "return", "short", "signed",
 	"sizeof", "static", "struct", "switch", "typedef", "union", "void",
-	"unsigned", "volatile", "while"
+	"unsigned", "volatile", "while",
 ];
 
 export const TokenType = {

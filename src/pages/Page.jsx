@@ -6,7 +6,7 @@ import Code from "@components/page/Code";
 import List from "@components/libraries/List";
 import Table from "@components/libraries/Table";
 
-export default function Page({ lang, page }) {
+export default function Page() {
 	const output = useLoaderData();
 
 	return (

@@ -1,0 +1,12 @@
+{
+	"page": "C Array",
+	"content": [
+		{
+			"title": "Declaring C Arrays",
+			"section": [
+				{ "text": "When using Arrays they have to be strictly one datatype and after declaring them you cant add or remove an element." },
+				{ "text": "To declare an Array its mostly like a variable with some differences" }
+			]
+		}
+	]
+}

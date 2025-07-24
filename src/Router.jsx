@@ -1,4 +1,3 @@
-// src/router.js
 import { createBrowserRouter } from "react-router-dom";
 
 // Layouts
@@ -12,7 +11,7 @@ import Unavailable from "@pages/Unavailable";
 import Page from "@pages/Page";
 
 // Route Loaders
-const deep2Loader = (deep1, deep2) => async () => {
+const routeLoader = (deep1, deep2) => async () => {
 	const module = await import(`@data/${deep1}/${deep2}.json`);
 	return module.default;
 };
@@ -29,7 +28,9 @@ const router = createBrowserRouter([
 	{
 		element: <DefaultLayout />,
 		children: [
-			{ path: "/c/homepage", element: <Page />, loader: deep2Loader("c", "Homepage") },
+			{ path: "/c/homepage", element: <Page />, loader: routeLoader("c", "Homepage") },
+			{ path: "/c/arrays", element: <Page />, loader: routeLoader("c", "Arrays") },
+			{ path: "/c/structs", element: <Page />, loader: routeLoader("c", "Structs") },
 		],
 	},
 ]);

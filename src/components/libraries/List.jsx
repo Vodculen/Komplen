@@ -7,7 +7,7 @@
  */
 export default function List({ list }) {
 	const listItems = list.map(item =>
-		<li key={item.id}>{item.text}</li>
+		<li key={crypto.randomUUID()}>{item.text}</li>
 	);
 
 	return (

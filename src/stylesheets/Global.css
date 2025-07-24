@@ -103,20 +103,20 @@ body {
 .title {
 	font: var(--title-text);
 	text-align: center;
-	margin-bottom: 12px;
+	margin-top: 12px;
 }
 
 /* It comes after the divider of the last section to mark the new section */
 .section {
 	font: var(--section-text);
-	margin-bottom: 12px;
+	margin-bottom: 20px;
 }
 
 /* The text that describes how to program, duh */
 .text {
 	font: var(--text);
 	margin-bottom: 12px;
-	line-height: 1.5;
+	line-height: 1.25;
 }
 
 .image {
