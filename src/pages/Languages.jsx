@@ -1,42 +1,74 @@
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import LanguageProfile from "@components/page/LanguageProfile";
 import Title from "@components/page/Title";
 import "@stylesheets/Languages.css";
 
+const supportedPages = new Set([
+"c",
+"java",
+// Add other supported IDs
+]);
 
-/**
- * 
- * @returns The Language page contents
- * 
- */
-export default function languages() {
-	// This is to make icons that blend it with the backgrounds on diffrent themes visible
-	const isDarkMode = document.body.classList.contains('darkmode');
+export default function Languages() {
+const location = useLocation();
+const isDarkMode = document.body.classList.contains("darkmode");
+const currentLang = location.pathname.split("/")[1] || "en";
 
-	return(
-		<div className="languagesPage">
-			<Title title={"Programming Languages"} />
-			
-			{/* This is so the flexbox looks good at least */}
-			<div className="languageProfiles">
-				<LanguageProfile link={"/c/homepage"} image={"src/assets/languages/C.svg"} alternate={"C Logo"} name={"C"} bio={"[Language's bio]"} />
-				<LanguageProfile link={"*"} image={"src/assets/languages/C++.svg"} alternate={"C++ Logo"} name={"C++"} bio={"[Language's bio]"} />
-				<LanguageProfile link={"*"} image={"src/assets/languages/CSharp.svg"} alternate={"C# Logo"} name={"C#"} bio={"[Language's bio]"} />
+const [languageEntries, setLanguageEntries] = useState([]);
 
-				<LanguageProfile link={"/java/homepage"} image={"src/assets/languages/Java.svg"} alternate={"Java Logo"} name={"Java"} bio={"[Language's bio]"} />
-				<LanguageProfile link={"*"} image={"src/assets/languages/JS.svg"} alternate={"JavaScript Logo"} name={"JavaScript"} bio={"[Language's bio]"} />
-				<LanguageProfile link={"*"} image={"src/assets/languages/TS.svg"} alternate={"TypeScript Logo"} name={"TypeScript"} bio={"[Language's bio]"} />
+useEffect(() => {
+	async function loadLanguages() {
+	try {
+		// Dynamic import based on currentLang
+		const module = await import(`@data/${currentLang}/Languages.json`);
+		setLanguageEntries(module.default);
+	} catch (e) {
+		console.error("Could not load language data, falling back to English.", e);
+		// fallback to English if load fails
+		const module = await import(`@data/en/Languages.json`);
+		setLanguageEntries(module.default);
+	}
+	}
+	loadLanguages();
+}, [currentLang]);
 
-				<LanguageProfile link={"*"} image={"src/assets/languages/Python.svg"} alternate={"Python Logo"} name={"Python"} bio={"[Language's bio]"} />
-				<LanguageProfile link={"*"} image={"src/assets/languages/GDScript.svg"} alternate={"GDScript Logo"} name={"GDScript"} bio={"[Language's bio]"} />
-				<LanguageProfile link={"*"} image={"src/assets/languages/Kotlin.svg"} alternate={"Kotlin Logo"} name={"Kotlin"} bio={"[Language's bio]"} />
-				<LanguageProfile link={"*"} image={"src/assets/languages/Lua.svg"} alternate={"Lua Logo"} name={"Lua"} bio={"[Language's bio]"} />
-				<LanguageProfile link={"*"} image={isDarkMode ? "src/assets/languages/RustDark.svg" : "src/assets/languages/Rust.svg"} alternate={"Rust Logo"} name={"Rust"} bio={"[Language's bio]"} />
-				<LanguageProfile link={"*"} image={"src/assets/languages/Nasm.svg"} alternate={"Assembly Logo"} name={"Assembly"} bio={"[Language's bio]"} />
+return (
+	<div className="languagesPage">
+		<Title title="Programming Languages" />
 
-				<LanguageProfile link={"*"} image={isDarkMode ? "src/assets/languages/NADark.svg" : "src/assets/languages/NA.svg"} alternate={"??? Logo"} name={"???"} bio={"[Give me a few years!]"} />
-				<LanguageProfile link={"*"} image={isDarkMode ? "src/assets/languages/NADark.svg" : "src/assets/languages/NA.svg"} alternate={"Computer Science Logo"} name={"Computer Science"} bio={"[Language's bio]"} />
-				<LanguageProfile link={"*"} image={isDarkMode ? "src/assets/languages/NADark.svg" : "src/assets/languages/NA.svg"} alternate={"Data Structures Logo"} name={"Data Structures"} bio={"[Language's bio]"} />
-			</div>
+		<div className="languageProfiles">
+			{languageEntries.map(({ id, name, image, bio }) => {
+				const link = supportedPages.has(id) ? `/${currentLang}/${id}/homepage` : "*";
+				
+				return (
+					<LanguageProfile
+					key={id}
+					link={link}
+					image={getImageForTheme(id, image, isDarkMode)}
+					alternate={`${name} Logo`}
+					name={name}
+					bio={bio}
+					/>
+				);
+			})}
 		</div>
-	);
+	</div>
+);
 }
+
+const getImageForTheme = (id, baseImage, isDarkMode) => {
+	const darkModeImages = {
+		rust: "RustDark.svg",
+		na: "NADark.svg",
+		cs: "NADark.svg",
+		ds: "NADark.svg",
+	};
+
+	if (isDarkMode && darkModeImages[id]) {
+		return `@assets/languages/${darkModeImages[id]}`;
+	}
+
+	return `@assets/languages/${baseImage}`;
+};
+

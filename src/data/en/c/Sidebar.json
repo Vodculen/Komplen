@@ -1,0 +1,17 @@
+[
+	{
+		"title": "C Basics",
+		"tabs": [
+			{ "tab": "C Homepage", "link": "/en/c/homepage", "active": "" }
+		]
+	},
+	{
+		"title": "C Data Structures",
+		"tabs": [
+			{ "tab": "C Arrays", "link": "/en/c/arrays", "active": "" },
+			{ "tab": "C Structs", "link": "/en/c/structs", "active": "" },
+			{ "tab": "C Enums", "link": "/en/c/output", "active": "" },
+			{ "tab": "C Unions", "link": "/en/c/escape_sequences", "active": "" }
+		]
+	}
+]

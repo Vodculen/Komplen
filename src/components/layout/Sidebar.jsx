@@ -1,54 +1,45 @@
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Chapters from "./Chapters";
 
-
-// Different List Payloads
-import CSidebar from "@data/c/Sidebar.json";
-import JavaSidebar from "@data/java/Sidebar.json";
-
-
 /**
- * 
- * @param {*} list The list of the different links. In this use case, json files.
- * @returns Another list of links but in a program readable format.
- * 
+ * Flattens the sidebar tab structure.
  */
 const flattenTabs = (list) => {
 	let tabs = [];
-
-	list.forEach(section => {
-		section.tabs.forEach(tab => tabs.push(tab));
+	list?.forEach((section) => {
+		section.tabs.forEach((tab) => tabs.push(tab));
 	});
-
 	return tabs;
 };
 
-
-/**
- * 
- * @returns A list of the links depending on which path your on.
- * 
- */
 export default function Sidebar() {
 	const location = useLocation();
-	const languagePath = location.pathname.split("/")[1];
+	const [sidebarData, setSidebarData] = useState(null);
 
-	let list;
+	const lang = location.pathname.split("/")[1];
+	const tech = location.pathname.split("/")[2];
 
-	switch (languagePath) {
-		case "c":
-			list = CSidebar;
-			break;
-		case "java":
-			list = JavaSidebar;	
-			break;
-		default:
-			console.error("The pathname doesn't exist in the database!");
-			break;
+	useEffect(() => {
+		const loadSidebar = async () => {
+			try {
+				const module = await import(`@data/${lang}/${tech}/Sidebar.json`);
+				setSidebarData(module.default);
+			} catch (err) {
+				console.error(`Sidebar data not found for "${tech}"`, err);
+				setSidebarData(null);
+			}
+		};
+
+		loadSidebar();
+	}, [lang, tech]);
+
+	if (!sidebarData) {
+		return null; // or show a loading spinner or fallback
 	}
 
-	const allTabs = flattenTabs(list);
-	const activeTabIndex = allTabs.findIndex(tab => tab.link === location.pathname);
+	const allTabs = flattenTabs(sidebarData);
+	const activeTabIndex = allTabs.findIndex((tab) => tab.link === location.pathname);
 
-	return <Chapters list={list} activeTabIndex={activeTabIndex} />;
+	return <Chapters list={sidebarData} activeTabIndex={activeTabIndex} />;
 }

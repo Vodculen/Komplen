@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Java Basics",
+    "tabs": [
+      { "tab": "Java Homepage", "link": "/java/homepage", "active": "", "id": "sec0-chap0" },
+      { "tab": "Java Getting Started", "link": "/java/gettingStarted", "active": "", "id": "sec0-chap1" }
+    ],
+    "id": "sec0"
+  }
+]

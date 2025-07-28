@@ -216,8 +216,11 @@ body {
 
 /* This should always be at the bottom of the page */
 /* This is only for the sidebar and menu links currently */
+/* Original hover underline effect, extended to dropdown */
 .menu .link::after,
-.chapters .link::after {
+.chapters .link::after,
+.languageDropdown .link::after,
+.lang-dropdown-menu li::after {
 	background: none repeat scroll 0 0 transparent;
 	bottom: 0;
 	content: "";
@@ -230,16 +233,29 @@ body {
 	width: 0;
 }
 
+/* On hover, expand the underline */
 .menu .link:hover::after,
-.chapters .link:hover::after {
+.chapters .link:hover::after,
+.languageDropdown .link:hover::after,
+.lang-dropdown-menu li:hover::after {
 	width: 100%;
 	left: 0;
 }
 
-.active:hover::after {
+/* Active hover fallback */
+.active:hover::after,
+.lang-dropdown-menu li.active:hover::after {
 	width: 100%;
 	left: 0;
 }
 
-.active .link { color: var(--lightText); }
-.active .link::after { background: var(--lightText); }
+/* Active color and underline */
+.active .link,
+.lang-dropdown-menu li.active {
+	color: var(--lightText);
+}
+
+.active .link::after,
+.lang-dropdown-menu li.active::after {
+	background: var(--lightText);
+}

@@ -14,7 +14,7 @@ export default function Welcome() {
 		<div className="splashScreen">
 			<h1 className="splash">Welcome to Komplen</h1>
 			<p className="splashText">[Splash Text]</p>
-			<Link to="/languages"><button className="button">Get Started</button></Link>
+			<Link to="/en/languages"><button className="button">Get Started</button></Link>
 		</div>
 	);
 }
