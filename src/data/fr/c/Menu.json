@@ -1,5 +1,5 @@
 [
-	{ "tab": "Lessons", "link": "*", "active": "active", "id": "0" }, 
+	{ "tab": "Lessons", "link": "/fr/c/homepage", "active": "active", "id": "0" }, 
 	{ "tab": "Practice", "link": "*", "active": "", "id": "1" },
 	{ "tab": "Compiler", "link": "*", "active": "", "id": "2" },
 	{ "tab": "Languages", "link": "/fr/languages", "active": "", "id": "3" }

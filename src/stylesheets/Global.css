@@ -219,8 +219,7 @@ body {
 /* Original hover underline effect, extended to dropdown */
 .menu .link::after,
 .chapters .link::after,
-.languageDropdown .link::after,
-.lang-dropdown-menu li::after {
+.languageDropdown .link::after {
 	background: none repeat scroll 0 0 transparent;
 	bottom: 0;
 	content: "";
@@ -236,26 +235,22 @@ body {
 /* On hover, expand the underline */
 .menu .link:hover::after,
 .chapters .link:hover::after,
-.languageDropdown .link:hover::after,
-.lang-dropdown-menu li:hover::after {
+.languageDropdown .link:hover::after {
 	width: 100%;
 	left: 0;
 }
 
 /* Active hover fallback */
-.active:hover::after,
-.lang-dropdown-menu li.active:hover::after {
+.active:hover::after {
 	width: 100%;
 	left: 0;
 }
 
 /* Active color and underline */
-.active .link,
-.lang-dropdown-menu li.active {
+.active .link {
 	color: var(--lightText);
 }
 
-.active .link::after,
-.lang-dropdown-menu li.active::after {
+.active .link::after {
 	background: var(--lightText);
 }

@@ -15,7 +15,7 @@ export default function Menu() {
 	useEffect(() => {
 		const loadMenu = async () => {
 			try {
-				const module = await import(`@data/${lang}/Menu.json`);
+				const module = await import(`@data/${lang}/${tech}/Menu.json`);
 				getMenuData(module.default);
 			} catch (err) {
 				console.error(`Sidebar data not found for "${lang}"`, err);
@@ -24,7 +24,7 @@ export default function Menu() {
 		};
 
 		loadMenu();
-	}, [lang]);
+	}, [lang, tech]);
 
 	if (!Array.isArray(menuData)) return null;
 
