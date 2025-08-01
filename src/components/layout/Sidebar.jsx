@@ -35,7 +35,7 @@ export default function Sidebar() {
 	}, [lang, tech]);
 
 	if (!sidebarData) {
-		return null; // or show a loading spinner or fallback
+		return null;
 	}
 
 	const allTabs = flattenTabs(sidebarData);

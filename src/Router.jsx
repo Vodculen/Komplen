@@ -37,17 +37,13 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <Welcome /> },
 			{ path: "/:lang/languages", element: <Languages /> },
-			{ path: "*", element: <Unavailable /> },
+			{ path: "/:lang/*", element: <Unavailable /> },
 		],
 	},
 	{
 		element: <DefaultLayout />,
 		children: [
-			{
-				path: "/:lang/:tech/:page",
-				element: <Page />,
-				loader: dynamicRouteLoader,
-			},
+			{ path: "/:lang/:tech/:page", element: <Page />, loader: dynamicRouteLoader },
 		],
 	},
 ]);

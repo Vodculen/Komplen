@@ -12,7 +12,6 @@ const supportedPages = new Set([
 
 export default function Languages() {
 const location = useLocation();
-const isDarkMode = document.body.classList.contains("darkmode");
 const currentLang = location.pathname.split("/")[1] || "en";
 
 const [languageEntries, setLanguageEntries] = useState([]);
@@ -42,33 +41,10 @@ return (
 				const link = supportedPages.has(id) ? `/${currentLang}/${id}/homepage` : "*";
 				
 				return (
-					<LanguageProfile
-					key={id}
-					link={link}
-					image={getImageForTheme(id, image, isDarkMode)}
-					alternate={`${name} Logo`}
-					name={name}
-					bio={bio}
-					/>
+					<LanguageProfile key={id} link={link} image={`@assets/languages/${image}`} alternate={`${name} Logo`} name={name} bio={bio} />
 				);
 			})}
 		</div>
 	</div>
 );
 }
-
-const getImageForTheme = (id, baseImage, isDarkMode) => {
-	const darkModeImages = {
-		rust: "RustDark.svg",
-		na: "NADark.svg",
-		cs: "NADark.svg",
-		ds: "NADark.svg",
-	};
-
-	if (isDarkMode && darkModeImages[id]) {
-		return `@assets/languages/${darkModeImages[id]}`;
-	}
-
-	return `@assets/languages/${baseImage}`;
-};
-
