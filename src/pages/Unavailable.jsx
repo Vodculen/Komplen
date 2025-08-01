@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 export default function Unavailable() {
 	const location = useLocation();
 	const currentLang = location.pathname.split("/")[1] || "en";
-	const [unavailable, setUnavailable] = useState([]);
+	const [unavailable, setUnavailable] = useState({});
 
 	useEffect(() => {
 		async function loadLanguages() {
@@ -28,6 +28,10 @@ export default function Unavailable() {
 
 		loadLanguages();
 	}, [currentLang]);
+
+	if (!unavailable.title) {
+		return null;
+	}
 
 	return(
 		<div className="splashScreen">

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { LoadTheme } from "@window/ToggleDarkmode";
+import { getLanguage } from './window/ToggleLanguages';
 import { RouterProvider } from "react-router-dom";
 import router from './Router';
 
@@ -13,6 +14,7 @@ import "@stylesheets/Global.css";
 export default function Software() {
 	useEffect(() => {
 		LoadTheme();
+		getLanguage();
 	}, []);
 
 	return (

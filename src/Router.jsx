@@ -36,6 +36,7 @@ const router = createBrowserRouter([
 		element: <ExclusiveLayout />,
 		children: [
 			{ index: true, element: <Welcome /> },
+			{ path: "/:lang/welcome", element: <Welcome /> },
 			{ path: "/:lang/languages", element: <Languages /> },
 			{ path: "/:lang/*", element: <Unavailable /> },
 		],

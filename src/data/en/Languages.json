@@ -1,17 +1,20 @@
-[
-	{ "id": "c", "name": "C", "image": "C.svg", "bio": "[Language's bio]" },
-	{ "id": "cpp", "name": "C++", "image": "C++.svg", "bio": "[Language's bio]" },
-	{ "id": "csharp", "name": "C#", "image": "CSharp.svg", "bio": "[Language's bio]" },
-	{ "id": "java", "name": "Java", "image": "Java.svg", "bio": "[Language's bio]" },
-	{ "id": "js", "name": "JS", "image": "JS.svg", "bio": "[Language's bio]" },
-	{ "id": "ts", "name": "TS", "image": "TS.svg", "bio": "[Language's bio]" },
-	{ "id": "python", "name": "Python", "image": "Python.svg", "bio": "[Language's bio]" },
-	{ "id": "gdscript", "name": "GDScript", "image": "GDScript.svg", "bio": "[Language's bio]" },
-	{ "id": "kotlin", "name": "Kotlin", "image": "Kotlin.svg", "bio": "[Language's bio]" },
-	{ "id": "lua", "name": "Lua", "image": "Lua.svg", "bio": "[Language's bio]" },
-	{ "id": "rust", "name": "Rust", "image": "Rust.svg", "bio": "[Language's bio]" },
-	{ "id": "nasm", "name": "Nasm", "image": "Nasm.svg", "bio": "[Language's bio]" },
-	{ "id": "na", "name": "NA", "image": "NA.svg", "bio": "[Language's bio]" },
-	{ "id": "cs", "name": "NA", "image": "NA.svg", "bio": "[Language's bio]" },
-	{ "id": "ds", "name": "NA", "image": "NA.svg", "bio": "[Language's bio]" }
-]
+{
+	"title": "Programming Languages",
+	"languages": [
+		{ "id": "c", "name": "C", "image": "C.svg", "bio": "[Language's bio]" },
+		{ "id": "cpp", "name": "C++", "image": "C++.svg", "bio": "[Language's bio]" },
+		{ "id": "csharp", "name": "C#", "image": "CSharp.svg", "bio": "[Language's bio]" },
+		{ "id": "java", "name": "Java", "image": "Java.svg", "bio": "[Language's bio]" },
+		{ "id": "js", "name": "JS", "image": "JS.svg", "bio": "[Language's bio]" },
+		{ "id": "ts", "name": "TS", "image": "TS.svg", "bio": "[Language's bio]" },
+		{ "id": "python", "name": "Python", "image": "Python.svg", "bio": "[Language's bio]" },
+		{ "id": "gdscript", "name": "GDScript", "image": "GDScript.svg", "bio": "[Language's bio]" },
+		{ "id": "kotlin", "name": "Kotlin", "image": "Kotlin.svg", "bio": "[Language's bio]" },
+		{ "id": "lua", "name": "Lua", "image": "Lua.svg", "bio": "[Language's bio]" },
+		{ "id": "rust", "name": "Rust", "image": "Rust.svg", "bio": "[Language's bio]" },
+		{ "id": "nasm", "name": "Nasm", "image": "Nasm.svg", "bio": "[Language's bio]" },
+		{ "id": "na", "name": "NA", "image": "NA.svg", "bio": "[Language's bio]" },
+		{ "id": "cs", "name": "NA", "image": "NA.svg", "bio": "[Language's bio]" },
+		{ "id": "ds", "name": "NA", "image": "NA.svg", "bio": "[Language's bio]" }
+	]
+}

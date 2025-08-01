@@ -1,17 +1,21 @@
-[
-	{ "id": "c", "name": "C", "image": "C.svg", "bio": "[Pworaus usun manauen aramas]" },
-	{ "id": "cpp", "name": "C++", "image": "C++.svg", "bio": "[Pworaus usun manauen aramas]" },
-	{ "id": "csharp", "name": "C#", "image": "CSharp.svg", "bio": "[Pworaus usun manauen aramas]" },
-	{ "id": "java", "name": "Java", "image": "Java.svg", "bio": "[Pworaus usun manauen aramas]" },
-	{ "id": "js", "name": "JS", "image": "JS.svg", "bio": "[Pworaus usun manauen aramas]" },
-	{ "id": "ts", "name": "TS", "image": "TS.svg", "bio": "[Pworaus usun manauen aramas]" },
-	{ "id": "python", "name": "Python", "image": "Python.svg", "bio": "[Pworaus usun manauen aramas]" },
-	{ "id": "gdscript", "name": "GDScript", "image": "GDScript.svg", "bio": "[Pworaus usun manauen aramas]" },
-	{ "id": "kotlin", "name": "Kotlin", "image": "Kotlin.svg", "bio": "[Pworaus usun manauen aramas]" },
-	{ "id": "lua", "name": "Lua", "image": "Lua.svg", "bio": "[Pworaus usun manauen aramas]" },
-	{ "id": "rust", "name": "Rust", "image": "Rust.svg", "bio": "[Pworaus usun manauen aramas]" },
-	{ "id": "nasm", "name": "Nasm", "image": "Nasm.svg", "bio": "[Pworaus usun manauen aramas]" },
-	{ "id": "na", "name": "NA", "image": "NA.svg", "bio": "[Pworaus usun manauen aramas]" },
-	{ "id": "cs", "name": "NA", "image": "NA.svg", "bio": "[Pworaus usun manauen aramas]" },
-	{ "id": "ds", "name": "NA", "image": "NA.svg", "bio": "[Pworaus usun manauen aramas]" }
-]
+{
+	"title": "Langages de Programmation",
+	
+	"languages": [
+		{ "id": "c", "name": "C", "image": "C.svg", "bio": "[Pworaus usun manauen aramas]" },
+		{ "id": "cpp", "name": "C++", "image": "C++.svg", "bio": "[Pworaus usun manauen aramas]" },
+		{ "id": "csharp", "name": "C#", "image": "CSharp.svg", "bio": "[Pworaus usun manauen aramas]" },
+		{ "id": "java", "name": "Java", "image": "Java.svg", "bio": "[Pworaus usun manauen aramas]" },
+		{ "id": "js", "name": "JS", "image": "JS.svg", "bio": "[Pworaus usun manauen aramas]" },
+		{ "id": "ts", "name": "TS", "image": "TS.svg", "bio": "[Pworaus usun manauen aramas]" },
+		{ "id": "python", "name": "Python", "image": "Python.svg", "bio": "[Pworaus usun manauen aramas]" },
+		{ "id": "gdscript", "name": "GDScript", "image": "GDScript.svg", "bio": "[Pworaus usun manauen aramas]" },
+		{ "id": "kotlin", "name": "Kotlin", "image": "Kotlin.svg", "bio": "[Pworaus usun manauen aramas]" },
+		{ "id": "lua", "name": "Lua", "image": "Lua.svg", "bio": "[Pworaus usun manauen aramas]" },
+		{ "id": "rust", "name": "Rust", "image": "Rust.svg", "bio": "[Pworaus usun manauen aramas]" },
+		{ "id": "nasm", "name": "Nasm", "image": "Nasm.svg", "bio": "[Pworaus usun manauen aramas]" },
+		{ "id": "na", "name": "NA", "image": "NA.svg", "bio": "[Pworaus usun manauen aramas]" },
+		{ "id": "cs", "name": "NA", "image": "NA.svg", "bio": "[Pworaus usun manauen aramas]" },
+		{ "id": "ds", "name": "NA", "image": "NA.svg", "bio": "[Pworaus usun manauen aramas]" }
+	]
+}

@@ -12,7 +12,7 @@ export async function ToggleDarkmode() {
 
 	body.classList.toggle('darkmode', isDark);
 
-	// Please always remember to set and save forgeting it messes everything up
+	// Please always remember to set and save forgetting it messes everything up
 	await store.set('darkmode', isDark);
 	await store.save();
 }

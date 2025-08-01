@@ -1,7 +1,15 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
+import { setLanguage } from "@window/ToggleLanguages";
 
 const supportedLanguages = ["en", "fr", "de", "es"];
+
+const languageNames = {
+	en: "English",
+	fr: "Français",
+	de: "Deutsch",
+	es: "Español",
+};
 
 export default function LanguageSelector() {
 	const navigate = useNavigate();
@@ -13,10 +21,13 @@ export default function LanguageSelector() {
 
 	const toggleDropdown = () => setOpen(prev => !prev);
 
-	const handleSelect = (lang) => {
+	const handleSelect = async (lang) => {
 		const parts = location.pathname.split("/");
 		parts[1] = lang;
 		const newPath = parts.join("/");
+
+		await setLanguage(lang);
+
 		navigate(newPath);
 		setOpen(false);
 	};
@@ -43,7 +54,7 @@ export default function LanguageSelector() {
 				<ul className="languageDropdown">
 					{supportedLanguages.map((lang) => (
 						<li key={lang} onClick={() => handleSelect(lang)} className={lang === currentLang ? "active" : ""}>
-							<p className="link">{lang.toUpperCase()}</p>
+							<p className="link">{languageNames[lang] || lang}</p>
 						</li>
 					))}
 				</ul>
