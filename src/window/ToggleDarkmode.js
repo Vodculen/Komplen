@@ -1,28 +1,27 @@
-import { load } from '@tauri-apps/plugin-store';
+import { load } from "@tauri-apps/plugin-store";
 
 
 // We just need to find the stupid store.json
-const store = await load('store.json', { autoSave: false });
+const store = await load("store.json", { autoSave: false });
 
-
-// Could we merge these into one method, No
+// This makes the theme button go through the list of themes, and saves them
 export async function ToggleDarkmode() {
 	const body = document.body;
-	const isDark = !body.classList.contains('darkmode');
+	const isDark = !body.classList.contains("darkmode");
 
-	body.classList.toggle('darkmode', isDark);
+	body.classList.toggle("darkmode", isDark);
 
 	// Please always remember to set and save forgetting it messes everything up
-	await store.set('darkmode', isDark);
+	await store.set("darkmode", isDark);
 	await store.save();
 }
 
 
 // This is what loads in the theme on the startup
 export async function LoadTheme() {
-	const saved = await store.get('darkmode');
+	const saved = await store.get("darkmode");
 	
 	if (saved === true) {
-		document.body.classList.add('darkmode');
+		document.body.classList.add("darkmode");
 	}
 }

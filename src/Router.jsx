@@ -10,6 +10,7 @@ import Languages from "@pages/Languages";
 import Unavailable from "@pages/Unavailable";
 import Page from "@pages/Page";
 
+
 const dynamicRouteLoader = async ({ request }) => {
 	const url = new URL(request.url);
 	const [lang, tech, page] = url.pathname.split("/").filter(Boolean);
@@ -33,6 +34,7 @@ const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 // Router definition
 const router = createBrowserRouter([
 	{
+		// These are only for the pages that take up the whole screen and not split into parts
 		element: <ExclusiveLayout />,
 		children: [
 			{ index: true, element: <Welcome /> },
@@ -42,6 +44,7 @@ const router = createBrowserRouter([
 		],
 	},
 	{
+		// For the rest of the software
 		element: <DefaultLayout />,
 		children: [
 			{ path: "/:lang/:tech/:page", element: <Page />, loader: dynamicRouteLoader },

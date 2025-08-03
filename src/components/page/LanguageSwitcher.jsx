@@ -1,16 +1,23 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
+
 import { setLanguage } from "@window/ToggleLanguages";
+
 
 const supportedLanguages = ["en", "fr", "de", "es"];
 
+// So the abbreviated languages aren't the options to cause some confusion
 const languageNames = {
 	en: "English",
 	fr: "Français",
 	de: "Deutsch",
-	es: "Español",
+	es: "Español"
+	// Continue with more complete languages
 };
 
+/**
+ * @returns The whole language dropdown stylized and filled with the languages
+ */
 export default function LanguageSelector() {
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -21,6 +28,7 @@ export default function LanguageSelector() {
 
 	const toggleDropdown = () => setOpen(prev => !prev);
 
+	// This turns the options into something the link path can use
 	const handleSelect = async (lang) => {
 		const parts = location.pathname.split("/");
 		parts[1] = lang;
@@ -32,6 +40,7 @@ export default function LanguageSelector() {
 		setOpen(false);
 	};
 
+	// Since they aren't buttons, it needs to detect of it was pressed
 	useEffect(() => {
 		const handleClickOutside = (event) => {
 			if (!dropdownRef.current?.contains(event.target)) {

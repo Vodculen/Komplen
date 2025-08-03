@@ -1,5 +1,6 @@
 import * as Helpers from "./Helpers";
 
+
 export default class Lexer {
 	constructor(input, languageConfig) {
 		this.input = input;
@@ -24,38 +25,30 @@ export default class Lexer {
 	}	
 
 	/**
-	 * 
 	 * @param {offset} offset How far ahead you want to peek from the current place @default 1
 	 * 
 	 * @returns The character at the offset's value ahead
-	 * 
 	 */
 	peek(offset = 1) {
 		return this.input[this.index + offset];
 	}
 
 	/**
-	 * 
 	 * @returns The logic & style for an Identifier
-	 * 
 	 */
 	lexIdentifier() {
 		return this.config.lexIdentifier(this);
 	}
 
 	/**
-	 * 
 	 * @returns The logic & style for a Number
-	 * 
 	 */
 	lexNumber() {
 		return this.config.lexNumber(this);
 	}
 
 	/**
-	 * 
 	 * @returns The logic & style for diffrent Tokens
-	 * 
 	 */
 	lex() {
 		return this.config.lex(this);

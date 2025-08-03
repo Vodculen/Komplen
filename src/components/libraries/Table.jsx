@@ -1,5 +1,11 @@
 import SyntaxHighlight from "../lexer/SyntaxHighlighter";
 
+
+/**
+ * @param {table} table The table we want to make and stylize
+ * 
+ * @returns The table all stylize with data
+ */
 export default function Table({ table }) {
 	if (!table || table.length === 0) return null;
 
@@ -23,20 +29,28 @@ export default function Table({ table }) {
 	);
 }
 
+/**
+ * @param {row} row The row to stylize
+ * @param {header} header To see if its a header or not 
+ * 
+ * @returns The stylized rows
+ */
 function TableRows({ row, header }) {
-	if (!Array.isArray(row)) return null;
+	if (!Array.isArray(row)) {
+		return null;
+	}
 
 	const rows = row.map((item, index) => {
 		if (!item) {
 			return <td key={crypto.randomUUID()}>—</td>;
 		}
 
-		// Header row: render <th>
+		// Keep the theming of the block behind it
 		if (header) {
 			return <th key={item.id}>{item.cell}</th>;
 		}
 
-		// First cell in a body row: no syntax highlighting
+		// Assuming that every table uses the first column for code 
 		const isFirstBodyCell = index === 0;
 
 		return (

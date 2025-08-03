@@ -7,12 +7,17 @@ import Chapters from "./Chapters";
  */
 const flattenTabs = (list) => {
 	let tabs = [];
+
 	list?.forEach((section) => {
 		section.tabs.forEach((tab) => tabs.push(tab));
 	});
+
 	return tabs;
 };
 
+/**
+ * @returns A fully filled out and stylized sidebar
+ */
 export default function Sidebar() {
 	const location = useLocation();
 	const [sidebarData, setSidebarData] = useState(null);
@@ -20,6 +25,7 @@ export default function Sidebar() {
 	const lang = location.pathname.split("/")[1];
 	const tech = location.pathname.split("/")[2];
 
+	// Gets the data for the sidebar
 	useEffect(() => {
 		const loadSidebar = async () => {
 			try {
@@ -34,6 +40,7 @@ export default function Sidebar() {
 		loadSidebar();
 	}, [lang, tech]);
 
+	// If there is no sidebar then display nothing
 	if (!sidebarData) {
 		return null;
 	}

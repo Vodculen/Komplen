@@ -1,6 +1,6 @@
 [
 	{ "tab": "Lessons", "link": "/en/c/homepage", "active": "active", "id": "0" }, 
-	{ "tab": "Practice", "link": "/en/*", "active": "", "id": "1" },
-	{ "tab": "Compiler", "link": "/en/*", "active": "", "id": "2" },
+	{ "tab": "Practice", "link": "*", "active": "", "id": "1" },
+	{ "tab": "Compiler", "link": "*", "active": "", "id": "2" },
 	{ "tab": "Languages", "link": "/en/languages", "active": "", "id": "3" }
 ]

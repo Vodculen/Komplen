@@ -1,63 +1,55 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { getLanguage } from "../window/ToggleLanguages";
+
 import LanguageProfile from "@components/page/LanguageProfile";
 import Title from "@components/page/Title";
+
 import "@stylesheets/Languages.css";
 
-const supportedPages = new Set([
-	"c",
-	"java",
-	// Add other supported IDs
-]);
 
+/**
+ * @returns The page that has all the programming languages the user can learn
+ */
 export default function Languages() {
-	const location = useLocation();
 	const isDarkMode = document.body.classList.contains("darkmode");
-	const currentLang = location.pathname.split("/")[1] || "en";
+	const [currentLang, setCurrentLang] = useState("en");
+	const [languages, setLanguages] = useState(null);
 
-	const [languageEntries, setLanguageEntries] = useState(null);
-
+	// To get the stored language to set its content to the language and fix all links to match the same language.
 	useEffect(() => {
-		async function loadLanguages() {
+		async function loadContent() {
+			const storedLang = await getLanguage();
+			const lang = storedLang || "en";
+			setCurrentLang(lang);
+
 			try {
-				// Dynamic import based on currentLang
-				const module = await import(`@data/${currentLang}/Languages.json`);
-
-				setLanguageEntries(module.default);
+				const module = await import(`@data/${lang}/Languages.json`);
+				setLanguages(module.default);
 			} catch (e) {
-				// fallback to English if load fails
-				const module = await import(`@data/en/Languages.json`);
-
-				console.error("Could not load language data, falling back to English.", e);
-				
-				setLanguageEntries(module.default);
+				console.error(`Could not load welcome page in "${lang}", falling back to English.`, e);
+				const fallback = await import(`@data/en/Languages.json`);
+				setLanguages(fallback.default);
 			}
 		}
 
-		loadLanguages();
-	}, [currentLang]);
+		loadContent();
+	}, []);
 
-	if (!languageEntries) {
+	// Make it show nothing when the page is loading and the user is there as having loading text for a split second looks ugly
+	if (!languages) {
 		return null;
 	}
 
 	return (
 		<div className="languagesPage">
-			<Title title={languageEntries.title} />
+			<Title title={languages.title} />
 
 			<div className="languageProfiles">
-				{languageEntries.languages.map(({ id, name, image, bio }) => {
+				{languages.languages.map(({ id, name, image, bio }) => {
 					const link = supportedPages.has(id) ? `/${currentLang}/${id}/homepage` : `/${currentLang}*`;
 					
 					return (
-						<LanguageProfile
-						key={id}
-						link={link}
-						image={getImageForTheme(id, image, isDarkMode)}
-						alternate={`${name} Logo`}
-						name={name}
-						bio={bio}
-						/>
+						<LanguageProfile key={id} link={link} image={getImageForTheme(id, image, isDarkMode)} alternate={`${name} Logo`} name={name} bio={bio} />
 					);
 				})}
 			</div>
@@ -65,13 +57,28 @@ export default function Languages() {
 	);
 }
 
+// All the languages that are implemented
+const supportedPages = new Set([
+	"c",
+	"java",
+	// Include other fully done languages here...
+]);
+
+/**
+ * @param {id} id The language in lowercase form used for getting a specific language
+ * @param {baseImage} baseImage The image that is used for default and not the darkmode version
+ * @param {isDarkMode} isDarkMode Is used for to detect if the user is in darkmode to change some logos 
+ * 
+ * @returns The path to the respected image for the programming language
+ */
 const getImageForTheme = (id, baseImage, isDarkMode) => {
 	// For the ones that change
 	const darkModeImages = {
 		rust: "RustDark.svg",
 		na: "NADark.svg",
 		cs: "NADark.svg",
-		ds: "NADark.svg",
+		ds: "NADark.svg"
+		// Add more darkmode image names...
 	};
 
 	if (isDarkMode && darkModeImages[id]) {

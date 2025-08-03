@@ -1,6 +1,6 @@
 [
-	{ "tab": "Lessons", "link": "/fr/c/homepage", "active": "active", "id": "0" }, 
-	{ "tab": "Practice", "link": "/fr/*", "active": "", "id": "1" },
-	{ "tab": "Compiler", "link": "/fr/*", "active": "", "id": "2" },
-	{ "tab": "Languages", "link": "/fr/languages", "active": "", "id": "3" }
+	{ "tab": "Leçons", "link": "/fr/c/homepage", "active": "active", "id": "0" }, 
+	{ "tab": "Pratique", "link": "*", "active": "", "id": "1" },
+	{ "tab": "Compilateur", "link": "*", "active": "", "id": "2" },
+	{ "tab": "Langues", "link": "/fr/languages", "active": "", "id": "3" }
 ]

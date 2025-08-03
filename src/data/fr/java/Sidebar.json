@@ -2,8 +2,8 @@
 	{
 		"title": "Java Basics",
 		"tabs": [
-			{ "tab": "Java Homepage", "link": "/fr/*", "active": "" },
-			{ "tab": "Java Getting Started", "link": "/fr/*", "active": "" }
+			{ "tab": "Java Homepage", "link": "*", "active": "" },
+			{ "tab": "Java Getting Started", "link": "*", "active": "" }
 		]
 	}
 ]

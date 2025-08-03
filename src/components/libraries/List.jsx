@@ -1,5 +1,4 @@
 /**
- * 
  * @param {list} list The objects we want to be in a list.
  * 
  * @see LinkedList()

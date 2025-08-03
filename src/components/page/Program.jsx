@@ -1,20 +1,29 @@
 import { useState, useRef, useCallback } from "react";
 import { writeText } from "@tauri-apps/plugin-clipboard-manager";
+
 import SyntaxHighlight from "../lexer/SyntaxHighlighter";
 
 import "@stylesheets/Program.css";
 
+
+/**
+ * @param {language, name, program, output, displayRun} program The fields that customize all the program's content
+ * 
+ * @returns The program all stylized and with the customizations 
+ */
 export default function Program({ program: { language, name, program, output, displayRun }}) {
 	const [showOutput, setShowOutput] = useState(false);
 	const [isRunning, setIsRunning] = useState(false);
 	const isCooldown = useRef(false);
 
+	// Prevents the user from spamming the buttons causing the software to crash
 	const handleRunClick = useCallback(() => {
 		if (isCooldown.current) {
 			return;
 		}
 
 		isCooldown.current = true;
+
 		setShowOutput(prev => !prev);
 		setIsRunning(prev => !prev);
 
@@ -23,6 +32,7 @@ export default function Program({ program: { language, name, program, output, di
 		}, 500);
 	}, []);
 
+	// To keep the codes form
 	const handleCopyClick = useCallback(async () => {
 		if (program) {
 			await writeText(program.join('\n'));
@@ -38,6 +48,11 @@ export default function Program({ program: { language, name, program, output, di
 	);
 }
 
+/**
+ * @param {output} output The text that the program will return when running
+ * 
+ * @returns The text that the program outputs
+ */
 function Output({ output }) {
 	return (
 		<div className="programOutput">
@@ -46,6 +61,12 @@ function Output({ output }) {
 	);
 }
 
+/**
+ * @param {program} program The text of the program that is going to be stylized
+ * @param {language} language The language that you want the program to be stylized as (Note: purely the color of the text) 
+ * 
+ * @returns A fully stylized block of code
+ */
 function Display({ program, language }) {
 	return (
 		<div className="program">
@@ -56,6 +77,13 @@ function Display({ program, language }) {
 	);
 }
 
+/**
+ * @param {display} display To show the run button or not
+ * @param {onClick} onClick To change the run button's style based of if its clicked or not
+ * @param {isRunning} isRunning To change the run button's style based of if its running or not
+ * 
+ * @returns The run button's style
+ */
 const ShowRun = ({ display, onClick, isRunning }) => {
 	if (!display) return null;
 
@@ -66,6 +94,16 @@ const ShowRun = ({ display, onClick, isRunning }) => {
 	);
 }
 
+/**
+ * @param {language} language The display language of the program
+ * @param {name} name The display name of the program
+ * @param {onCopy} onCopy To see if the user hit the copy button 
+ * @param {onRun} onRun To see if the user hit the run button 
+ * @param {isRunning} isRunning To see if its running to show a change in the run button
+ * @param {showRun} showRun (Default: True) If the program should be runnable by hiding/showing the run button
+ * 
+ * @returns The fully formatted header for the program
+ */
 function Header({ language, name, onCopy, onRun, isRunning, showRun = true }) {
 	return (
 		<div className="programHeader">

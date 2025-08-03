@@ -1,10 +1,10 @@
 import { useRef } from "react";
+
 import Spacer from "@components/page/Spacer";
 import LinkedList from "@components/libraries/LinkedList";
 
 
 /**
- * 
  * @param {list} list The list of ChapterSections.
  * @param {activeTabIndex} activeTabIndex The list of all the link paths.
  * 
@@ -36,12 +36,10 @@ export default function Chapters({ list, activeTabIndex }) {
 }
 
 /**
- * 
  * @param {list} list The list of links that go under the section.
  * @param {sectionName} sectionName The name for the section.
  *  
  * @returns The title and all the links under the title
- * 
  */
 function ChapterSection({ list, sectionName }) {
 	return (

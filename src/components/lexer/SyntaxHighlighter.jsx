@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+
 import Lexer from "./Lexer";
 
 // Language's Config Files
@@ -13,14 +14,11 @@ const languageConfigs = {
 	java: JavaConfig,
 };
 
-
 /**
- * 
  * @param {input} input The program's contents @default ""
  * @param {language} language The language's highlighting style @default "c"
  * 
  * @returns Fully highlighted text of the program block
- * 
  */
 export default function SyntaxHighlight({ input = "", language = "c" }) {
 	// This puts together the list of strings in the json file

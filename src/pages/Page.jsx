@@ -6,6 +6,10 @@ import Code from "@components/page/Code";
 import List from "@components/libraries/List";
 import Table from "@components/libraries/Table";
 
+
+/**
+ * @returns A fully decorated and functional page from reading a JSON file
+ */
 export default function Page() {
 	const output = useLoaderData();
 
@@ -15,6 +19,7 @@ export default function Page() {
 			
 			{output.content.map((sec, index) => (
 				<Section key={index} title={sec.title} content={sec.section.map((item, sectionIndex) => {
+					// When the text field has multiple fields in it (It's a waste of space if you provide a list of text and not other fields)
 					if (item.text && Array.isArray(item.text)) {
 						return (
 							<p key={sectionIndex} className="text">
@@ -36,14 +41,15 @@ export default function Page() {
 					} else if (item.program) {
 						return <Program key={sectionIndex} program={item.program} />;
 					} else if (item.list) {
+						// Incorporate a list of fields capabilities  
 						return <List key={sectionIndex} list={item.list} />
 					} else if (item.table) {
 						return <Table key={sectionIndex} table={item.table} />
 					}
 
 					return null;
-				})} />
-							
+					
+				})} />			
 			))}
 		</>
 	);

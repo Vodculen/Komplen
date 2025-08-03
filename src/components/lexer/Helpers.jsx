@@ -1,7 +1,5 @@
 import * as Constants from "./languages/C";
 
-// TODO: I not doing this someone else will do this!
-
 
 export function current(lexer) {
 	return lexer.input[lexer.index];

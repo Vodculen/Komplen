@@ -1,5 +1,3 @@
-import { consume } from "../Helpers";
-
 export const operators = new Set(["=", "!", "<", ">", "+", "-", "/", "*", "^", "|", "&"]);
 export const blank = new Set(["(", ")", "{", "}", ";", ".", ",", "[", "]"]);
 
@@ -12,13 +10,15 @@ export const keywords = [
 ];
 
 export const TokenType = {
-	Variable: "varibles",
+	Variable: "variables",
 	Keyword: "keywords",
 	Number: "numbers",
-	Class: "classes",
+	FormatSpecifier: "numbers",
+	Struct: "classes",
 	Method: "methods",
 	String: "strings",
 	Operator: "operators",
+	EscapeSequence: "operators",
 	Comment: "comments",
 	Misc: ""
 };
@@ -39,7 +39,7 @@ export function lex(lexer) {
 		}
 
 		if (char === "\\" && helpers.peek(lexer)) {
-			lexer.tokens.push({ value: "\\" + helpers.peek(lexer), type: lexer.config.TokenType.Operator });
+			lexer.tokens.push({ value: "\\" + helpers.peek(lexer), type: lexer.config.TokenType.EscapeSequence });
 			helpers.consume(lexer, 2);
 			continue;
 		}
@@ -118,10 +118,10 @@ export function lexIdentifier(lexer) {
 	if (config.keywords.includes(identifier)) {
 		type = config.TokenType.Keyword;
 	} else if (helpers.back(lexer, -2)?.value === "struct" || helpers.back(lexer, -2)?.value === "}") {
-		type = config.TokenType.Class;
+		type = config.TokenType.Struct;
 		lexer.knownStructs.add(identifier);
 	} else if (lexer.knownStructs.has(identifier)) {
-		type = config.TokenType.Class;
+		type = config.TokenType.Struct;
 	}
 
 	return { value: identifier, type };
@@ -156,7 +156,7 @@ export function readUntil(lexer, terminator, options = {}) {
 				lexer.tokens.push({ value: buffer, type: tokenType });
 				buffer = "";
 			}
-			lexer.tokens.push({ value: "%" + helpers.peek(lexer), type: lexer.config.TokenType.Number });
+			lexer.tokens.push({ value: "%" + helpers.peek(lexer), type: lexer.config.TokenType.FormatSpecifier });
 			helpers.consume(lexer, 2);
 			continue;
 		}

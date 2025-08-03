@@ -1,5 +1,11 @@
 import SyntaxHighlight from "../lexer/SyntaxHighlighter";
 
+
+/**
+ * @param {language, input} codeBlock What the code in the block should be and what language it should be stylized to
+ *  
+ * @returns The stylized code block
+ */
 export default function Code({ codeBlock: { language, input }}) {
 	return(
 		<code className="code">

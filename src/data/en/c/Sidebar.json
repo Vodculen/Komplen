@@ -10,8 +10,8 @@
 		"tabs": [
 			{ "tab": "C Arrays", "link": "/en/c/arrays", "active": "" },
 			{ "tab": "C Structs", "link": "/en/c/structs", "active": "" },
-			{ "tab": "C Enums", "link": "/en/*", "active": "" },
-			{ "tab": "C Unions", "link": "/en/*", "active": "" }
+			{ "tab": "C Enums", "link": "*", "active": "" },
+			{ "tab": "C Unions", "link": "*", "active": "" }
 		]
 	}
 ]
