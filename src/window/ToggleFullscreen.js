@@ -1,13 +1,13 @@
 import { getCurrentWindow } from "@tauri-apps/api/window";
 
 
-const window = getCurrentWindow();
+const appWindow = getCurrentWindow();
 
 // Standard flip-flop to switch the fullscreen
 export async function toggleFullscreen() {
-	const isFullscreen = await window.isFullscreen();
+	const isFullscreen = await appWindow.isFullscreen();
 	
-	await window.setFullscreen(!isFullscreen);
+	await appWindow.setFullscreen(!isFullscreen);
 }
 
 // Checks if the user hit the F11 key if so it flip-flops the fullscreen
@@ -18,7 +18,7 @@ function handleKeyPress(e) {
 	}
 }
 
-// Make sure that the window exists
+// Make sure that the appWindow exists
 if (typeof window !== "undefined") {
 	window.addEventListener("keydown", handleKeyPress);
 }
