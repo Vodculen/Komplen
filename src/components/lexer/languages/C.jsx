@@ -117,11 +117,13 @@ export function lexIdentifier(lexer) {
 
 	if (config.keywords.includes(identifier)) {
 		type = config.TokenType.Keyword;
-	} else if (helpers.back(lexer, -2)?.value === "struct" || helpers.back(lexer, -2)?.value === "}") {
+	} else if ((helpers.back(lexer, -2)?.value === "struct" || helpers.back(lexer, -2)?.value === "}") || (helpers.back(lexer, -2)?.value === "enum" || helpers.back(lexer, -2)?.value === "}")) {
 		type = config.TokenType.Struct;
 		lexer.knownStructs.add(identifier);
 	} else if (lexer.knownStructs.has(identifier)) {
 		type = config.TokenType.Struct;
+	} else if (lexer.knownEnums.has(identifier)) {
+		type = config.TokenType.Operator;
 	}
 
 	return { value: identifier, type };

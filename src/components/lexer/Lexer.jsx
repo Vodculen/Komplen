@@ -7,6 +7,7 @@ export default class Lexer {
 		this.index = 0;
 		this.tokens = [];
 		this.knownStructs = new Set();
+		this.knownEnums = new Set();
 
 		this.config = languageConfig;
 		this.helpers = Helpers;
