@@ -7,11 +7,11 @@ import "@stylesheets/Program.css";
 
 
 /**
- * @param {language, name, program, output, displayRun} program The fields that customize all the program's content
+ * @param {language, name, program, output, runnable} program The fields that customize all the program's content
  * 
  * @returns The program all stylized and with the customizations 
  */
-export default function Program({ program: { language, name, program, output, displayRun }}) {
+export default function Program({ program: { language, name, program, output, runnable }}) {
 	const [showOutput, setShowOutput] = useState(false);
 	const [isRunning, setIsRunning] = useState(false);
 	const isCooldown = useRef(false);
@@ -41,7 +41,7 @@ export default function Program({ program: { language, name, program, output, di
 
 	return (
 		<div className="programBlock">
-			<Header language={language} name={name} onCopy={handleCopyClick} onRun={handleRunClick} isRunning={isRunning} showRun={displayRun}/>
+			<Header language={language} name={name} onCopy={handleCopyClick} onRun={handleRunClick} isRunning={isRunning} showRun={runnable}/>
 			<Display program={program} language={language.toLowerCase()} />
 			{showOutput && output && <Output output={output} />}
 		</div>

@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import Section from "@components/page/Section";
 import Program from "@components/page/Program";
 import Code from "@components/page/Code";
-import List from "@components/libraries/List";
+import { ComplexList } from "../components/libraries/List";
 import Table from "@components/libraries/Table";
 
 
@@ -26,8 +26,8 @@ export default function Page() {
 								{item.text.map((part, textIndex) => {
 									if (typeof part === "string") {
 										return part;
-									} else if (part.codeBlock) {
-										return <Code key={textIndex} codeBlock={part.codeBlock} />
+									} else if (part.code) {
+										return <Code key={textIndex} code={part.code} />
 									} else {
 										return null;
 									}
@@ -41,8 +41,7 @@ export default function Page() {
 					} else if (item.program) {
 						return <Program key={sectionIndex} program={item.program} />;
 					} else if (item.list) {
-						// Incorporate a list of fields capabilities  
-						return <List key={sectionIndex} list={item.list} />
+						return <ComplexList key={sectionIndex} list={item.list} />;
 					} else if (item.table) {
 						return <Table key={sectionIndex} table={item.table} />
 					}

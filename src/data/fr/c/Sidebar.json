@@ -8,10 +8,10 @@
 	{
 		"title": "C Data Structures",
 		"tabs": [
-			{ "tab": "C Arrays", "link": "*", "active": "" },
-			{ "tab": "C Structs", "link": "*", "active": "" },
-			{ "tab": "C Enums", "link": "*", "active": "" },
-			{ "tab": "C Unions", "link": "*", "active": "" }
+			{ "tab": "C Arrays", "link": "/fr/c/arrays", "active": "" },
+			{ "tab": "C Structs", "link": "fr/c/structs", "active": "" },
+			{ "tab": "C Enums", "link": "fr/c/enums", "active": "" },
+			{ "tab": "C Unions", "link": "fr/c/unions", "active": "" }
 		]
 	}
 ]
