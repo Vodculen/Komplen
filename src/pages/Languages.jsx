@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getLanguage } from "../window/ToggleLanguages";
+import { useLocation } from "react-router-dom";
 
 import LanguageProfile from "@components/page/LanguageProfile";
 import Title from "@components/page/Title";
@@ -12,28 +12,24 @@ import "@stylesheets/Languages.css";
  */
 export default function Languages() {
 	const isDarkMode = document.body.classList.contains("darkmode");
-	const [currentLang, setCurrentLang] = useState("en");
-	const [languages, setLanguages] = useState(null);
+	const location = useLocation();
+	const [languages, getLanguages] = useState(null);
 
-	// To get the stored language to set its content to the language and fix all links to match the same language.
+	const lang = location.pathname.split("/")[1];
+
 	useEffect(() => {
-		async function loadContent() {
-			const storedLang = await getLanguage();
-			const lang = storedLang || "en";
-			setCurrentLang(lang);
-
+		const loadMenu = async () => {
 			try {
 				const module = await import(`@data/${lang}/Languages.json`);
-				setLanguages(module.default);
-			} catch (e) {
-				console.error(`Could not load welcome page in "${lang}", falling back to English.`, e);
-				const fallback = await import(`@data/en/Languages.json`);
-				setLanguages(fallback.default);
+				getLanguages(module.default);
+			} catch (err) {
+				console.error(`Languages data not found for "${lang}"`, err);
+				getLanguages(null);
 			}
-		}
+		};
 
-		loadContent();
-	}, []);
+		loadMenu();
+	}, [lang]);
 
 	// Make it show nothing when the page is loading and the user is there as having loading text for a split second looks ugly
 	if (!languages) {
@@ -46,7 +42,7 @@ export default function Languages() {
 
 			<div className="languageProfiles">
 				{languages.languages.map(({ id, name, image, bio }) => {
-					const link = supportedPages.has(id) ? `/${currentLang}/${id}/homepage` : `/${currentLang}*`;
+					const link = supportedPages.has(id) ? `/${lang}/${id}/lessons/homepage` : `/${lang}*`;
 					
 					return (
 						<LanguageProfile key={id} link={link} image={getImageForTheme(id, image, isDarkMode)} alternate={`${name} Logo`} name={name} bio={bio} />

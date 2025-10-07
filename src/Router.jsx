@@ -13,14 +13,14 @@ import Page from "@pages/Page";
 
 const dynamicRouteLoader = async ({ request }) => {
 	const url = new URL(request.url);
-	const [lang, tech, page] = url.pathname.split("/").filter(Boolean);
+	const [lang, tech, section, page] = url.pathname.split("/").filter(Boolean);
 
 	if (!lang || !tech || !page) {
 		throw new Response("Invalid route structure", { status: 400 });
 	}
 
 	try {
-		const module = await import(`@data/${lang}/${tech}/${capitalize(page)}.json`);
+		const module = await import(`@data/${lang}/${tech}/${section}/${capitalize(page)}.json`);
 		return module.default;
 	} catch (err) {
 		console.error("Failed to import file:", err);
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
 		// For the rest of the software
 		element: <DefaultLayout />,
 		children: [
-			{ path: "/:lang/:tech/:page", element: <Page />, loader: dynamicRouteLoader },
+			{ path: "/:lang/:tech/:section/:page", element: <Page />, loader: dynamicRouteLoader },
 		],
 	},
 ]);

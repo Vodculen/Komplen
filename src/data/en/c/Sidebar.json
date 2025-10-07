@@ -2,33 +2,7 @@
 	{
 		"title": "C Basics",
 		"tabs": [
-			{ "tab": "C Homepage", "link": "/en/c/homepage", "active": "" }
-		]
-	},
-	{
-		"title": "C Functions",
-		"tabs": [
-			{ "tab": "C Functions", "link": "/en/c/functions", "active": "" },
-			{ "tab": "C Predefined Functions", "link": "/en/c/predefined_functions", "active": "" },
-			{ "tab": "C Recursion", "link": "/en/c/recursion", "active": "" }
-		]
-	},
-	{
-		"title": "C Data Structures",
-		"tabs": [
-			{ "tab": "C Arrays", "link": "/en/c/arrays", "active": "" },
-			{ "tab": "C Structs", "link": "/en/c/structs", "active": "" },
-			{ "tab": "C Enums", "link": "/en/c/enums", "active": "" },
-			{ "tab": "C Unions", "link": "/en/c/unions", "active": "" }
-		]
-	},
-	{
-		"title": "C Memory",
-		"tabs": [
-			{ "tab": "C References", "link": "/en/c/references", "active": "" },
-			{ "tab": "C Pointers", "link": "/en/c/pointers", "active": "" },
-			{ "tab": "C Memory Management", "link": "/en/c/memory", "active": "" }
+			{ "tab": "C Homepage", "link": "/en/c/lessons/homepage" }
 		]
 	}
-	
 ]

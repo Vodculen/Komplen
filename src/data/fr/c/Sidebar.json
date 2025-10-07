@@ -2,16 +2,7 @@
 	{
 		"title": "C Basics",
 		"tabs": [
-			{ "tab": "Cage d'Accueil C", "link": "/fr/c/homepage", "active": "" }
-		]
-	},
-	{
-		"title": "C Data Structures",
-		"tabs": [
-			{ "tab": "C Arrays", "link": "/fr/c/arrays", "active": "" },
-			{ "tab": "C Structs", "link": "fr/c/structs", "active": "" },
-			{ "tab": "C Enums", "link": "fr/c/enums", "active": "" },
-			{ "tab": "C Unions", "link": "fr/c/unions", "active": "" }
+			{ "tab": "Cage d'Accueil C", "link": "/fr/c/lessons/homepage", "active": "" }
 		]
 	}
 ]

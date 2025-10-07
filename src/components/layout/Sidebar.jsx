@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import Chapters from "./Chapters";
+import JsonLoader from "@components/libraries/JsonLoaders";
+
 
 /**
  * Flattens the sidebar tab structure.
@@ -19,34 +19,14 @@ const flattenTabs = (list) => {
  * @returns A fully filled out and stylized sidebar
  */
 export default function Sidebar() {
-	const location = useLocation();
-	const [sidebarData, setSidebarData] = useState(null);
-
-	const lang = location.pathname.split("/")[1];
-	const tech = location.pathname.split("/")[2];
-
-	// Gets the data for the sidebar
-	useEffect(() => {
-		const loadSidebar = async () => {
-			try {
-				const module = await import(`@data/${lang}/${tech}/Sidebar.json`);
-				setSidebarData(module.default);
-			} catch (err) {
-				console.error(`Sidebar data not found for "${tech}"`, err);
-				setSidebarData(null);
-			}
-		};
-
-		loadSidebar();
-	}, [lang, tech]);
-
-	// If there is no sidebar then display nothing
-	if (!sidebarData) {
+	const load = JsonLoader("Sidebar");
+	
+	if (!load) {
 		return null;
 	}
 
-	const allTabs = flattenTabs(sidebarData);
+	const allTabs = flattenTabs(load);
 	const activeTabIndex = allTabs.findIndex((tab) => tab.link === location.pathname);
 
-	return <Chapters list={sidebarData} activeTabIndex={activeTabIndex} />;
+	return <Chapters list={load} activeTabIndex={activeTabIndex} />;
 }

@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useLocation } from "react-router-dom";
 
 import Spacer from "@components/page/Spacer";
 import LinkedList from "@components/libraries/LinkedList";
@@ -12,12 +13,13 @@ import LinkedList from "@components/libraries/LinkedList";
  * @see ChapterSection()
  */
 export default function Chapters({ list, activeTabIndex }) {
+	const location = useLocation();
 	const chaptersRef = useRef(null);
 	let tabCounter = 0;
 
 	const listItems = list.map((section, sectionIndex) => {
 		const tabsWithActive = section.tabs.map((tab) => {
-			const isActive = tabCounter === activeTabIndex;
+			const isActive = location.pathname.startsWith(tab.link);
 			const updatedTab = { ...tab, active: isActive ? "active" : "" };
 
 			tabCounter++;

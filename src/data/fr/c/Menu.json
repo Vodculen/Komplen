@@ -1,6 +1,6 @@
 [
-	{ "tab": "Leçons", "link": "/fr/c/homepage", "active": "active", "id": "0" }, 
-	{ "tab": "Pratique", "link": "*", "active": "", "id": "1" },
-	{ "tab": "Compilateur", "link": "*", "active": "", "id": "2" },
-	{ "tab": "Langues", "link": "/fr/languages", "active": "", "id": "3" }
+	{ "tab": "Leçons", "link": "/fr/c/lessons/homepage" }, 
+	{ "tab": "Pratique", "link": "*" },
+	{ "tab": "Compilateur", "link": "*" },
+	{ "tab": "Langues", "link": "/fr/languages" }
 ]

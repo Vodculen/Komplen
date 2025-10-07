@@ -1,45 +1,37 @@
-import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import LinkedList from "@components/libraries/LinkedList";
 import { ToggleDarkmode } from "@window/ToggleDarkmode";
 import LanguageSelector from "../page/LanguageSwitcher";
+import JsonLoader from "@components/libraries/JsonLoaders";
 
 
 /**
  * @returns The whole top bar in different languages and programming languages
  */
 export default function Menu() {
-	// May change the language logic to match other Pages like Welcome and Languages
+	const load = JsonLoader("Menu");
 	const location = useLocation();
-	const [menuData, getMenuData] = useState(null);
+	const pathSegments = location.pathname.split("/").filter(Boolean);
+	const currentSection = pathSegments[2];
 
-	const lang = location.pathname.split("/")[1];
-	const tech = location.pathname.split("/")[2];
-
-	useEffect(() => {
-		const loadMenu = async () => {
-			try {
-				const module = await import(`@data/${lang}/${tech}/Menu.json`);
-				getMenuData(module.default);
-			} catch (err) {
-				console.error(`Sidebar data not found for "${lang}"`, err);
-				getMenuData(null);
-			}
-		};
-
-		loadMenu();
-	}, [lang, tech]);
-
-	// Make it show nothing when the page is loading and the user is there as having loading text for a split second looks ugly
-	if (!menuData) {
+	if (!load) {
 		return null;
 	}
+
+	const updatedLoad = load.map(item => {
+		// Extract the third segment from the item's link:
+		const segments = item.link.split("/").filter(Boolean);
+		const itemSection = segments[2]; // or [something else] depending on link structure
+
+		const isActive = itemSection === currentSection;
+		return { ...item, active: isActive ? "active" : "" };
+	});
 
 	return(
 		<nav className="menu">
 			<ul>
-				<LinkedList list={menuData} />
+				<LinkedList list={updatedLoad} />
 
 				<li><LanguageSelector /></li>
 
