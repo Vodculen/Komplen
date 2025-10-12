@@ -1,11 +1,13 @@
 import { useMemo } from "react";
 
 import Lexer from "./Lexer";
+import Parser from "./Parser";
 
 // Language's Config Files
 import * as CConfig from "./languages/C";
 import * as CppConfig from "./languages/Cpp";
 import * as JavaConfig from "./languages/Java";
+import Token from "./Token";
 
 
 const languageConfigs = {
@@ -22,24 +24,24 @@ const languageConfigs = {
  */
 export default function SyntaxHighlight({ input = "", language = "c" }) {
 	// This puts together the list of strings in the json file
-	const normalizedInput = Array.isArray(input) ? input.join("\n") : input;
+	const buffer = Array.isArray(input) ? input.join("\n") : input;
 
 	const tokens = useMemo(() => {
-		const config = languageConfigs[language];
-		const lexer = new Lexer(normalizedInput, config);
+		const lang = languageConfigs[language];
+		const parser = new Parser(new Lexer(buffer, lang));
 
-		if (!config) {
-			return [{ value: normalizedInput, type: null }];
+		if (!lang) {
+			return new Token(type, buffer, buffer);
 		} 
 
-		return lexer.lex();
-	}, [normalizedInput]);
+		return parser.parser();
+	}, [buffer]);
 
 	return (
 		<>
-			{tokens.map((token, idx) => (
-				<span key={idx} className={(token.type || "") + " code"}>
-				{token.value}
+			{tokens.map((newTokens, idx) => (
+				<span key={idx} className={(newTokens.type || "") + " code"}>
+				{newTokens.token}
 				</span>
 			))}
 		</>
