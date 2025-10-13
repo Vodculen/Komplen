@@ -2,27 +2,8 @@
 	"page": "C Homepage",
 	"content": [
 		{
-			"title": "Testing Syntax Highlighting for C",
+			"title": "C Homepage",
 			"section": [
-				{ 
-					"program": 
-					{
-						"name": "test.c",
-						"language": "C",
-						"program": [
-							"#include <stdio.h>",
-							"/* Cool comment",
-							" Thats on multiple lines */",
-							"int main(int argc, const char* argv[])",
-							"{",
-							"    // More comments guys (:",
-							"    return 0;",
-							"}"
-						],
-						"runnable": true,
-						"output": "It works"
-					}
-				}
 			]
 		}
 	]

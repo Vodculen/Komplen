@@ -19,6 +19,14 @@ export default class Parser {
 		return this.tokens.at(this.current + amount).type;
 	}
 
+	peekUntil(token) {
+		if (!this.eof() && this.peek() !== token) {
+			return true;
+		}
+
+		return false;
+	}
+
 	addStylizedToken(token, type) {
 		this.newTokens.push({ type: type, token: token });
 	}

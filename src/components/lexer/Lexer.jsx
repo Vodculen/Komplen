@@ -87,23 +87,23 @@ export default class Lexer {
 		return identifier;
 	}
 
-	comment(type) {
-		if (type === 0) {
-			while (this.peek() !== '\n' && !this.eof()) {
-				this.consume();
-			}
-		} else if (type === 1) {
-			while (this.peek() !== '*' && this.peekNext() !== '/') {
-				this.consume();
-			}
+	// comment(type) {
+	// 	if (type === 0) {
+	// 		while (this.peek() !== '\n' && !this.eof()) {
+	// 			this.consume();
+	// 		}
+	// 	} else if (type === 1) {
+	// 		while (this.peek() !== '*' && this.peekNext() !== '/' && !this.eof()) {
+	// 			this.consume();
+	// 		}
 
-			this.consume();
-			this.consume();
-		}
+	// 		this.consume();
+	// 		this.consume();
+	// 	}
 
-		let comment = this.buffer.substring(this.start, this.current);
-		return comment;
-	}
+	// 	let comment = this.buffer.substring(this.start, this.current);
+	// 	return comment;
+	// }
 
 
 	isAlpha(char) {

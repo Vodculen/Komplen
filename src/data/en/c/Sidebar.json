@@ -2,7 +2,8 @@
 	{
 		"title": "C Basics",
 		"tabs": [
-			{ "tab": "C Homepage", "link": "/en/c/lessons/homepage" }
+			{ "tab": "C Homepage", "link": "/en/c/lessons/homepage" },
+			{ "tab": "C Comments", "link": "/en/c/lessons/comments" }
 		]
 	}
 ]

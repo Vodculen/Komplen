@@ -19,6 +19,7 @@ const Tokens = {
 
 	// Math Symbols
 	DIVIDE: "Divide",
+	MULTIPLY: "Multiply",
 
 	// Literals
 	STRING_LITERAL: "String Literal",
@@ -36,8 +37,12 @@ const Tokens = {
 
 	IDENTIFIER: "Identifier",
 	COMMENT: "Comment",
+	RIGHT_COMMENT: "Right Comment",
+	LEFT_COMMENT: "Left Comment",
 	SEMICOLON: "Semicolon",
+	COLON: "Colon",
 	WHITESPACE: " ",
+	EOF: "End Of File"
 };
 
 const Keywords = new Map([
@@ -48,19 +53,24 @@ const Keywords = new Map([
 	["return", Tokens.KEYWORD]
 ]);
 
+var inString = false;
+
 export function lexer(lexer) {
 	while (!lexer.eof()) {
 		lexer.start = lexer.current;
 		lexTokens(lexer);
 	}
 
+	lexer.current = lexer.start;
+	lexer.addComplexToken(Tokens.EOF, "")
+
 	return lexer.tokens;
 }
 
 function lexTokens(lexer) {
-	let c = lexer.consume();
+	let current = lexer.consume();
 
-	switch (c) {
+	switch (current) {
 		case ' ': lexer.addSimpleToken(Tokens.WHITESPACE); break;
 		case '\n': lexer.addSimpleToken(Tokens.NEW_LINE); break;
 		case '(': lexer.addSimpleToken(Tokens.LEFT_PAREN); break;
@@ -69,21 +79,19 @@ function lexTokens(lexer) {
 		case '}': lexer.addSimpleToken(Tokens.RIGHT_CURLY); break;
 		case '[': lexer.addSimpleToken(Tokens.LEFT_SQUARE); break;
 		case ']': lexer.addSimpleToken(Tokens.RIGHT_SQUARE); break;
-		case ';': lexer.addSimpleToken(Tokens.SEMICOLON); break;
 		case '!': lexer.addSimpleToken(lexer.match('=') ? Tokens.NOT_EQUAL : Tokens.NOT); break;
 		case '=': lexer.addSimpleToken(lexer.match('=') ? Tokens.DOUBLE_EQUAL : Tokens.EQUAL); break;
 		case '<': lexer.addSimpleToken(lexer.match('=') ? Tokens.LESS_THAN_EQUAL : Tokens.LESS_THAN); break;
 		case '>': lexer.addSimpleToken(lexer.match('=') ? Tokens.GREATER_THAN_EQUAL : Tokens.GREATER_THAN); break;
-		case '/':
+		case '/': 
 			if (lexer.match('/')) {
-				lexer.addComplexToken(Tokens.COMMENT, lexer.comment(0));
-				break;
+				lexer.addSimpleToken(Tokens.COMMENT);
 			} else if (lexer.match('*')) {
-				lexer.addComplexToken(Tokens.COMMENT, lexer.comment(1));
-				break;
+				lexer.addSimpleToken(Tokens.LEFT_COMMENT);
+			} else {
+				lexer.addSimpleToken(Tokens.DIVIDE);
 			}
 
-			lexer.addSimpleToken(Tokens.DIVIDE);
 			break;
 		case '\\':
 			if (lexer.match('n')) {
@@ -91,14 +99,17 @@ function lexTokens(lexer) {
 				break;
 			}
 			break;
-		case '\"': lexer.addComplexToken(Tokens.STRING_LITERAL, lexer.string()); break;
+		case '*': lexer.addSimpleToken(lexer.match('/') ? Tokens.RIGHT_COMMENT : Tokens.MULTIPLY); break;
+		case '\"': lexer.addSimpleToken(Tokens.STRING_LITERAL); break;
 		case '.': lexer.addSimpleToken(Tokens.DOT); break;
 		case ',': lexer.addSimpleToken(Tokens.COMMA); break;
+		case ':': lexer.addSimpleToken(Tokens.COLON); break;
+		case ';': lexer.addSimpleToken(Tokens.SEMICOLON); break;
 	
 		default:
-			if (lexer.isNum(c)) {
+			if (lexer.isNum(current)) {
 				lexer.addComplexToken(Tokens.NUMBER_LITERAL, lexer.number());
-			} else if (lexer.isAlpha(c)) {
+			} else if (lexer.isAlpha(current)) {
 				lexer.addComplexToken(Keywords.has(lexer.identifier()) ? Keywords.get(lexer.identifier()) : Tokens.IDENTIFIER, lexer.identifier());
 			}
 
@@ -116,13 +127,43 @@ export function parser(parser) {
 
 function parseTokens(parser) {
 	const token = parser.consume();
-	const c = token.type;
+	const current = token.type;
 
-	switch (c) {
+	switch (current) {
 		case Tokens.VISUAL_NEW_LINE: parser.addStylizedToken(token.lexeme, "operators"); break;
-		case Tokens.COMMENT: parser.addStylizedToken(token.lexeme, "comments"); break;
+		case Tokens.COMMENT:
+			parser.addStylizedToken(token.lexeme, "comments");
+
+			while (parser.peekUntil(Tokens.NEW_LINE)) {
+				const nextToken = parser.consume();
+
+				parser.addStylizedToken(nextToken.lexeme, "comments");
+			}
+			break;
+		case Tokens.LEFT_COMMENT:
+			parser.addStylizedToken(token.lexeme, "comments");
+
+			while (parser.peekUntil(Tokens.RIGHT_COMMENT)) {
+				const nextToken = parser.consume();
+
+				parser.addStylizedToken(nextToken.lexeme, "comments");
+			}
+			break;
 		case Tokens.NUMBER_LITERAL: parser.addStylizedToken(token.lexeme, "numbers"); break;
-		case Tokens.STRING_LITERAL: parser.addStylizedToken(token.lexeme, "strings"); break;
+		case Tokens.STRING_LITERAL:
+			parser.addStylizedToken(token.lexeme, "strings"); 
+
+			inString = !inString;
+			while (inString && parser.peekUntil(Tokens.STRING_LITERAL)) {
+				const nextToken = parser.consume();
+
+				switch (nextToken.type) {
+					case Tokens.VISUAL_NEW_LINE: parser.addStylizedToken(nextToken.lexeme, "operators"); break;
+					default: parser.addStylizedToken(nextToken.lexeme, "strings"); break;
+				}
+			}
+			
+			break;
 		case Tokens.IDENTIFIER:
 			if (parser.peek() === Tokens.LEFT_PAREN) {
 				parser.addStylizedToken(token.lexeme, "methods");
@@ -134,7 +175,7 @@ function parseTokens(parser) {
 		case Tokens.INCLUDE:
 			parser.addStylizedToken(token.lexeme, "keywords");
 
-			while (parser.peek() !== Tokens.NEW_LINE && !parser.eof()) {
+			while (parser.peekUntil(Tokens.NEW_LINE)) {
 				const nextToken = parser.consume();
 
 				parser.addStylizedToken(nextToken.lexeme, "strings");
@@ -142,6 +183,7 @@ function parseTokens(parser) {
 
 			break;
 		case Tokens.KEYWORD: parser.addStylizedToken(token.lexeme, "keywords"); break;
+		case Tokens.RIGHT_COMMENT: parser.addStylizedToken(token.lexeme, "comments"); break;
 		default:
 			// For all un-stylized tokens
 			parser.addUnstylizedToken(token.lexeme);

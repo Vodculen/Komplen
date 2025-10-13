@@ -1,0 +1,90 @@
+{
+	"page": "C Comments",
+	"content": [
+		{
+			"title": "C Comments",
+			"section": [
+				{ "text": "Comments can be used in many ways to be helpful in C, this includes: " },
+				{ 
+					"list": [
+						{ "text": "To keep some code you don't want to run or use now." },
+						{ "text": "To leave notes and explain why you did it that way." },
+						{ "text": "To document your code for you and others to use it better." }
+					]
+				},
+				{ "text": "You can do this as the comment tells the compiler to ignore what you wrote." }
+			]
+		},
+		{
+			"title": "Single Lined Comments",
+			"section": [
+				{ 
+					"text": [ 
+						"To make a single lined comment all you have to do is put ", 
+						{ "code": { "language": "C", "input": "//" } },
+						"."
+					]
+				},
+				{ "text": "Then for the rest of the line everything will be commented out." },
+				{ 
+					"program": {
+						"language": "C",
+						"name": "main.c",
+						"program": [
+							"#include <stdio.h>",
+							"",
+							"int main()",
+							"{",
+							"    // Prints out a nice message to the user :)",
+							"    printf(\"Hello world\\n\");",
+							"",
+							"    return 0;  // This returns success!",
+							"}"
+						],
+						"output": "Hello world"
+					}
+				},
+				{ "text": "This way is used more for shorter comments." }
+			]
+		},
+		{
+			"title": "Multi-Lined Comments",
+			"section": [
+				{ 
+					"text": [
+						"To make a single lined comment all you have to do is put ", 
+						{ "code": { "language": "C", "input": "/*" } },
+						"."
+					] 
+				},
+				{ 
+					"text": [ 
+						"Then until ", 
+						{ "code": { "language": "C", "input": "*/" } }, 
+						" everything will be commented out." 
+					] 
+				},
+				{ 
+					"program": {
+						"language": "C",
+						"name": "main.c",
+						"program": [
+							"#include <stdio.h>",
+							"",
+							"/* All this code simply just prints out",
+							" \"Hello world\" and returns 0 */",
+							"int main()",
+							"{",
+							"    printf(\"Hello world\\n\");",
+							"",
+							"    return 0;",
+							"}"
+						],
+						"output": "Hello world"
+					}
+				},
+				{ "text": "This way is used more for longer comments and was the only way in C99 (released in 1999)." }
+			]
+		}
+	]
+}
