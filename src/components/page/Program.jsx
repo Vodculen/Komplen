@@ -84,7 +84,7 @@ function Display({ program, language }) {
  * 
  * @returns The run button's style
  */
-const ShowRun = ({ display, onClick, isRunning }) => {
+function ShowRun({ display, onClick, isRunning }) {
 	if (!display) return null;
 
 	return (

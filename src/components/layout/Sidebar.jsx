@@ -1,5 +1,5 @@
 import Chapters from "./Chapters";
-import JsonLoader from "@components/libraries/JsonLoaders";
+import { defaultJsonLoader } from "@components/libraries/JsonLoaders";
 
 
 /**
@@ -19,7 +19,7 @@ const flattenTabs = (list) => {
  * @returns A fully filled out and stylized sidebar
  */
 export default function Sidebar() {
-	const load = JsonLoader("Sidebar");
+	const load = defaultJsonLoader("Sidebar");
 	
 	if (!load) {
 		return null;

@@ -20,9 +20,14 @@ const Tokens = {
 	// Math Symbols
 	DIVIDE: "Divide",
 	MULTIPLY: "Multiply",
+	MINUS: "Minus",
+
+	// Other Math Symbols
+	DECREMENT: "Decrement",
 
 	// Literals
 	STRING_LITERAL: "String Literal",
+	CHARACTER_LITERAL: "Character Literal",
 	NUMBER_LITERAL: "Number Literal",
 
 	// Keywords
@@ -32,15 +37,26 @@ const Tokens = {
 	// Escape Characters
 	NEW_LINE: "New Line",
 	VISUAL_NEW_LINE: "\\n",
+	VISUAL_TAB: "\\t",
+	VISUAL_BACKSLASH: "\\\\",
+	VISUAL_DOUBLE_QUOTATION_MARK: "\"",
+	VISUAL_APOSTROPHE: "\'",
+
+	// Punctuation
 	DOT: "Dot",
 	COMMA: "Comma",
+	COLON: "Colon",
+	SEMICOLON: "Semicolon",
+
+	// Format Specifier
+	DECIMAL_FORMAT_SPECIFIER: "%d", FLOAT_FORMAT_SPECIFIER: "%f", CHARACTER_FORMAT_SPECIFIER: "%c", STRING_FORMAT_SPECIFIER: "%s",
 
 	IDENTIFIER: "Identifier",
 	COMMENT: "Comment",
 	RIGHT_COMMENT: "Right Comment",
 	LEFT_COMMENT: "Left Comment",
-	SEMICOLON: "Semicolon",
-	COLON: "Colon",
+	
+	
 	WHITESPACE: " ",
 	EOF: "End Of File"
 };
@@ -83,6 +99,7 @@ function lexTokens(lexer) {
 		case '=': lexer.addSimpleToken(lexer.match('=') ? Tokens.DOUBLE_EQUAL : Tokens.EQUAL); break;
 		case '<': lexer.addSimpleToken(lexer.match('=') ? Tokens.LESS_THAN_EQUAL : Tokens.LESS_THAN); break;
 		case '>': lexer.addSimpleToken(lexer.match('=') ? Tokens.GREATER_THAN_EQUAL : Tokens.GREATER_THAN); break;
+		case '-': lexer.addSimpleToken(lexer.match('-') ? Tokens.DECREMENT : Tokens.MINUS); break;
 		case '/': 
 			if (lexer.match('/')) {
 				lexer.addSimpleToken(Tokens.COMMENT);
@@ -96,11 +113,32 @@ function lexTokens(lexer) {
 		case '\\':
 			if (lexer.match('n')) {
 				lexer.addSimpleToken(Tokens.VISUAL_NEW_LINE);
-				break;
+			} else if (lexer.match('t')) {
+				lexer.addSimpleToken(Tokens.VISUAL_TAB);
+			} else if (lexer.match('\"')) {
+				lexer.addSimpleToken(Tokens.VISUAL_DOUBLE_QUOTATION_MARK);
+			}else if (lexer.match('\'')) {
+				lexer.addSimpleToken(Tokens.VISUAL_APOSTROPHE);
+			} else {
+				lexer.addSimpleToken(Tokens.VISUAL_BACKSLASH);
+			}
+			break;
+		case '%':
+			if (lexer.match('d')) {
+				lexer.addSimpleToken(Tokens.DECIMAL_FORMAT_SPECIFIER);
+			} else if (lexer.match('f')) {
+				lexer.addSimpleToken(Tokens.FLOAT_FORMAT_SPECIFIER);
+			} else if (lexer.match('c')) {
+				lexer.addSimpleToken(Tokens.CHARACTER_FORMAT_SPECIFIER);
+			} else if (lexer.match('s')) {
+				lexer.addSimpleToken(Tokens.STRING_FORMAT_SPECIFIER);
+			} else {
+				lexer.addSimpleToken(Tokens.MODULUS);
 			}
 			break;
 		case '*': lexer.addSimpleToken(lexer.match('/') ? Tokens.RIGHT_COMMENT : Tokens.MULTIPLY); break;
 		case '\"': lexer.addSimpleToken(Tokens.STRING_LITERAL); break;
+		case '\'': lexer.addSimpleToken(Tokens.CHARACTER_LITERAL); break;
 		case '.': lexer.addSimpleToken(Tokens.DOT); break;
 		case ',': lexer.addSimpleToken(Tokens.COMMA); break;
 		case ':': lexer.addSimpleToken(Tokens.COLON); break;
@@ -131,6 +169,10 @@ function parseTokens(parser) {
 
 	switch (current) {
 		case Tokens.VISUAL_NEW_LINE: parser.addStylizedToken(token.lexeme, "operators"); break;
+		case Tokens.VISUAL_TAB: parser.addStylizedToken(token.lexeme, "operators"); break;
+		case Tokens.VISUAL_BACKSLASH: parser.addStylizedToken(token.lexeme, "operators"); break;
+		case Tokens.VISUAL_DOUBLE_QUOTATION_MARK: parser.addStylizedToken(token.lexeme, "operators"); break;
+		case Tokens.VISUAL_APOSTROPHE: parser.addStylizedToken(token.lexeme, "operators"); break;
 		case Tokens.COMMENT:
 			parser.addStylizedToken(token.lexeme, "comments");
 
@@ -159,6 +201,11 @@ function parseTokens(parser) {
 
 				switch (nextToken.type) {
 					case Tokens.VISUAL_NEW_LINE: parser.addStylizedToken(nextToken.lexeme, "operators"); break;
+					case Tokens.VISUAL_TAB: parser.addStylizedToken(nextToken.lexeme, "operators"); break;
+					case Tokens.DECIMAL_FORMAT_SPECIFIER: parser.addStylizedToken(nextToken.lexeme, "numbers"); break;
+					case Tokens.FLOAT_FORMAT_SPECIFIER: parser.addStylizedToken(nextToken.lexeme, "numbers"); break;
+					case Tokens.CHARACTER_FORMAT_SPECIFIER: parser.addStylizedToken(nextToken.lexeme, "numbers"); break;
+					case Tokens.STRING_FORMAT_SPECIFIER: parser.addStylizedToken(nextToken.lexeme, "numbers"); break;
 					default: parser.addStylizedToken(nextToken.lexeme, "strings"); break;
 				}
 			}

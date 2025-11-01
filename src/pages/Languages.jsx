@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-
 import LanguageProfile from "@components/page/LanguageProfile";
 import Title from "@components/page/Title";
 
 import "@stylesheets/Languages.css";
+import { languageJsonLoader } from "@components/libraries/JsonLoaders";
 
 
 /**
@@ -12,36 +10,19 @@ import "@stylesheets/Languages.css";
  */
 export default function Languages() {
 	const isDarkMode = document.body.classList.contains("darkmode");
-	const location = useLocation();
-	const [languages, getLanguages] = useState(null);
-
 	const lang = location.pathname.split("/")[1];
+	const load = languageJsonLoader("Languages");
 
-	useEffect(() => {
-		const loadMenu = async () => {
-			try {
-				const module = await import(`@data/${lang}/Languages.json`);
-				getLanguages(module.default);
-			} catch (err) {
-				console.error(`Languages data not found for "${lang}"`, err);
-				getLanguages(null);
-			}
-		};
-
-		loadMenu();
-	}, [lang]);
-
-	// Make it show nothing when the page is loading and the user is there as having loading text for a split second looks ugly
-	if (!languages) {
+	if (!load) {
 		return null;
 	}
 
 	return (
 		<div className="languagesPage">
-			<Title title={languages.title} />
+			<Title title={load.title} />
 
 			<div className="languageProfiles">
-				{languages.languages.map(({ id, name, image, bio }) => {
+				{load.languages.map(({ id, name, image, bio }) => {
 					const link = supportedPages.has(id) ? `/${lang}/${id}/lessons/homepage` : `/${lang}*`;
 					
 					return (

@@ -1,0 +1,59 @@
+{
+	"page": "C Escape Sequences",
+	"content": [
+		{
+			"title": "C Escape Sequences",
+			"section": [
+				{ "text": "Escape Sequences allow you to use special symbols you normally can't in C or modify the cursors position." },
+				{ "text": "The table below will show you some of the different Escape Sequences in C: " },
+				{
+					"table": [
+						{
+							"header": true,
+							"row": [
+								{ "cell": "Escape Sequence" },
+								{ "cell": "Name" },
+								{ "cell": "Description" }
+							]
+						},
+						{
+							"row": [
+								{ "cell": "\\n" },
+								{ "cell": "New Line" },
+								{ "cell": "Puts the cursor on a new line" }
+							]
+						},
+						{
+							"row": [
+								{ "cell": "\\t" },
+								{ "cell": "Tab" },
+								{ "cell": "Moves the cursor 1 tab's width forward" }
+							]
+						},
+						{
+							"row": [
+								{ "cell": "\\\\" },
+								{ "cell": "Backslash" },
+								{ "cell": "Allows the \\ character to be printed out" }
+							]
+						},
+						{
+							"row": [
+								{ "cell": "\\\"" },
+								{ "cell": "Double Quotation Mark" },
+								{ "cell": "Allows a \" to be printed out and not be mistaken as a start/end of a string literal by the compiler" }
+							]
+						},
+						{
+							"row": [
+								{ "cell": "\\'" },
+								{ "cell": "Apostrophe" },
+								{ "cell": "Allows a ' to be printed out and not be mistaken as a start/end of a character literal by the compiler" }
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

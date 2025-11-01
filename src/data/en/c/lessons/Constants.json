@@ -1,0 +1,45 @@
+{
+	"page": "C Constants",
+	"content": [
+		{
+			"title": "C Constants",
+			"section": [
+				{ "text": "Constants are a variable which cannot be changed and should be used that way." },
+				{ "text": "When declaring constants it's best practice to make uppercase." }
+			]
+		},
+		{
+			"title": "Declaring C Constants",
+			"section": [
+				{ 
+					"text": [
+						"When declaring a constant you'll need to put the ",
+						{ "code": { "language": "C", "input": "const" } },
+						" keyword before the datatype." 
+					]
+				},
+				{ "text": "You must assign it a value when declaring it, or it will throw an error." },
+				{ 
+					"program": {
+						"language": "C",
+						"name": "main.c",
+						"program": [
+							"#include <stdio.h>",
+							"",
+							"int main()",
+							"{",
+							"    const int BIRTH_YEAR = 1974;",
+							"    const int GRADUATION_YEAR = 1993;",
+							"",
+							"    printf(\"I was born in %d and graduated highschool in %d!\\n\", BIRTH_YEAR, GRADUATION_YEAR);",
+							"",
+							"    return 0;",
+							"}"
+						],
+						"output": "I was born in 1974 and graduated highschool in 1993!"
+					}
+				}
+			]
+		}
+	]
+}

@@ -1,5 +1,6 @@
 {
 	"title": "Welcome to Komplen",
 	"text": "[Splash Text]",
-	"continue": "Get Started"
+	"continue": "Get Started",
+	"link": "/en/languages"
 }

@@ -3,14 +3,14 @@ import { useLocation } from "react-router-dom";
 import LinkedList from "@components/libraries/LinkedList";
 import { ToggleDarkmode } from "@window/ToggleDarkmode";
 import LanguageSelector from "../page/LanguageSwitcher";
-import JsonLoader from "@components/libraries/JsonLoaders";
+import { defaultJsonLoader } from "@components/libraries/JsonLoaders";
 
 
 /**
  * @returns The whole top bar in different languages and programming languages
  */
 export default function Menu() {
-	const load = JsonLoader("Menu");
+	const load = defaultJsonLoader("Menu");
 	const location = useLocation();
 	const pathSegments = location.pathname.split("/").filter(Boolean);
 	const currentSection = pathSegments[2];
