@@ -1,0 +1,170 @@
+{
+	"page": "C Datatypes",
+	"content": [
+		{
+			"title": "C Datatypes",
+			"section": [
+				{ "text": "When declaring variables in C, we have to tell it what it what type the value its holding is." },
+				{ 
+					"text": [
+						"Like if the variable holds a whole number, fractional number, or a character, you use ",
+						{ "code": { "language": "C", "input": "int" } },
+						", ",
+						{ "code": { "language": "C", "input": "float" } },
+						", or ",
+						{ "code": { "language": "C", "input": "char" } },
+						" respectively."
+					]
+				}
+			]
+		},
+		{
+			"title": "C Integers",
+			"section": [
+				{ "text": "Integers allow you to store whole number values in a variable." },
+				{ 
+					"text": [
+						"They can store up to ",
+						{ "code": { "language": "C", "input": "4" } },
+						" bytes of data, containing numbers ",
+						{ "code": { "language": "C", "input": "-32767" } },
+						" to ",
+						{ "code": { "language": "C", "input": "32767" } },
+						"."
+					]
+				},
+				{ 
+					"program": {
+						"language": "C",
+						"name": "main.c",
+						"program": [
+							"#include <stdbool.h>",
+							"",
+							"int main()",
+							"{",
+							"    int myFavoriteNumber = 64;",
+							"",
+							"    return 0;",
+							"}"
+						],
+						"runnable": false
+					}
+				}
+			]
+		},
+		{
+			"title": "C Floats & Doubles",
+			"section": [
+				{ "text": "Floats and Doubles allow you to store any number in a variable." },
+				{ "text": "They are used when dealing with really big or very small numbers." },
+				{ 
+					"program": {
+						"language": "C",
+						"name": "main.c",
+						"program": [
+							"#include <stdbool.h>",
+							"",
+							"int main()",
+							"{",
+							"    float smallNumber = 0.010045;",
+							"    // 123 * 10^4 = 1230000",
+							"    double bigNumber = 123e4;",
+							"",
+							"    return 0;",
+							"}"
+						],
+						"runnable": false
+					}
+				},
+				{ 
+					"text": [
+						"Floats have ",
+						{ "code": { "language": "C", "input": "6" } },
+						" to ",
+						{ "code": { "language": "C", "input": "7" } },
+						" digits of precision, while doubles have up to ",
+						{ "code": { "language": "C", "input": "15" } },
+						" digits of precision."
+					]
+				},
+				{ 
+					"text": [
+						"They both support Scientific Numbers, also a ",
+						{ "code": { "language": "C", "input": "float" } },
+						" is ",
+						{ "code": { "language": "C", "input": "4" } },
+						" bytes while a ",
+						{ "code": { "language": "C", "input": "double" } },
+						" is ",
+						{ "code": { "language": "C", "input": "8" } },
+						" bytes."
+					]
+				}
+			]
+		},
+		{
+			"title": "C Characters",
+			"section": [
+				{ "text": "Characters can only be one character long, but can be any character." },
+				{ 
+					"program": {
+						"language": "C",
+						"name": "main.c",
+						"program": [
+							"#include <stdbool.h>",
+							"",
+							"int main()",
+							"{",
+							"    char programmingLanguage = 'C';",
+							"",
+							"    return 0;",
+							"}"
+						],
+						"runnable": false
+					}
+				}
+			]
+		},
+		{
+			"title": "C Booleans",
+			"section": [
+				{ "text": "Now unlike the other datatypes, booleans aren't natively built into C." },
+				{
+					"text": [
+						"Instead you need to ", 
+						{ "code": { "language": "C", "input": "#include <stdbool.h>" } },
+						" to use it."
+					]
+				},
+				{ 
+					"program": {
+						"language": "C",
+						"name": "main.c",
+						"program": [
+							"#include <stdbool.h>",
+							"",
+							"int main()",
+							"{",
+							"    bool programmer = true;",
+							"    bool likeFish = false;",
+							"",
+							"    return 0;",
+							"}"
+						],
+						"runnable": false
+					}
+				},
+				{ 
+					"text": [
+						"The library also allows you to use ",
+						{ "code": { "language": "C", "input": "true" } },
+						" & ",
+						{ "code": { "language": "C", "input": "false" } },
+						" in your code."
+					]
+				}
+				
+			]
+		}
+	]
+}

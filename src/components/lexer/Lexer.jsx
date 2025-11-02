@@ -23,6 +23,14 @@ export default class Lexer {
 		return this.buffer.charAt(this.current);
 	}
 
+	peekPrevious() {
+		if (this.current - 1 >= this.buffer.length) {
+			return '\0';
+		}
+
+		return this.buffer.charAt(this.current - 1);
+	}
+
 	peekNext() {
 		if (this.current + 1 >= this.buffer.length) {
 			return '\0';
@@ -66,7 +74,7 @@ export default class Lexer {
 			this.consume();
 		}
 
-		if (this.peek() === '.' && this.isNum(this.peekNext())) {
+		if ((this.peek() === '.' || this.peek() === 'e') && this.isNum(this.peekNext())) {
 			this.consume();
 
 			while (this.isNum(this.peek())) {

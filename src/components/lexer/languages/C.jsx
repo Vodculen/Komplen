@@ -34,6 +34,10 @@ const Tokens = {
 	INCLUDE: "Include",
 	INTEGER: "Integer",
 
+	BOOLEAN: "Boolean",
+	TRUE: "True",
+	FALSE: "False",
+
 	// Escape Characters
 	NEW_LINE: "New Line",
 	VISUAL_NEW_LINE: "\\n",
@@ -47,6 +51,7 @@ const Tokens = {
 	COMMA: "Comma",
 	COLON: "Colon",
 	SEMICOLON: "Semicolon",
+	XOR: "^",
 
 	// Format Specifier
 	DECIMAL_FORMAT_SPECIFIER: "%d", FLOAT_FORMAT_SPECIFIER: "%f", CHARACTER_FORMAT_SPECIFIER: "%c", STRING_FORMAT_SPECIFIER: "%s",
@@ -64,9 +69,14 @@ const Tokens = {
 const Keywords = new Map([
 	["#include", Tokens.INCLUDE],
 	["int", Tokens.KEYWORD],
+	["float", Tokens.KEYWORD],
+	["double", Tokens.KEYWORD],
 	["char", Tokens.KEYWORD],
 	["const", Tokens.KEYWORD],
-	["return", Tokens.KEYWORD]
+	["return", Tokens.KEYWORD],
+	["bool", Tokens.BOOLEAN],
+	["true", Tokens.TRUE],
+	["false", Tokens.FALSE]
 ]);
 
 var inString = false;
@@ -143,6 +153,7 @@ function lexTokens(lexer) {
 		case ',': lexer.addSimpleToken(Tokens.COMMA); break;
 		case ':': lexer.addSimpleToken(Tokens.COLON); break;
 		case ';': lexer.addSimpleToken(Tokens.SEMICOLON); break;
+		case '^': lexer.addSimpleToken(Tokens.XOR); break;
 	
 		default:
 			if (lexer.isNum(current)) {
@@ -211,6 +222,15 @@ function parseTokens(parser) {
 			}
 			
 			break;
+		case Tokens.CHARACTER_LITERAL:
+			parser.addStylizedToken(token.lexeme, "strings"); 
+
+			inString = !inString;
+			while (inString && parser.peekUntil(Tokens.CHARACTER_LITERAL)) {
+				parser.addStylizedToken(parser.consume().lexeme, "strings");
+			}
+
+			break;
 		case Tokens.IDENTIFIER:
 			if (parser.peek() === Tokens.LEFT_PAREN) {
 				parser.addStylizedToken(token.lexeme, "methods");
@@ -229,7 +249,18 @@ function parseTokens(parser) {
 			}
 
 			break;
+		case Tokens.MINUS:
+			if (parser.peek() === Tokens.NUMBER_LITERAL) {
+				parser.addStylizedToken(token.lexeme, "numbers");
+			} else {
+				parser.addStylizedToken(token.lexeme, "operators");
+			}
+
+			break;
 		case Tokens.KEYWORD: parser.addStylizedToken(token.lexeme, "keywords"); break;
+		case Tokens.BOOLEAN: parser.addStylizedToken(token.lexeme, "numbers"); break;
+		case Tokens.TRUE: parser.addStylizedToken(token.lexeme, "numbers"); break;
+		case Tokens.FALSE: parser.addStylizedToken(token.lexeme, "numbers"); break;
 		case Tokens.RIGHT_COMMENT: parser.addStylizedToken(token.lexeme, "comments"); break;
 		default:
 			// For all un-stylized tokens
