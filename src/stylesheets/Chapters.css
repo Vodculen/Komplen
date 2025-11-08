@@ -29,3 +29,24 @@
 	text-decoration: none;
 	color: var(--normalText);
 }
+
+.group {
+	margin: 8px 20px;
+	position: relative;
+}
+
+.group .groupName {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.group .groupName span:last-child {
+  display: flex;           /* make it a flex container */
+  justify-content: flex-end; /* push the arrow to the right */
+  flex-shrink: 0;           /* prevent shrinking */
+}
+
+.arrow {
+	fill: var(--normalText)
+}
