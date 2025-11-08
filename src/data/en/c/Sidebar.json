@@ -3,10 +3,11 @@
 		"title": "C Basics",
 		"tabs": [
 			{ "tab": "C Homepage", "link": "/en/c/lessons/homepage" },
-			{ "tab": "C Datatypes", "link": "/en/c/lessons/datatypes" },
 			{ "tab": "C Escape Sequences", "link": "/en/c/lessons/escapeSequences" },
-			{ "tab": "C Constants", "link": "/en/c/lessons/constants" },
-			{ "tab": "C Comments", "link": "/en/c/lessons/comments" }
+			{ "tab": "C Comments", "link": "/en/c/lessons/comments" },
+			{ "tab": "C Datatypes", "link": "/en/c/lessons/datatypes" },
+			{ "tab": "C Format Specifiers", "link": "/en/c/lessons/formatSpecifiers" },
+			{ "tab": "C Constants", "link": "/en/c/lessons/constants" }
 		]
 	}
 ]

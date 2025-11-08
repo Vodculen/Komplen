@@ -54,7 +54,7 @@ const Tokens = {
 	XOR: "^",
 
 	// Format Specifier
-	DECIMAL_FORMAT_SPECIFIER: "%d", FLOAT_FORMAT_SPECIFIER: "%f", CHARACTER_FORMAT_SPECIFIER: "%c", STRING_FORMAT_SPECIFIER: "%s",
+	DECIMAL_FORMAT_SPECIFIER: "%d", FLOAT_FORMAT_SPECIFIER: "%f", DOUBLE_FORMAT_SPECIFIER: "%lf", CHARACTER_FORMAT_SPECIFIER: "%c", STRING_FORMAT_SPECIFIER: "%s", 
 
 	IDENTIFIER: "Identifier",
 	COMMENT: "Comment",
@@ -138,6 +138,10 @@ function lexTokens(lexer) {
 				lexer.addSimpleToken(Tokens.DECIMAL_FORMAT_SPECIFIER);
 			} else if (lexer.match('f')) {
 				lexer.addSimpleToken(Tokens.FLOAT_FORMAT_SPECIFIER);
+			} else if (lexer.match('l')) {
+				if (lexer.peek(lexer.match('f'))) {
+					lexer.addSimpleToken(Tokens.DOUBLE_FORMAT_SPECIFIER);
+				}
 			} else if (lexer.match('c')) {
 				lexer.addSimpleToken(Tokens.CHARACTER_FORMAT_SPECIFIER);
 			} else if (lexer.match('s')) {
@@ -215,6 +219,7 @@ function parseTokens(parser) {
 					case Tokens.VISUAL_TAB: parser.addStylizedToken(nextToken.lexeme, "operators"); break;
 					case Tokens.DECIMAL_FORMAT_SPECIFIER: parser.addStylizedToken(nextToken.lexeme, "numbers"); break;
 					case Tokens.FLOAT_FORMAT_SPECIFIER: parser.addStylizedToken(nextToken.lexeme, "numbers"); break;
+					case Tokens.DOUBLE_FORMAT_SPECIFIER: parser.addStylizedToken(nextToken.lexeme, "numbers"); break;
 					case Tokens.CHARACTER_FORMAT_SPECIFIER: parser.addStylizedToken(nextToken.lexeme, "numbers"); break;
 					case Tokens.STRING_FORMAT_SPECIFIER: parser.addStylizedToken(nextToken.lexeme, "numbers"); break;
 					default: parser.addStylizedToken(nextToken.lexeme, "strings"); break;

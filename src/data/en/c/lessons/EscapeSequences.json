@@ -18,35 +18,35 @@
 						},
 						{
 							"row": [
-								{ "cell": "\\n" },
+								{ "cell": [ { "code": { "language": "C", "input": "\\n" } } ] },
 								{ "cell": "New Line" },
 								{ "cell": "Puts the cursor on a new line" }
 							]
 						},
 						{
 							"row": [
-								{ "cell": "\\t" },
+								{ "cell": [ { "code": { "language": "C", "input": "\\t" } } ] },
 								{ "cell": "Tab" },
 								{ "cell": "Moves the cursor 1 tab's width forward" }
 							]
 						},
 						{
 							"row": [
-								{ "cell": "\\\\" },
+								{ "cell": [ { "code": { "language": "C", "input": "\\\\" } } ] },
 								{ "cell": "Backslash" },
 								{ "cell": "Allows the \\ character to be printed out" }
 							]
 						},
 						{
 							"row": [
-								{ "cell": "\\\"" },
+								{ "cell": [ { "code": { "language": "C", "input": "\\\"" } } ] },
 								{ "cell": "Double Quotation Mark" },
 								{ "cell": "Allows a \" to be printed out and not be mistaken as a start/end of a string literal by the compiler" }
 							]
 						},
 						{
 							"row": [
-								{ "cell": "\\'" },
+								{ "cell": [ { "code": { "language": "C", "input": "\\'" } } ] },
 								{ "cell": "Apostrophe" },
 								{ "cell": "Allows a ' to be printed out and not be mistaken as a start/end of a character literal by the compiler" }
 							]

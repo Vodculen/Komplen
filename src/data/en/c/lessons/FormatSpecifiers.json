@@ -1,0 +1,84 @@
+{
+	"page": "C Format Specifiers",
+	"content": [
+		{
+			"title": "C Format Specifiers",
+			"section": [
+				{ "text": "When wanting to print out a variables value you need to tell the compiler what datatype your printing out." }				
+			]
+		},
+		{
+			"title": "Using Format Specifiers",
+			"section": [
+				{ "text": "To use the Format Specifier, you put it where the value of the variable is wanted." },
+				{ "text": "It will use the variables after the string separated by commas in the order they were put in." },
+				{ 
+					"program": {
+						"language": "C",
+						"name": "main.c",
+						"program": [
+							"#include <stdio.h>",
+							"",
+							"int main()",
+							"{",
+							"    char programmingLanguage = 'C';",
+							"    int yearsLearning = 5;",
+							"",
+							"    printf(\"I love learning %c and have been for %d years.\", programmingLanguage, yearsLearning);",
+							"",
+							"    return 0;",
+							"}"
+						],
+						"output": "I love learning C and have been for 5 years."
+					}
+				}
+			]
+		},
+		{
+			"title": "Possible Format Specifiers",
+			"section": [
+				{
+					"table": [
+						{
+							"header": true,
+							"row": [
+								{ "cell": "Format Specifiers" },
+								{ "cell": "Datatype Specification" }
+							]
+						},
+						{
+							"row": [
+								{ "cell": [ { "code": { "language": "C", "input": "\"%c\"" } } ]},
+								{ "cell": ["Used for ", { "code": { "language": "C", "input": "char" } }, " values"] }
+							]
+						},
+						{
+							"row": [
+								{ "cell": [ { "code": { "language": "C", "input": "\"%s\"" } } ]},
+								{ "cell": ["Used for string values, more on them later"] }
+							]
+						},
+						{
+							"row": [
+								{ "cell": [ { "code": { "language": "C", "input": "\"%d\"" } } ]},
+								{ "cell": ["Used for ", { "code": { "language": "C", "input": "int" } }, " and ", { "code": { "language": "C", "input": "bool" } }, " values"] }
+							]
+						},
+						{
+							"row": [
+								{ "cell": [ { "code": { "language": "C", "input": "\"%f\"" } } ]},
+								{ "cell": ["Used for ", { "code": { "language": "C", "input": "float" } }, " values"] }
+							]
+						},
+						{
+							"row": [
+								{ "cell": [ { "code": { "language": "C", "input": "\"%lf\"" } } ]},
+								{ "cell": ["Used for ", { "code": { "language": "C", "input": "double" } }, " values"] }
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

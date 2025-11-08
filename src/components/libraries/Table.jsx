@@ -1,5 +1,4 @@
-import SyntaxHighlight from "../lexer/SyntaxHighlighter";
-
+import Code from "@components/page/Code";
 
 /**
  * @param {table} table The table we want to make and stylize
@@ -42,20 +41,31 @@ function TableRows({ row, header }) {
 
 	const rows = row.map((item, index) => {
 		if (!item) {
-			return <td key={crypto.randomUUID()}>—</td>;
+			return <td key={crypto.randomUUID()} className="text">—</td>;
 		}
 
 		// Keep the theming of the block behind it
 		if (header) {
-			return <th key={crypto.randomUUID()}>{item.cell}</th>;
+			return <th key={crypto.randomUUID()} className="text"><b>{item.cell}</b></th>;
 		}
 
 		// Assuming that every table uses the first column for code 
-		const isFirstBodyCell = index === 0;
 
 		return (
 			<td key={crypto.randomUUID()}>
-				{isFirstBodyCell ? <SyntaxHighlight language="c" input={item.cell} /> : item.cell }
+				{typeof item.cell === "string"
+					? item.cell
+					: Array.isArray(item.cell)
+					? item.cell.map((part, index) => {
+						if (typeof part === "string") {
+							return <span key={index} className="text">{part}</span>;
+						} else if (part.code) {
+							return <Code key={index} code={part.code} />;
+						}
+						
+						return null;
+					})
+					: null}
 			</td>
 		);
 	});
